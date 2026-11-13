@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Native check of the book template; requires Quarto, PyMuPDF and the template fonts, no model calls."""
+"""Native check of the book template; requires Quarto, PyMuPDF and an installed code font, no model calls."""
 from pathlib import Path
 import argparse
 import hashlib
@@ -32,7 +32,7 @@ def source_hashes(root):
 
 def check(quarto, fonts, root, language, stress=False):
     shutil.copytree(TEMPLATE, root, ignore=shutil.ignore_patterns('_book', '.quarto', 'index.typ'))
-    for font in fonts.glob('*.[ot]tf'):
+    for font in (fonts.glob('*.[ot]tf') if fonts else []):
         shutil.copy(font, root / 'fonts')
     config = root / '_quarto.yml'
     config.write_text(config.read_text().replace('lang: en', f'lang: {language}'))
@@ -92,8 +92,8 @@ def check(quarto, fonts, root, language, stress=False):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--quarto', default=shutil.which('quarto'))
-    parser.add_argument('--fonts', type=Path, required=True,
-                        help='directory with the font files named in _brand.yml')
+    parser.add_argument('--fonts', type=Path,
+                        help='directory with additional font files, such as a code font that is not installed')
     parser.add_argument('--output-dir', type=Path)
     args = parser.parse_args()
     if not args.quarto:

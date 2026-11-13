@@ -17,9 +17,8 @@ Create one PDF, set as a book, from the Markdown chapters in this directory.
 
 ## Before you start
 
-Install Quarto 1.10.18. Copy the font files named in `_brand.yml` into the
-`fonts` directory. The sample uses Source Sans 3, which is published under the
-SIL Open Font License.
+Install Quarto 1.10.18. The text font, Source Sans 3, is in the `fonts`
+directory. Check that the code font named in `_brand.yml` is installed.
 
 ::: {.callout-note icon=false}
 The PDF is built on your machine. You need neither a Typst account nor a

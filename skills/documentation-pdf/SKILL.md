@@ -91,8 +91,9 @@ Check the actual PDF, not only the renderer's exit code:
 For the book layout additionally:
 
 - List parts and chapters in `book.chapters` in manifest order; set
-  `document-kind` and the `imprint` block, and place the fonts named in
-  `_brand.yml` in `fonts/`.
+  `document-kind` and the `imprint` block. Source Sans 3 is bundled in
+  `fonts/` with its licence; copy both. Place any other family named in
+  `_brand.yml` there too.
 - Render with `quarto render --to em-book-typst` and run the copied
   `tools/check-pdf.py` on the PDF (needs PyMuPDF). It must report no errors.
 - Every chapter and part title page opens on a right-hand page; title page,

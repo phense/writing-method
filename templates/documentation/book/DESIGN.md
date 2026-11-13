@@ -41,15 +41,18 @@ not bundle Quarto or install it implicitly. Get it from the
 [official release](https://github.com/quarto-dev/quarto-cli/releases/tag/v1.10.18)
 and check the release's SHA-256 checksum before installing.
 
-The sample is set in Source Sans 3 with DejaVu Sans Mono for code. Font files
-are not bundled. Source Sans 3 is published under the SIL Open Font License by
-[Adobe](https://github.com/adobe-fonts/source-sans/releases). Copy the OTF
-files for Regular, Italic, Semibold, Semibold Italic, Bold and Bold Italic into
-`fonts/`, together with the licence text. `font-paths` in `_quarto.yml` passes
-that directory to Typst, so the PDF does not depend on the fonts installed on
-the machine. To use another family, name it in `_brand.yml`. Do not ignore a
-missing-font warning: Typst then sets the text in a fallback font and every
-page break moves.
+The sample is set in Source Sans 3 with DejaVu Sans Mono for code. The six
+Source Sans 3 files (Regular, Italic, Semibold, Semibold Italic, Bold and Bold
+Italic, release 3.052R) are bundled in `fonts/` with their licence, the SIL
+Open Font License 1.1. `font-paths` in `_quarto.yml` passes that directory to
+Typst, so the text looks the same on every machine. Keep the licence file next
+to the fonts when you copy the template.
+
+The code font is not bundled. DejaVu Sans Mono is present on most Linux
+systems; on other systems name an installed monospace family in `_brand.yml`
+or copy its files into `fonts/`. To use another text family, do the same. Do
+not ignore a missing-font warning: Typst then sets the text in a fallback font
+and every page break moves.
 
 ## Parts, chapters and order
 
@@ -162,7 +165,7 @@ sources, as for the single-sided template.
 For the template itself, run from the Writing Method checkout:
 
 ```sh
-python3 tests/e2e/test-documentation-book --quarto /path/to/quarto --fonts /path/to/fonts
+python3 tests/e2e/test-documentation-book --quarto /path/to/quarto
 ```
 
 It renders the sample in English and German and a stress case with a tall
