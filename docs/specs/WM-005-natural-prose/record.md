@@ -32,6 +32,23 @@ machine-written, and this ranks first among the writing rules.
 - Published: release `v0.5.0` with a reproducible archive; the downloaded
   archive matches `SHA256SUMS`. Installed on Claude and Codex.
 
+## OpenCode (2026-11-13)
+
+- The loader `writing-method.js` is installed by `scripts/install-opencode`;
+  `--check` reports `Already installed`.
+- `opencode debug skill` (1.19.5) lists 54 skills, 27 of them from this
+  plugin: its 22 own skills and five of the eight shared ones. The other three
+  shared skills are taken from Engineering Method, which carries the same
+  names; OpenCode logs `duplicate skill name` and keeps one.
+- Three plain requests, one run each, model `deepseek-flash`: a team
+  announcement loaded `human-prose-drafting`, a concept question
+  `explaining-concepts`, a new story `story-bootstrap`. One run is an
+  observation and no rate.
+- The answer to the concept question used bold labels with a colon, a pattern
+  of group D. The skill was selected; the rule was not fully followed in the
+  text.
+- `opencode run` waits for standard input; a scripted run needs it closed.
+
 ## Limits
 
 - The rule is carried by skills. A reply for which no skill loads is not
