@@ -1,6 +1,6 @@
 ---
 name: explaining-concepts
-description: "Use when a technical concept, mechanism, or design must be explained to a reader who lacks the writer's expertise, in documentation or an ordinary reply. Introduces each concept with an everyday analogy before the mechanism and removes undefined jargon. Not for step-by-step instructions, reference tables, or error diagnosis. Not for story manuscripts or in-world text."
+description: "Use when a technical concept, mechanism, or design must be explained to a reader who lacks the writer's expertise, in documentation or an ordinary reply: also for a short answer to a question such as what something is, how it works or how two things differ, and whenever the person says the topic is new to them. Introduces each concept with an everyday analogy before the mechanism and removes undefined jargon. Not for step-by-step instructions, reference tables, or error diagnosis. Not for story manuscripts or in-world text."
 ---
 
 # Explaining Concepts

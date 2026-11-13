@@ -1,0 +1,8 @@
+{
+  "id": "tutorial-video",
+  "prompt": "Mach ein Erklärvideo für neue Mitarbeiter, wie man im HR-Portal Urlaub beantragt.",
+  "files": {
+    "README.md": "# HR portal docs\n",
+    "docs/leave.md": "# Request leave\n\n1. Open the HR portal.\n2. Choose Leave > New request.\n3. Pick the dates and submit.\n"
+  }
+}

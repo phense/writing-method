@@ -93,7 +93,7 @@ Each slice writes its failing tests first and ends green.
 - [x] T030 [AF-006] Fix the hard-coded issue label in Method Core and sync the fix — evidence: https://github.com/phense/method-core/pull/1
 - [x] T031 Run one existing project with the new tools using configuration changes only; compare the measured pause before and after — evidence: same file
 - [x] T032a Independent review of the change; twelve findings corrected with tests (plan AF-007)
-- [ ] T032b Review the playbook template with `playbook-review` at the committed revision
+- [x] T032b Review the playbook template with `playbook-review` at the committed revision (three independent reviews, 43 findings applied; record in `playbook-review.md`. The corrected playbook has not been rehearsed.)
 
 ### Slice S8: Convergence and final verification handoff
 

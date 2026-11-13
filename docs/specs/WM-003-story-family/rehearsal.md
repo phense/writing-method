@@ -128,6 +128,39 @@ named in the plan in 4 more. A request for a plan lowers loading, not the
 choice. Claude ran from the working tree, Codex from the installed plugin copy
 of the same revision.
 
+## Corrections and measured runs after release 0.4.0 (2026-11-13)
+
+**Routing harness, Codex.** Two corrections at `c193988`: the instruction file of a study vault names `story-craft-research` as the skill for every request, and `presentation-video-production` states that filmed material, marketing clips and short-form video are outside the video method. Both cases then passed 3 of 3 on Codex (`marketing-clip-out-of-scope` before: 1 of 3; `study-vault-draft-request` before: 0 of 3). The fixture of the study-vault case received the same sentence as the vault template, after the result was known.
+
+**Earlier Codex timeouts.** The runs that ended with `timeout` and no event had a cause in the harness: the host inherited an open standard input and waited for more input. Method Core `5d8519b` closes it.
+
+**Unscripted requests, measured.** The probe became `scripts/run_natural_evals.py` (Method Core). Nine cases of this plugin under `evals/natural/` and three of Engineering Method ran three times per host with both plugins loaded, the hosts' coordinator models (`fable`, `gpt-6-astra`), and on Codex the plugins as installed. A hit is a run in which an expected skill was loaded and no prohibited one.
+
+| Request | Expected | Claude | Codex |
+|---|---|---|---|
+| An administrator guide | `documentation-authoring` or `writing-procedures` | 3 of 3 | 3 of 3 |
+| The difference between two Git commands | `explaining-concepts` | 1 of 3 | 3 of 3 |
+| Start a new story | `story-bootstrap` | 3 of 3 | 3 of 3 |
+| "Write chapter 12" in a story vault | `story-drafting` | 3 of 3 | 3 of 3 |
+| Does chapter 12 still fit what happened before | `story-canon-review` | 3 of 3 | 3 of 3 |
+| Chapters no longer sound like the beginning | `story-voice-review` | 3 of 3 | 3 of 3 |
+| An audiobook video of chapter 11, read as written | `story-video-scripting` | 3 of 3 | 3 of 3 |
+| Two sentences changed for the audio version only | `story-video-scripting` | 3 of 3 | 3 of 3 |
+| A tutorial video for new employees | `tutorial-video-scripting` | 3 of 3 | 3 of 3 |
+| A failing test (Engineering Method) | `systematic-debugging` | 2 of 3 | 3 of 3 |
+| A feature across three modules (Engineering Method) | a specification skill | 3 of 3 | 3 of 3 |
+| A typing error in a README (Engineering Method) | no skill | 3 of 3 | 2 of 3 |
+
+Totals: Claude 33 of 36 runs, Codex 35 of 36. Three things were changed after seeing results and are part of these figures:
+
+- The guide case first expected `documentation-authoring` only. Claude loaded `writing-procedures` in all three runs, which is a correct skill for a how-to; the expectation now accepts either.
+- The Codex figures are a re-scoring of the saved transcripts. The runner first counted a skill read only when the command was a plain `cat`; Codex reads skills inside compound commands. Eight runs scored as misses contained a complete read of the expected skill (27 of 36 before, 35 of 36 after; Method Core `64d9a02`).
+- A first measurement used the routing-role models and, on Codex, repository skill links. It was discarded: the smaller Claude model loaded skills far less often, and Codex looked for paths that did not exist.
+
+After the measurement the description of `explaining-concepts` was widened to name short questions such as what something is or how two things differ. The concept question then loaded the skill in 3 of 3 runs on Claude (`1d9c3f0`; before: 1 of 3). No other description was changed.
+
+Three runs per case show a tendency, not a rate, and nothing here reads the produced text.
+
 ## Not covered
 
 - The earlier cases ran once per host; apart from `presentation-video-production`

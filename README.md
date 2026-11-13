@@ -1,7 +1,7 @@
 ---
 type: reference
 audience: Authors and maintainers familiar with their coding assistant and Git
-version: 0.4.0
+version: 0.4.1
 ---
 # Writing Method
 
@@ -102,8 +102,9 @@ No video has been produced with this path. How invented names are pronounced and
 - **Routing is statistical.** The tests prove that names, exclusion sentences and links are in place. Whether an assistant then picks the right family for a request is a probability, not a guarantee.
 - **Produced text is not measured.** No check reads a chapter for documentation habits, or a reply for a story's voice.
 - **No story pilot exists.** The skills are structurally checked and have not been proven on a real story. Light-novel figures such as volume length are left unset, not asserted.
+- **The video playbook is reviewed, not rehearsed.** The production playbook template went through three independent content reviews; all 43 findings are applied. The corrected text has not been run end to end, and no person has done the listening check.
 - **No story video exists.** The script check and the routing expectations for story videos are tested; nothing has been voiced or rendered from a story script.
-- **Host routing is checked once, not measured as a rate.** In the last full run each of the 24 routing cases under `evals/shared/triggers/` ran once per host: Claude passed 24 of 24, Codex 22 of 24. The two Codex failures, repeated twice, are a marketing clip correctly sent to focused editing with the video production skill reported as supporting (1 of 3 passed), and a draft request in a study vault where Codex names `story-drafting` and not `story-craft-research` as primary (0 of 3 passed); the harness cannot see that the draft is declined. Eleven unscripted German requests without any skill name loaded the expected skill in 9 of 11 cases on Claude and 11 of 11 on Codex, once each. The record, including three expectations or prompts changed after seeing a result, is in `docs/specs/WM-003-story-family/rehearsal.md`. OpenCode was not exercised.
+- **Host routing is checked once, not measured as a rate.** In the last full run each of the 24 routing cases under `evals/shared/triggers/` ran once per host: Claude passed 24 of 24, Codex 22 of 24. The two Codex failures, repeated twice, are a marketing clip correctly sent to focused editing with the video production skill reported as supporting (1 of 3 passed), and a draft request in a study vault where Codex names `story-drafting` and not `story-craft-research` as primary (0 of 3 passed); the harness cannot see that the draft is declined. After two corrections both Codex cases passed 3 of 3. Twelve unscripted German requests without any skill name, three runs each with both plugins loaded, hit the expected skill in 33 of 36 runs on Claude and 35 of 36 on Codex; they can be repeated with `scripts/run_natural_evals.py`. The record, including three expectations or prompts changed after seeing a result, is in `docs/specs/WM-003-story-family/rehearsal.md`. OpenCode was not exercised.
 
 The family originated in a private research workspace. That workspace's research notes and its studies of existing works are not part of this plugin.
 
@@ -123,7 +124,7 @@ claude plugin install writing-method@writing-method
 
 For a session-scoped Claude test use `claude --plugin-dir /absolute/path/to/writing-method`. For OpenCode, run `python3 scripts/install-opencode --check` from this checkout, inspect the proposed path, then repeat without `--check`. It installs an owned `writing-method.js` loader pointing to this retained directory. Gemini support is deferred until its adapter is verified.
 
-Restart the assistant session after installation and inspect its plugin inventory for `writing-method` 0.4.0. An installed listing proves discovery; a live authoring request is separate behavior evidence. With both methods installed, use the invoking method's namespace for shared support, such as `writing-method:playbook-authoring`, and run one copy.
+Restart the assistant session after installation and inspect its plugin inventory for `writing-method` 0.4.1. An installed listing proves discovery; a live authoring request is separate behavior evidence. With both methods installed, use the invoking method's namespace for shared support, such as `writing-method:playbook-authoring`, and run one copy.
 
 ## Project state and updates
 

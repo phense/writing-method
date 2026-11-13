@@ -1,0 +1,102 @@
+{
+  "admin-guide": {
+    "any": [
+      "documentation-authoring",
+      "writing-procedures"
+    ],
+    "prohibited": [
+      "story-drafting",
+      "story-voice-review",
+      "story-video-scripting"
+    ]
+  },
+  "concept-question": {
+    "any": [
+      "explaining-concepts"
+    ],
+    "prohibited": [
+      "story-drafting",
+      "story-voice-review",
+      "story-video-scripting"
+    ]
+  },
+  "new-story": {
+    "any": [
+      "story-bootstrap"
+    ],
+    "prohibited": [
+      "explaining-concepts",
+      "writing-procedures",
+      "empathic-troubleshooting",
+      "human-prose-drafting",
+      "documentation-authoring",
+      "tutorial-video-scripting"
+    ]
+  },
+  "write-chapter": {
+    "any": [
+      "story-drafting"
+    ],
+    "prohibited": [
+      "explaining-concepts",
+      "writing-procedures",
+      "empathic-troubleshooting",
+      "human-prose-drafting",
+      "documentation-authoring",
+      "tutorial-video-scripting"
+    ]
+  },
+  "chapter-fits-canon": {
+    "any": [
+      "story-canon-review"
+    ],
+    "prohibited": [
+      "explaining-concepts",
+      "writing-procedures",
+      "empathic-troubleshooting",
+      "human-prose-drafting",
+      "documentation-authoring",
+      "tutorial-video-scripting"
+    ]
+  },
+  "chapters-sound-different": {
+    "any": [
+      "story-voice-review"
+    ],
+    "prohibited": [
+      "explaining-concepts",
+      "writing-procedures",
+      "empathic-troubleshooting",
+      "human-prose-drafting",
+      "documentation-authoring",
+      "tutorial-video-scripting"
+    ]
+  },
+  "audiobook-video": {
+    "any": [
+      "story-video-scripting"
+    ],
+    "prohibited": [
+      "tutorial-video-scripting",
+      "story-drafting"
+    ]
+  },
+  "audio-version-changes": {
+    "any": [
+      "story-video-scripting"
+    ],
+    "prohibited": [
+      "tutorial-video-scripting"
+    ]
+  },
+  "tutorial-video": {
+    "any": [
+      "tutorial-video-scripting"
+    ],
+    "prohibited": [
+      "story-drafting",
+      "story-voice-review",
+      "story-video-scripting"
+    ]
+  }
+}

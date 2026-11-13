@@ -1,0 +1,7 @@
+{
+  "id": "admin-guide",
+  "prompt": "Schreib eine Anleitung für Administratoren, wie man in Keyforge einen API-Schlüssel rotiert.",
+  "files": {
+    "README.md": "# Keyforge\n\nKeyforge issues and rotates API keys. Rotation: Settings > Keys > Rotate; the old key stays valid for 24 hours.\n"
+  }
+}

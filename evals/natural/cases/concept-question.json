@@ -1,0 +1,7 @@
+{
+  "id": "concept-question",
+  "prompt": "Ich bin bei Git nicht so fit. Was ist eigentlich der Unterschied zwischen Rebase und Merge?",
+  "files": {
+    "README.md": "# Notes\n\nScratch repository.\n"
+  }
+}

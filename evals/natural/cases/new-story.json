@@ -1,0 +1,7 @@
+{
+  "id": "new-story",
+  "prompt": "Ich möchte eine neue Geschichte anfangen: eine lange Serie über eine Kuriergilde, die eine Salzwüste durchquert.",
+  "files": {
+    "README.md": "# Notes\n\nScratch repository.\n"
+  }
+}

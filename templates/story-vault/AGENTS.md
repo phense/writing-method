@@ -16,7 +16,7 @@ Read `kind` and `story_id` from the frontmatter of `00-project/brief.md` and `00
 | --- | --- | --- |
 | `starter` | The unchanged template | No drafting. Use `story-bootstrap` to set the vault up first. |
 | `story` | One story's own vault, with a set `story_id` | Manuscript drafting, once the voice sheet is ready |
-| `study` | An analysis vault for an existing work | Study notes only. Never draft against the studied work's canon. |
+| `study` | An analysis vault for an existing work | Study notes only. Every request in a study vault belongs to `story-craft-research`, which declines a drafting request. Never draft against the studied work's canon. |
 
 Drafting also needs `viewpoint`, `tense` and `distance` set in the frontmatter of `00-project/voice.md`. While one of them is `unset`, run the voice trial first.
 
