@@ -93,8 +93,8 @@ agreed), or a correction to a video that already exists.
 7. **Timeline.** `python3 tools/timeline.py`. It refuses sound that no
    longer matches the text. Then `python3 tools/measure.py pace`: a scene
    outside the profile's range is adjusted through wording (tutorial scripts
-   only), an effective provider setting, or the pause value, and measured
-   again.
+   only) or an effective provider setting, and measured again. The pause
+   value changes the gaps between lines, not the measured pace.
 8. **Read-back.** `python3 tools/verify_speech.py` over all lines. An
    unrecognized key term blocks delivery; lines below the similarity
    threshold are listened to.
@@ -137,8 +137,8 @@ accepted manuscript (`"edition": "verbatim"`) or an accepted listening edition
 
 - Voice and render the narration as it is. Never change its wording, tone or
   order: not to meet the pace range, not to shorten a line, not to ease a
-  pronunciation. Pace is adjusted through an effective provider setting or
-  the pause value only.
+  pronunciation. Pace is adjusted through an effective provider setting only;
+  the pause value changes the gaps between lines, not the measured pace.
 - A wrong name or term is corrected in `pronunciation.json` or with a line's
   `speak`, which changes the sound and never the caption text or the words.
 - A line that the script check rejects, or that needs other words to work

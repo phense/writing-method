@@ -586,7 +586,7 @@ class LinkFirewall(unittest.TestCase):
                 self.assertIn(FORM_NO_RUN_STATE, preamble)
         production = read("skills/presentation-video-production/SKILL.md")
         self.assertIn(FORM_TUTORIAL_ONLY, squash(production))
-        self.assertIn("Pace is adjusted through an effective provider setting or the pause value only.",
+        self.assertIn("Pace is adjusted through an effective provider setting only;",
                       squash(production.split("\n## Story scripts\n", 1)[1].split("\n## ", 1)[0]))
 
     def test_tutorial_listening_style_is_set_aside_for_story_narration(self):

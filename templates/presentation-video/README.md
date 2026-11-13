@@ -205,7 +205,7 @@ Set `"provider": "elevenlabs"` and `"mode": "scene"` in the profile.
 | `still rate limited after N waits; stopped at <scene>:<line>` | Provider limit | Run the same command again later; finished lines are kept |
 | `the text changed after voicing` | A line was edited after voicing | Voice again, then `tools/timeline.py` |
 | `src/timeline.json is a draft` | Rendering without sound | Voice the script, then `tools/timeline.py` |
-| `pace … OUT OF RANGE` | Scene too fast or slow for the profile | Shorten or loosen the wording, or adjust the pause; measure again |
+| `pace … OUT OF RANGE` | Scene too fast or slow for the profile | Tutorial: shorten or loosen the wording. Story video: never the wording. Either: a provider setting that `tools/probe_settings.py` reports as `EFFECTIVE`. The pause value does not change this measurement. Measure again |
 | `pauses … outside` | Audible pause differs from the timeline | Run `tools/timeline.py` and render again |
 | `key term not recognized` | The voice mispronounces a key term | Correct it in `pronunciation.json`, voice and verify again |
 | `line N was not heard in the take` | The take dropped or changed a sentence | Request a new take; the scene's existing sound is untouched |
