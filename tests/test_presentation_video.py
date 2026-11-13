@@ -654,6 +654,26 @@ class TakeSplitting(unittest.TestCase):
         self.assertEqual("[warm] Die I T hilft.\nDanke!", text)
 
 
+class TakeReplacement(unittest.TestCase):
+    def test_a_recut_scene_loses_its_old_sound_and_read_back_transcriptions(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "audio"; staging = Path(tmp) / "staging"
+            out.mkdir(); staging.mkdir()
+            kept = speech.audio_name("a", 0, "1111111111"); changed = speech.audio_name("a", 1, "2222222222")
+            other = speech.audio_name("b", 0, "3333333333")
+            for name in (kept, changed, other):
+                (out / name).write_bytes(b"old")
+                (out / name).with_suffix(".words.json").write_text("[]")
+            new = speech.audio_name("a", 1, "4444444444")
+            for name in (kept, new):
+                (staging / name).write_bytes(b"new")
+            split_takes.replace_scene_sound(out, "a", staging)
+            self.assertEqual({kept, new, other}, {p.name for p in out.glob("*.mp3")})
+            self.assertEqual(b"new", (out / kept).read_bytes())
+            # only the other scene keeps a transcription: the unchanged name carries new sound
+            self.assertEqual([Path(other).with_suffix(".words.json").name], [p.name for p in out.glob("*.words.json")])
+
+
 @unittest.skipUnless(FFMPEG, "ffmpeg and ffprobe are required")
 class WithMediaTools(unittest.TestCase):
     def setUp(self):

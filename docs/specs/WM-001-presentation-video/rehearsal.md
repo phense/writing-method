@@ -137,6 +137,8 @@ Not rehearsed: P6a (no render machine), P2b, R2, R3 and the take rule (no
 ElevenLabs connector in this run), R1 (the provider did not limit the run), a
 checksum mismatch in P10, a story video.
 
-Listening check: open. A person has to hear the delivered sample once (key
-term `timeline`, pace, pauses of 0.65 s, tone) and the result goes into
-`review.md` as gate 2.
+Listening check: passed on 2026-11-13. The owner heard the delivered sample
+and the key-term line `steps:2` and judged pronunciation and timing good. Tone
+was not commented on. In this rehearsal the check came after delivery; the
+playbook asks for it before, in P9. Gate 2 is recorded in the rehearsal
+project's `review.md`.

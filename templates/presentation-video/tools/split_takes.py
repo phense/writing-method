@@ -103,6 +103,19 @@ def choose(spoken: list[str], takes: list[tuple[Path, list[dict]]], threshold: f
     return best
 
 
+def replace_scene_sound(out_dir: Path, scene: str, staging: Path) -> None:
+    """Replace every sound file of one scene by the pieces cut into staging."""
+    own = speech.scene_file(scene)
+    for old in out_dir.glob("*.mp3"):
+        if own.fullmatch(old.name):
+            old.unlink()
+            # A line whose text is unchanged keeps its file name, but the sound is new:
+            # an old read-back transcription beside it would be read as the new sound's.
+            old.with_suffix(".words.json").unlink(missing_ok=True)
+    for piece in sorted(staging.glob("*.mp3")):
+        shutil.move(str(piece), out_dir / piece.name)
+
+
 def main(argv=None) -> int:
     argv = sys.argv[1:] if argv is None else argv
     root = project.ROOT
@@ -145,15 +158,7 @@ def main(argv=None) -> int:
                                     "-i", str(take), "-ar", "48000", "-ac", "1", "-b:a", "192k", str(target)], check=True)
                     entries_out.append({"file": f"audio/{target.name}", "hash": digest,
                                         "words": project.words(lines[i]["text"]), **voice_azure.measure_file(target)})
-                own = speech.scene_file(scene)
-                for old in out_dir.glob("*.mp3"):
-                    if own.fullmatch(old.name):
-                        old.unlink()
-                        # A line whose text is unchanged keeps its file name, but the sound is new:
-                        # an old read-back transcription beside it would be read as the new sound's.
-                        old.with_suffix(".words.json").unlink(missing_ok=True)
-                for piece in sorted(Path(staging).glob("*.mp3")):
-                    shutil.move(str(piece), out_dir / piece.name)
+                replace_scene_sound(out_dir, scene, Path(staging))
             manifest[scene] = entries_out
             print(f"{scene}: {take.name} (match {ratio:.2f}), {len(lines)} lines")
         order = {key: i for i, key in enumerate(narration)}

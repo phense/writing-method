@@ -205,8 +205,44 @@ Independent, read-only, same method as the second review. PS-01 to PS-14: all re
 
 PT-01 to PT-07 were applied as the exact edits above in the following revision. That revision has not been reviewed again.
 
-## State after three reviews
+## Fourth review at `1a80caa`
 
-- Content review: 43 findings in three rounds (1 Critical, 20 Important, 22 Minor), all applied. The last applied edits are unreviewed, so no `Ready` verdict exists.
-- Rehearsal: stale and partial. The record in `rehearsal.md` describes the earlier playbook text. Never executed in any version: gate 2 (P9), P8b, delivery (P10 to P11), R1 to R4 and R6, the ElevenLabs branch of P4, the take rule, a per-scene correction and a story video.
-- Rehearsed afterwards, at 0.4.1: one end-to-end run through delivery, an interrupted render, the correction path and the pace probe; see `rehearsal.md`. The listening check by a person and the ElevenLabs branches remain open.
+- Reviewers: two independent assistant reviewers with different tasks (the
+  whole procedure; agreement of the playbook with the tools and the edits
+  since the third review). Each finding was checked again by a further
+  independent reviewer who tried to refute it. Read-only; no provider call, no
+  render.
+- Verdict at `1a80caa`: Changes required. 15 findings, all confirmed: 3
+  Important (two describe the same gap), 12 Minor.
+
+| ID | Severity | Finding | Change applied |
+|---|---|---|---|
+| QA-01, QB-01 | Important | R4 checked for a running render only on the authoring machine, gave no action for a listed process and deleted the outputs before the check | R4 checks the machine that rendered, waits, has a limit and an escalation, and deletes afterwards |
+| QA-02 | Important | R3 said the tool chooses the better take; it uses the highest word match, so a take that drops a short line can win over a complete one | R3 moves the rejected take to `takes/superseded/` first, and the printed line must name the new take |
+| QB-02 | Important | A run of `split_takes.py` without a scene cuts every scene and removes every read-back word file, so a one-line correction transcribed the whole video again | Correction and interruption name `<scene>` |
+| QA-03 | Minor | The removal of word files by `split_takes.py` had no test and no evidence for the operator | Unit test `TakeReplacement`; `ls` check before P4 |
+| QA-04 | Minor | R5 did not lead back through P7 to P8, so an old joined file could be measured again | R5 states the return path |
+| QA-05, QB-06 | Minor | P10b and Completion had no first-delivery case; P10b could be run twice | Guard on `.new`, first-delivery text, escalation |
+| QA-06 | Minor | The order of pronunciation attempts existed only in the skill | P1 states the order and the stop |
+| QB-03 | Minor | "No step deletes working files" contradicted the next sentence and R4 | Reworded |
+| QB-04 | Minor | A file without sound ended `measure.py` with a Python error | `measure.py` prints `has no sound track or cannot be read` and `FAILED`; R5 recognizes it |
+| QB-05 | Minor | A render that fails for another reason had no stop | Second failure: P6b once, then escalate |
+| QB-07 | Minor | R3 quoted no literal message; two rejections and the missing word file were not listed | Literal messages; P2b names the missing word file |
+| QB-08 | Minor | Resuming P5 as allowed reset every inspection mark | Interruption text names the per-scene command |
+| QB-09 | Minor | `takes/superseded/` was not ignored | `.gitignore` |
+
+These edits are again unreviewed. Checked by execution after the edits: the
+unit tests, and `measure.py file` on a one-second file without sound
+(`has no sound track or cannot be read`, `FAILED`, exit 1).
+
+## State after four reviews
+
+- Content review: 58 findings in four rounds, all applied. The edits of the
+  fourth round are unreviewed, so no `Ready` verdict exists.
+- Rehearsal at 0.4.1 (`rehearsal.md`): one end-to-end run through delivery, an
+  interrupted local render, the correction path, the pace probe, and the
+  listening check by the owner (passed).
+- Never executed: P6a and R4 after P6a, P2b, R2, R3 and the take rule
+  (ElevenLabs), R1 with a real limit, a checksum mismatch or failed rename in
+  P10 to P11, the R5 branches, a story video. R4 as now written was not run
+  inside the procedure.
