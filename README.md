@@ -93,7 +93,7 @@ The assistant marks the vault as a story, gives it a story ID and asks for the f
 - **Routing is statistical.** The tests prove that names, exclusion sentences and links are in place. Whether an assistant then picks the right family for a request is a probability, not a guarantee.
 - **Produced text is not measured.** No check reads a chapter for documentation habits, or a reply for a story's voice.
 - **No story pilot exists.** The skills are structurally checked and have not been proven on a real story. Light-novel figures such as volume length are left unset, not asserted.
-- **Host routing evaluations have not been run.** The routing cases for the story family ship under `evals/shared/triggers/`; no Claude or Codex result is claimed for them.
+- **Host routing is checked once, not measured as a rate.** The twelve story routing cases under `evals/shared/triggers/` pass on Claude and Codex after two corrections; the record, including the two expectations changed after the first run, is in `docs/specs/WM-003-story-family/rehearsal.md`. The earlier documentation and video cases were not rerun with the story family present, and OpenCode was not exercised.
 
 The family originated in a private research workspace. That workspace's research notes and its studies of existing works are not part of this plugin.
 
