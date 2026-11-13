@@ -1,8 +1,9 @@
-"""Separation of the story family from the reader family.
+"""Separation of the story family from the reader family, and the form family between them.
 
 The single JSON block in ``shared/policies/writing-mode.md`` is the authority
 these tests read. They prove that names, sentences, links and the vault starter
-are as the policy states. They do not prove that a model follows the sentences:
+are as the policy states. The form skills voice and render an accepted script
+for either family and link into neither story directory. They do not prove that a model follows the sentences:
 routing is statistical and is measured by the host evaluations.
 """
 from __future__ import annotations
@@ -32,6 +33,7 @@ STORY_SKILLS = [
     "story-canon-review",
     "story-craft-research",
     "story-voice-review",
+    "story-video-scripting",
 ]
 READER_SKILLS = [
     "documentation-planning",
@@ -45,9 +47,14 @@ READER_SKILLS = [
     "terminology-guard",
     "visual-placeholders",
     "tutorial-video-scripting",
+]
+# Form skills voice, time, render and check an accepted script. They serve both
+# families and belong to neither.
+FORM_SKILLS = [
     "presentation-video-production",
     "presentation-video-review",
 ]
+STORY_SIDE_PREFIXES = ["shared/story/", "templates/story-vault/", "skills/story-"]
 PRECEDENCE_READER_SKILLS = [
     "explaining-concepts",
     "writing-procedures",
@@ -60,7 +67,7 @@ EXCLUDED_READER_SKILLS = PRECEDENCE_READER_SKILLS + [
     "terminology-guard",
     "tutorial-video-scripting",
 ]
-PRECEDENCE_STORY_SKILLS = ["story-drafting", "story-voice-review"]
+PRECEDENCE_STORY_SKILLS = ["story-drafting", "story-voice-review", "story-video-scripting"]
 
 NO_RUN_STATE = (
     "No run state: this skill has no recovery preamble and hands off to no backlog or run-tracking skill. "
@@ -258,6 +265,12 @@ def reader_files(policy: dict) -> list[Path]:
         "shared/writing", "shared/media", "templates/documentation", "templates/presentation-video")
 
 
+def form_files(policy: dict) -> list[Path]:
+    """Every Markdown file of the form skills."""
+    return [p for name in policy["families"]["form"]
+            for p in sorted((ROOT / "skills" / name).rglob("*.md"))]
+
+
 def link_destination(written: str) -> str:
     """The destination of a link as written: angle brackets and a title removed."""
     written = written.strip()
@@ -337,15 +350,20 @@ class PolicyBlock(unittest.TestCase):
         self.assertEqual(1, policy["schema_version"])
         self.assertEqual("experimental", policy["status"])
         self.assertEqual(HUB, policy["hub"])
-        self.assertEqual(STORY_SKILLS, policy["families"]["story"])
-        self.assertEqual(READER_SKILLS, policy["families"]["reader"])
+        self.assertEqual({"story": STORY_SKILLS, "reader": READER_SKILLS, "form": FORM_SKILLS},
+                         policy["families"])
+        self.assertEqual((9, 11, 2), (len(STORY_SKILLS), len(READER_SKILLS), len(FORM_SKILLS)))
+        # A story video is scripted from the video project template and handed to the form skills.
         self.assertEqual(
-            {"prefixes": ["shared/story/", "templates/story-vault/", "skills/story-"],
+            {"prefixes": STORY_SIDE_PREFIXES + ["templates/presentation-video/"],
              "files": [HUB, "shared/policies/proportionality.md",
-                       "skills/verification-before-completion/SKILL.md"]},
+                       "skills/verification-before-completion/SKILL.md",
+                       "skills/presentation-video-production/SKILL.md",
+                       "skills/presentation-video-review/SKILL.md",
+                       "shared/media/speech-synthesis.md"]},
             policy["story_link_allow"])
-        self.assertEqual(["shared/story/", "templates/story-vault/", "skills/story-"],
-                         policy["reader_link_deny_prefixes"])
+        self.assertEqual(STORY_SIDE_PREFIXES, policy["reader_link_deny_prefixes"])
+        self.assertEqual(STORY_SIDE_PREFIXES, policy["form_link_deny_prefixes"])
         self.assertEqual(PRECEDENCE_READER_SKILLS, policy["precedence_reader_skills"])
         self.assertEqual(EXCLUDED_READER_SKILLS, policy["excluded_reader_skills"])
         self.assertEqual(PRECEDENCE_STORY_SKILLS, policy["precedence_story_skills"])
@@ -358,18 +376,25 @@ class PolicyBlock(unittest.TestCase):
              "drafting_kind": "story",
              "drafting_requires_voice_fields": ["viewpoint", "tense", "distance"],
              "forms": ["long-form", "short-form"],
-             "manuscript_paths": ["06-manuscript/chapters/", "06-manuscript/paratext/"],
+             "manuscript_paths": ["06-manuscript/chapters/", "06-manuscript/paratext/",
+                                  "06-manuscript/editions/"],
              "short_form_manuscript_heading": "## Manuscript",
              "reader_files": ["README.md", "START.md", "AGENTS.md", "CLAUDE.md"]},
             self.policy["vault"])
 
     def test_families_partition_exactly_the_method_skills(self):
-        story, reader = self.policy["families"]["story"], self.policy["families"]["reader"]
+        families = self.policy["families"]
+        self.assertEqual(["story", "reader", "form"], list(families))
+        story, reader, form = families["story"], families["reader"], families["form"]
+        everything = story + reader + form
         owned = json.loads(read("method.json"))["method_skills"]
-        self.assertEqual(len(story + reader), len(set(story + reader)), "a skill is listed twice")
+        self.assertEqual(len(everything), len(set(everything)), "a skill is listed twice")
         self.assertEqual(set(), set(story) & set(reader))
-        self.assertEqual(sorted(owned), sorted(story + reader))
-        for name in story + reader:
+        self.assertEqual(set(), set(form) & set(story + reader))
+        self.assertEqual(len(owned), len(set(owned)), "method.json lists a skill twice")
+        self.assertEqual(sorted(owned), sorted(everything))
+        self.assertEqual((9, 11, 2), (len(story), len(reader), len(form)))
+        for name in everything:
             self.assertTrue((ROOT / "skills" / name / "SKILL.md").is_file(), name)
             self.assertEqual(name, frontmatter(f"skills/{name}/SKILL.md")["name"])
 
@@ -378,7 +403,7 @@ class PolicyBlock(unittest.TestCase):
         shared = {item["path"].split("/")[1] for item in lock["files"]
                   if re.fullmatch(r"skills/[^/]+/SKILL\.md", item["path"])}
         self.assertTrue(shared, "the core lock names no shared skill")
-        reader = set(self.policy["families"]["reader"])
+        reader = set(self.policy["families"]["reader"]) | set(self.policy["families"]["form"])
         for name in self.policy["families"]["story"]:
             self.assertTrue(name.startswith("story-"), name)
             self.assertNotIn("continuity", name)
@@ -387,6 +412,9 @@ class PolicyBlock(unittest.TestCase):
             self.assertNotIn(name, reader)
         on_disk = {p.parent.name for p in (ROOT / "skills").glob("story-*/SKILL.md")}
         self.assertEqual(set(self.policy["families"]["story"]), on_disk)
+        # A form skill is not a story skill: its name carries no story prefix.
+        for name in self.policy["families"]["form"]:
+            self.assertFalse(name.startswith("story-"), name)
 
     def test_hub_contains_no_markdown_link(self):
         # The stored sentences S1 and S5 carry link syntax, so the block is set aside.
@@ -420,6 +448,26 @@ class OperativeSentences(unittest.TestCase):
         # Hosts otherwise go looking for a recovery preamble and open the backlog skill in a vault.
         for name in STORY_SKILLS:
             self.assertIn(NO_RUN_STATE, paragraphs_after_h1(f"skills/{name}/SKILL.md")[:3], name)
+
+    def test_story_video_scripting_opens_like_a_manuscript_skill(self):
+        # Narration of a story video is manuscript: mode check, precedence, no run state, in this order.
+        self.assertIn("story-video-scripting", self.policy["precedence_story_skills"])
+        paragraphs = paragraphs_after_h1("skills/story-video-scripting/SKILL.md")
+        self.assertEqual(
+            [self.sentences["story_opening"], self.sentences["precedence"], NO_RUN_STATE],
+            paragraphs[:3])
+        description = skill_description("story-video-scripting")
+        self.assertTrue(description.startswith("Use when "), description)
+
+    def test_form_descriptions_carry_no_family_exclusion(self):
+        # A form skill serves both families, so neither family's exclusion sentence may end it.
+        for name in self.policy["families"]["form"]:
+            with self.subTest(skill=name):
+                description = skill_description(name)
+                self.assertTrue(description.startswith("Use when "), description)
+                self.assertIn("story video", description)
+                self.assertNotIn(self.sentences["story_description_suffix"], description)
+                self.assertNotIn(self.sentences["reader_description_clause"], description)
 
     def test_every_story_description_ends_with_the_exclusion(self):
         for name in self.policy["families"]["story"]:
@@ -489,6 +537,27 @@ class LinkFirewall(unittest.TestCase):
                     problems.append(f"{rel(path)}: {written} -> {target}")
         self.assertEqual([], problems)
 
+    def test_form_skills_never_link_into_the_story_family(self):
+        # Form skills may be linked by both families and link into neither story directory.
+        deny = self.policy["form_link_deny_prefixes"]
+        files = form_files(self.policy)
+        self.assertEqual({f"skills/{name}/SKILL.md" for name in FORM_SKILLS},
+                         {rel(p) for p in files if p.name == "SKILL.md"})
+        problems = []
+        for path in files:
+            for written, target in relative_link_targets(path):
+                if target is None:
+                    problems.append(f"{rel(path)}: {written} leaves the repository")
+                elif under(target, deny):
+                    problems.append(f"{rel(path)}: {written} -> {target}")
+        self.assertEqual([], problems)
+
+    def test_form_skills_state_the_story_script_rule(self):
+        # A form skill may name skills of both families in backticks; it never restyles a story script.
+        for name in self.policy["families"]["form"]:
+            with self.subTest(skill=name):
+                self.assertIn("\n## Story scripts\n", read(f"skills/{name}/SKILL.md"))
+
     def test_policy_files_refer_to_the_story_side_only_through_the_hub(self):
         story_side = self.policy["reader_link_deny_prefixes"]
         for relative in HUB_LINKING_POLICIES:
@@ -539,8 +608,10 @@ class LinkFirewall(unittest.TestCase):
         self.assertEqual("../a.md", link_destination('../a.md "title"'))
 
     def test_story_files_name_no_reader_skill_outside_the_contract_sentences(self):
+        # Form skills are not reader skills: a story file may name them.
         sentences = list(self.policy["sentences"].values())
         reader = self.policy["families"]["reader"]
+        self.assertEqual(set(), set(reader) & set(FORM_SKILLS))
         problems = {}
         for path in story_files():
             found = backticked(reader, without_exempt_text(read(path), sentences))
@@ -614,6 +685,17 @@ class VaultStarter(unittest.TestCase):
                 self.assertTrue((self.vault / relative).is_dir(), relative)
         # Short-form pieces are one note each; the vault files name this directory.
         self.assertTrue((self.vault / "06-manuscript/pieces").is_dir())
+        # A listening edition is manuscript and is kept apart from the written chapters.
+        self.assertIn("06-manuscript/editions/", paths)
+        self.assertTrue((self.vault / "06-manuscript/editions").is_dir())
+        self.assertIn("Listening editions", read(self.vault / "06-manuscript/index.md"))
+
+    def test_listening_edition_template_exists(self):
+        template = self.vault / "90-templates/listening-edition.md"
+        self.assertTrue(template.is_file())
+        fields = frontmatter(template)
+        self.assertEqual("template", fields.get("type"))
+        self.assertEqual("listening-edition", fields.get("template_type"))
 
     def test_templates_for_both_forms_exist(self):
         templates = self.vault / "90-templates"
@@ -676,8 +758,10 @@ class StoryPackageHygiene(unittest.TestCase):
                     "docs/specs/WM-003-story-family/design.md",
                     "tests/fixtures/trigger-cases/matrix.json",
                     "evals/shared/triggers/story-chapter-draft.json",
+                    "evals/shared/triggers/story-video-script.json",
+                    "evals/shared/triggers/story-video-production.json",
                     "shared/story/rules.md", f"{VAULT}/AGENTS.md"}
-        expected |= {f"skills/{name}/SKILL.md" for name in STORY_SKILLS + READER_SKILLS}
+        expected |= {f"skills/{name}/SKILL.md" for name in STORY_SKILLS + READER_SKILLS + FORM_SKILLS}
         self.assertEqual(set(), expected - scanned)
         # Nothing the packager leaves out is scanned, and every exemption names a shipped file.
         self.assertTrue(all(included(name) for name in scanned))

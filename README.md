@@ -18,7 +18,7 @@ The three repositories remain under `phense`, share the `agent-methods` topic an
 | Explain and instruct | explaining-concepts, writing-procedures, empathic-troubleshooting |
 | Keep prose and documents consistent | human-prose-drafting, terminology-guard, visual-placeholders |
 | Script, produce and review narrated tutorial videos | tutorial-video-scripting, presentation-video-production, presentation-video-review |
-| Write stories (experimental, separate family) | story-bootstrap, story-worldbuilding, story-characters, story-architecture, story-drafting, story-canon-review, story-voice-review, story-craft-research |
+| Write stories (experimental, separate family) | story-bootstrap, story-worldbuilding, story-characters, story-architecture, story-drafting, story-canon-review, story-voice-review, story-craft-research, story-video-scripting |
 | Shared support from Core | project-backlog, verification-before-completion, requesting-code-review, receiving-code-review, using-git-worktrees, dispatching-parallel-agents, playbook-authoring, playbook-review |
 
 Describe the outcome to your assistant. A small wording edit needs focused editing; a standalone document uses authoring and self-review; a coherent document set uses planning, authoring and review. PDF generation follows content review and offers two layouts: a single-sided one for short documents and a book layout with parts, mirrored pages and a running head for long manuals. A tutorial video is scripted, produced and reviewed in that order; see [Narrated tutorial videos](#narrated-tutorial-videos). Playbooks support concrete publication/export operations when their decisions or recovery needs warrant one; ordinary writing does not automatically create one.
@@ -67,6 +67,7 @@ Each story lives in its own directory with its own Git repository, called a **st
 | Check a chapter against the accepted canon | story-canon-review |
 | Judge chapters against the voice sheet | story-voice-review |
 | Study craft sources and existing works | story-craft-research |
+| Script a narrated video from an accepted chapter | story-video-scripting |
 
 ### Which rules apply to which text
 
@@ -74,7 +75,7 @@ The rule set is chosen for each piece of text, not for the session or the subjec
 
 | Text | Mode | Governed by |
 |---|---|---|
-| Story prose, in-world text such as a letter or manual inside the story, afterword and blurb | manuscript | The story's voice sheet, then the story rules. Nothing from the documentation skills. |
+| Story prose, in-world text such as a letter or manual inside the story, afterword and blurb, a listening edition, the narration of a story video | manuscript | The story's voice sheet, then the story rules. Nothing from the documentation skills. |
 | Any other note in a story vault or study vault: brief, world entry, chapter card, review, study note | working note | The story skills. Plain notes without the story's voice and without didactic structure. |
 | Everything else: every reply to you, a vault's `README.md`, documentation, tutorial videos | reader-oriented | The rules of the sections above, unchanged |
 
@@ -88,12 +89,21 @@ The full rule, including how a vault is recognized and when drafting is permitte
 
 The assistant marks the vault as a story, gives it a story ID and asks for the form (long or short) and the publication profile, which may stay unset. Check: the frontmatter of `00-project/brief.md` now reads `kind: story`. Drafting starts only after viewpoint, tense and distance are set in `00-project/voice.md`; until then the assistant leads you to a voice trial instead of writing a chapter.
 
+### Narrated story videos
+
+An accepted chapter, a range of chapters or a short piece can become a narrated video: an audiobook with pictures. The work is split by who owns what. The story family owns the text: `story-video-scripting` turns the accepted manuscript into the script of a video project. `presentation-video-production` and `presentation-video-review` voice, render and check that script and never restyle it.
+
+The narration comes in one of two **editions**. A `verbatim` edition reads the accepted manuscript word for word, only cut into scenes and lines at sentence boundaries. A `listening` edition contains additions or changes for the ear; each one is your decision, and it is stored beside the manuscript, which stays unchanged. A video that explains a story's world to its readers is a tutorial video and stays with `tutorial-video-scripting`.
+
+No video has been produced with this path. How invented names are pronounced and where the pictures come from are not designed yet: the existing pronunciation list is used as it is, and a scene's picture is a plain description in the script.
+
 ### Limits
 
 - **Routing is statistical.** The tests prove that names, exclusion sentences and links are in place. Whether an assistant then picks the right family for a request is a probability, not a guarantee.
 - **Produced text is not measured.** No check reads a chapter for documentation habits, or a reply for a story's voice.
 - **No story pilot exists.** The skills are structurally checked and have not been proven on a real story. Light-novel figures such as volume length are left unset, not asserted.
-- **Host routing is checked once, not measured as a rate.** The twelve story routing cases under `evals/shared/triggers/` pass on Claude and Codex after two corrections; the record, including the two expectations changed after the first run, is in `docs/specs/WM-003-story-family/rehearsal.md`. With the story family present, eight of the nine earlier documentation and video cases pass on both hosts; `presentation-video-production` fails, as it already does on Codex without the story family. OpenCode was not exercised.
+- **No story video exists.** The script check and the routing expectations for story videos are tested; nothing has been voiced or rendered from a story script.
+- **Host routing is checked once, not measured as a rate.** The twelve story routing cases under `evals/shared/triggers/` pass on Claude and Codex after two corrections; the record, including the two expectations changed after the first run, is in `docs/specs/WM-003-story-family/rehearsal.md`. With the story family present, eight of the nine earlier documentation and video cases pass on both hosts; `presentation-video-production` fails, as it already does on Codex without the story family. The two story video cases added later, `story-video-script` and `story-video-production`, have not been run on a host. OpenCode was not exercised.
 
 The family originated in a private research workspace. That workspace's research notes and its studies of existing works are not part of this plugin.
 

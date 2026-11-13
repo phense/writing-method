@@ -10,10 +10,12 @@ import tempfile
 import unittest
 from scripts.validate_plugin import validate_repository
 ROOT=Path(__file__).resolve().parents[1]
-READER={'documentation-planning','documentation-authoring','documentation-review','documentation-pdf','human-prose-drafting','explaining-concepts','writing-procedures','empathic-troubleshooting','terminology-guard','visual-placeholders','tutorial-video-scripting','presentation-video-production','presentation-video-review'}
+READER={'documentation-planning','documentation-authoring','documentation-review','documentation-pdf','human-prose-drafting','explaining-concepts','writing-procedures','empathic-troubleshooting','terminology-guard','visual-placeholders','tutorial-video-scripting'}
+# Form skills voice and render an accepted script of either family (WM-004).
+FORM={'presentation-video-production','presentation-video-review'}
 # The story family (WM-003, experimental). tests/test_writing_mode.py checks its separation from the reader family.
-STORY={'story-bootstrap','story-worldbuilding','story-characters','story-architecture','story-drafting','story-canon-review','story-craft-research','story-voice-review'}
-WRITING=READER|STORY
+STORY={'story-bootstrap','story-worldbuilding','story-characters','story-architecture','story-drafting','story-canon-review','story-craft-research','story-voice-review','story-video-scripting'}
+WRITING=READER|STORY|FORM
 SHARED={'project-backlog','verification-before-completion','dispatching-parallel-agents','using-git-worktrees','requesting-code-review','receiving-code-review','playbook-authoring','playbook-review'}
 
 class WritingContracts(unittest.TestCase):
@@ -42,21 +44,34 @@ class WritingContracts(unittest.TestCase):
         self.assertEqual({'standalone-document','documentation-set','existing-documentation-plan','documentation-pdf','tutorial-video-script','presentation-video-production','presentation-video-review','video-one-line-correction',
                           # Story-positive cases: a story skill is primary and the reader prose skills are prohibited.
                           'story-chapter-draft','story-new-vault','story-canon-review','story-voice-review','story-in-world-manual','story-beta-feedback',
+                          # Narrated story video (WM-004): the story family scripts it, a form skill voices and renders the accepted script.
+                          'story-video-script','story-video-production',
                           # Study vault: story-craft-research is primary and the request is declined; story-drafting may be opened for its mode check.
                           'study-vault-draft-request',
                           # Negative cases: every story skill is prohibited.
                           'story-vault-readme','docs-release-note','story-world-tutorial-video','story-method-documentation','vault-parent-session'},{c['id'] for c in matrix})
         self.assertEqual(len(matrix),len({c['id'] for c in matrix}))
         story_primary={c['id'] for c in matrix if c['primary'] in STORY}
-        self.assertEqual({'story-chapter-draft','story-new-vault','story-canon-review','story-voice-review','story-in-world-manual','story-beta-feedback','study-vault-draft-request'},story_primary)
+        self.assertEqual({'story-chapter-draft','story-new-vault','story-canon-review','story-voice-review','story-in-world-manual','story-beta-feedback','study-vault-draft-request','story-video-script'},story_primary)
         reader_prose={'explaining-concepts','writing-procedures','empathic-troubleshooting','human-prose-drafting','documentation-authoring','documentation-planning','documentation-review','tutorial-video-scripting'}
         new_cases=[c for c in matrix if c['id'].startswith(('story-','study-','vault-','docs-release'))]
-        self.assertEqual(12,len(new_cases))
+        self.assertEqual(14,len(new_cases))
         for case in new_cases:
             if case['primary'] in STORY:
                 # Story work never loads the reader prose skills, review-feedback handling or a backlog.
                 self.assertTrue(reader_prose|{'requesting-code-review','receiving-code-review','project-backlog'} <= set(case['prohibited']),case['id'])
                 self.assertFalse(set(case['supporting'])-STORY-{'verification-before-completion'},case['id'])
+                if case['id']=='story-video-script':
+                    # Nothing is voiced before the author accepts the script, and a story script is not a tutorial script.
+                    self.assertEqual('story-video-scripting',case['primary'])
+                    self.assertTrue({'tutorial-video-scripting','presentation-video-production'} <= set(case['prohibited']),case['id'])
+                    self.assertEqual('presentation-video-production',case['handoff']['next'])
+            elif case['id']=='story-video-production':
+                # A form skill is primary: it voices the accepted story script as it is. Nothing that writes, restyles or judges the text may load.
+                self.assertIn(case['primary'],FORM)
+                self.assertEqual('presentation-video-production',case['primary'])
+                self.assertEqual({'native-focused-edit','tutorial-video-scripting','story-drafting','story-voice-review','documentation-authoring','explaining-concepts','writing-procedures','empathic-troubleshooting','human-prose-drafting'},set(case['prohibited']),case['id'])
+                self.assertFalse(set(case['supporting'])-{'verification-before-completion'},case['id'])
             elif case['id']=='story-method-documentation':
                 # Documenting the method may read story skills as source material; the two that govern or judge manuscript text stay prohibited.
                 self.assertEqual({'native-focused-edit','story-drafting','story-voice-review'},set(case['prohibited']),case['id'])
@@ -78,6 +93,11 @@ class WritingContracts(unittest.TestCase):
             self.assertEqual(set(case['prohibited'])-{'native-focused-edit'},set(routed['prohibited']),case['id'])
             self.assertTrue(set(routed['supporting']) <= set(case['supporting']),case['id'])
             self.assertEqual(['decision.md'],routed['artifacts'])
+        # Only the story-video-script case forbids production among the story cases; the tutorial video about a story's world never opens the story scripting skill.
+        by_id={c['id']:c for c in matrix}
+        self.assertEqual(['story-video-script'],[c['id'] for c in new_cases if c['primary'] in STORY and 'presentation-video-production' in c['prohibited']])
+        self.assertEqual('tutorial-video-scripting',by_id['story-world-tutorial-video']['primary'])
+        self.assertIn('story-video-scripting',by_id['story-world-tutorial-video']['prohibited'])
         for case in matrix:
             self.assertIn(case['primary'],WRITING)
             self.assertTrue(set(case['supporting']) <= WRITING|SHARED)

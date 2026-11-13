@@ -38,7 +38,8 @@ audience, or for a change to the content of an existing one.
   `presentation-video-review`.
 - Marketing or social clips, filmed material, screen recordings.
 - A written guide on the same subject; use `documentation-authoring`.
-- Story manuscripts or in-world text; the story family owns them, under
+- Story manuscripts, in-world text or the narration of a story video (a
+  story read aloud over pictures); the story family owns them, under
   [writing mode](../../shared/policies/writing-mode.md).
 
 ## Consumes

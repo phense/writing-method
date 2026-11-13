@@ -53,7 +53,8 @@ PACE = {"de": [120, 155], "en": [140, 180]}
 PACE_FALLBACK = [110, 180]
 REQUIRED = ["language", "speech.provider", "speech.voice", "speech.voice_languages"]
 VIDEO_REQUIRED = ["id", "title", "audience", "address", "goal", "recreated"]
-VIDEO_KEYS = set(VIDEO_REQUIRED) | {"overrides", "pronunciation", "stale_when"}
+VIDEO_KEYS = set(VIDEO_REQUIRED) | {"overrides", "pronunciation", "stale_when",
+                                     "purpose", "edition", "story_id", "based_on"}
 
 
 class ProfileError(ValueError):

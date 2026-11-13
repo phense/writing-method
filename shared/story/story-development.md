@@ -1,8 +1,8 @@
 # Guided development from an idea to a finished story
 
-Use this workflow for developing the author's own fiction. It orchestrates the eight story skills; it is not an additional software lifecycle or a requirement to complete an encyclopedia before writing. Read the [stage map](workflow.md) for category coverage and storage, and the [working rules](rules.md) for canon boundaries. Resume from the current artifacts, not from a fresh interview.
+Use this workflow for developing the author's own fiction. It orchestrates the nine story skills; it is not an additional software lifecycle or a requirement to complete an encyclopedia before writing. Read the [stage map](workflow.md) for category coverage and storage, and the [working rules](rules.md) for canon boundaries. Resume from the current artifacts, not from a fresh interview.
 
-This file is the only orchestration authority for the story family. The family is not part of the lifecycle handoff graph: no story skill hands off to, or is handed work by, a skill outside the family, and the passes below overlap and return instead of running as a linear lifecycle. The family is experimental; nothing here has been piloted on a finished story.
+This file is the only orchestration authority for the story family. The family is not part of the lifecycle handoff graph: no story skill hands off to, or is handed work by, a skill outside the family, with the one exception stated under [narrated video](#narrated-video-after-acceptance), and the passes below overlap and return instead of running as a linear lifecycle. The family is experimental; nothing here has been piloted on a finished story.
 
 ## The conversation loop
 
@@ -61,6 +61,7 @@ Drafting in pass G or H requires a vault of kind story and a voice sheet whose `
 | G, H, I drafting and revision | `story-drafting` |
 | G, H, I checks | `story-canon-review`, `story-voice-review` |
 | Method questions at any pass, and studies of existing works | `story-craft-research` |
+| After acceptance, on request: the script of a narrated video | `story-video-scripting` |
 
 ## How we judge the work
 
@@ -73,6 +74,17 @@ Feedback from the author or a beta reader about facts, chronology or knowledge g
 ## Completion
 
 A chapter is complete when a canon review exists at a named revision and the author's acceptance of that revision is recorded. Acceptance is an author decision, not a command result, so no pass ends in a pass claim. `verification-before-completion` applies only to checks that have a command: link checks, template integrity, an export. A chapter keeps the voice sheet revision it was accepted under; a later sheet change does not reopen it by itself.
+
+## Narrated video after acceptance
+
+A narrated video is an optional delivery of accepted text, never a pass of its own and never a condition for completion. It starts only when the author asks for it and the units in scope have a recorded acceptance at a named revision.
+
+1. `story-video-scripting` asks the author for the edition. Verbatim is the default: the accepted manuscript, segmented and otherwise untouched. A listening edition exists only by author decision, and every difference from the manuscript is recorded as one.
+2. The written manuscript is not changed by either edition, and a listening edition is not canon. When reading aloud exposes a problem in the story itself, the work returns to pass H for a revision and a new acceptance.
+3. The author accepts the script; that is a recorded decision, not a command result.
+4. The accepted script goes to the form skill `presentation-video-production`, and its acceptance review is `presentation-video-review`. This is the only handoff out of the story family. The form skills voice, render and check the script as it is; a finding about wording returns to `story-video-scripting` and the author.
+
+Record the edition, the revisions and the acceptance in the decisions note. The step is experimental, and no video has been produced with it. Delivery as an e-book stays future work.
 
 ## Durable handoff
 

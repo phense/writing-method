@@ -62,6 +62,16 @@ The packet is written so that drafting can start from it alone. Where the host a
 
 After drafting, record a concise chapter summary and a proposed delta: new facts, changed locations, injuries, possessions, knowledge, relationship shifts, planted/paid promises and elapsed time. Resolve conflicts before accepting the delta. Draft revisions can invalidate both summaries and retrieval derivatives; see the [retrieval contract](retrieval.md).
 
+## Narrated video after acceptance
+
+An accepted chapter, chapter range or short piece can optionally be delivered as a narrated video, an audiobook with pictures. This is a delivery step after stage 12, not a writing stage, and it is experimental.
+
+- **Verbatim by default.** The narration is the accepted manuscript at a named revision, only segmented into scenes and lines at sentence boundaries. No word is added, dropped or changed.
+- **Listening edition by author decision.** A derived edition with changes for the ear is stored prose-only in `06-manuscript/editions/listening/<chapter-id>.md`, from the [listening edition template](../../templates/story-vault/90-templates/listening-edition.md). Every difference from the manuscript is a recorded author decision. The edition is manuscript and follows the voice sheet; it is not canon and changes none.
+- **The written manuscript is not changed.** Neither edition edits a prose file, a chapter card or a canon delta. A change the story itself needs goes through drafting, canon review and a new accepted revision first.
+
+The script is written by [story video scripting](../../skills/story-video-scripting/SKILL.md) into a video project outside `06-manuscript/`, at a path the author names. Voicing and rendering belong to the form skill `presentation-video-production`, which never restyles the text. Delivery as an e-book stays future work.
+
 ## Expansion and retcons
 
 New history can fill an uncommitted gap. If it changes an accepted fact, enumerate the affected scenes, character knowledge and later payoffs, propose the smallest coherent revision, and record the decision. Published text needs an explicit author decision about errata, revised edition or an intentional in-world explanation. An unreliable narrator is an explanation only when supported by the work, not an automatic repair.

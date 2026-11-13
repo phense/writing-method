@@ -33,6 +33,8 @@ Where the text below still presents these points as open, the table decides.
 |---|---|
 | Story family | The skills, rules and templates for fiction. Every skill name starts with `story-`. |
 | Reader family | Everything Writing Method does today: didactic replies, documentation, PDF, presentation videos. |
+| Form skill | Added by WM-004: a skill that voices, renders or checks an accepted video script for either family and never restyles its text. |
+| Edition | Added by WM-004: the text a story video narrates, `verbatim` or `listening`. |
 | Story vault | One story's own directory and Git repository: brief, voice sheet, canon, plans, manuscript. Marked `kind: story`. |
 | Study vault | An analysis vault for an existing, third-party work. Marked `kind: study`. |
 | Manuscript | Story prose and in-world text (a letter, report or manual that exists inside the story), plus afterword and blurb. |
@@ -176,7 +178,8 @@ separation is deterministic.
 | An in-world document, including an in-world how-to manual | `manuscript` under `story-drafting` |
 | A story excerpt quoted in documentation | Quoted material, unchanged |
 | An explanatory narrated video about a story or its world | `tutorial-video-scripting` |
-| Dramatised fiction: audiobook, narrated story video | Outside the method for now |
+| Narration of a story video (audiobook with pictures) | `manuscript`, written or adapted by `story-video-scripting`; voiced and rendered by the form skills, which never restyle it. See [Extension WM-004](#extension-wm-004-narrated-story-videos). |
+| Other dramatised fiction: an audiobook without video, a staged reading | Outside the method for now |
 | Beta-reader or author feedback on a chapter | `story-canon-review` or `story-voice-review`; not `receiving-code-review` |
 | Notes and craft exercises in a study vault | `working-note` under `story-craft-research`; never drafting against the studied work's canon |
 
@@ -261,8 +264,78 @@ Tone for documents stays in `human-prose-drafting`. There is no shared tone skil
 | Candidate | Gate |
 |---|---|
 | `story-revision` (ordered passes over a range) | The three-chapter pilot shows the pass order holds |
-| `story-manuscript-export` (EPUB or PDF per volume) | A decision on a neutral typesetting directory shared with `documentation-pdf`, or duplicated templates |
+| `story-manuscript-export` (EPUB or PDF per volume; the e-book) | Still deferred after WM-004. A decision on a neutral typesetting directory shared with `documentation-pdf`, or duplicated templates |
+| Pronunciation of invented names in story videos | An owner decision on how names are fixed per story; until then the existing pronunciation list is used as it is |
+| Image sourcing for story videos | An owner decision on the origin of pictures; until then a scene's picture is a plain description |
 | Illustration briefs | Light-novel source cards exist |
+
+## Extension WM-004: narrated story videos
+
+Added on 2026-11-13 in the same branch. It replaces the earlier disposition
+"narrated story video: outside the method for now". Where the sections above
+count eight story skills, thirteen reader skills or two families, this section
+decides.
+
+### Owner decisions of 2026-11-13
+
+| Question | Decision |
+|---|---|
+| Scope | A story from a story vault can become a narrated presentation video: an audiobook with pictures. |
+| Narration text | Two editions must be possible. `verbatim`: the accepted manuscript, most likely the usual case. `listening`: a derived text with author-approved additions or changes for the ear. |
+| Written manuscript | Producing a listening edition never changes it. The manuscript remains the e-book text. |
+| Pronunciation of invented names | Not designed now. The existing pronunciation list is used as it is. |
+| Origin of images | Not designed now. A scene's picture is a plain description. |
+
+### Model
+
+Purpose and form are separate axes, as WM-001 already states for videos. The
+story family owns the text (purpose: story). The form skills voice, time,
+render and check an accepted script and never restyle its text.
+
+| Element | Rule |
+|---|---|
+| Family `form` | `presentation-video-production` and `presentation-video-review` leave the reader family. They serve tutorial videos and story videos. The policy block now holds three families: story (9), reader (11), form (2). |
+| `story-video-scripting` | Ninth story skill. Turns an accepted chapter, range or short piece of a `kind: story` vault into the script files of a video project copied from `templates/presentation-video/`. It never voices or renders. It carries the mode check, the precedence clause and the no-run-state paragraph. |
+| Edition `verbatim` | Narration lines are the accepted manuscript at a named revision, segmented into scenes and lines at sentence boundaries. No word is added, dropped or changed. |
+| Edition `listening` | A derived edition under `06-manuscript/editions/listening/<chapter-id>.md`, prose only, with `based_on_revision` and `edition_revision` in its frontmatter. Every difference from the manuscript is an author decision recorded there. It is manuscript mode, follows the voice sheet, is not canon and changes no canon. |
+| Video project | Lives outside `06-manuscript/`, at a path the author names. `video.json` carries `"purpose": "story"`, `edition`, `story_id` and `based_on`, a list of chapter ID and revision. `audience` and `address` stay required. |
+| Scenes | `message` is a one-line working note of what happens, not spoken. The picture is a plain description in `script/script.md`. |
+| Rules for the narration | Manuscript mode: the voice sheet overrides the reader rules. The tutorial listening style does not apply. The provider-neutral speech-synthesis rules apply to voicing. |
+| Script check | With `"purpose": "story"`: no source table and no per-scene source; `edition` and `based_on` are required; no sentence-length warning. All other checks stay. Without `purpose`, or with `"purpose": "tutorial"`, behaviour is unchanged. An unknown purpose is an error. |
+| Form skills on a story script | Production voices and renders it as it is. Review gate 1 checks every narration line against the named edition at its revision (verbatim: word for word) instead of sources and honesty; the listening check judges pronunciation, pace and pauses, not style. |
+| Wording findings | Return to `story-video-scripting` and the author: a transcription fix for `verbatim`, an author decision for `listening`. Never to `tutorial-video-scripting`. |
+| Acceptance | The script is accepted by the author; that is a decision, not a command result. |
+| Tutorial video about a story | Unchanged: `tutorial-video-scripting`. |
+
+### Separation after the extension
+
+- Story files may additionally link the video project template, the two form
+  skills and the speech-synthesis rules, and may name the form skills in
+  backticks.
+- Form skills link into neither story directory. They may link the hub and may
+  name skills of both families in backticks.
+- Reader files keep their rules. `lifecycle-handoffs.md` is unchanged and still
+  contains no `story-` name; the handoff from the story script to production is
+  stated in the story skill and in `shared/story/story-development.md`.
+- The policy block gains `form_link_deny_prefixes` and the manuscript path
+  `06-manuscript/editions/`.
+
+### Verification and limits
+
+- Deterministic: the three families partition the method skills; the firewall
+  rules above; the listening-edition template and the editions directory exist
+  in the starter; the script check accepts a story script without sources and
+  rejects one without `edition` or `based_on`.
+- Routing cases added: `story-video-script` (primary `story-video-scripting`;
+  the reader prose skills, review-feedback handling, the backlog skill and
+  `presentation-video-production` prohibited) and `story-video-production`
+  (primary `presentation-video-production`; scripting, drafting, voice review
+  and the didactic skills prohibited). The four negative cases that prohibit every story
+  skill now also prohibit `story-video-scripting`. None of these has been run on a host.
+- No story video has been produced: no provider call and no render belong to
+  this extension.
+- Still deferred: delivery as an e-book (`story-manuscript-export`),
+  pronunciation of invented names, image sourcing.
 
 ## Changes to the existing reader family
 
@@ -343,7 +416,7 @@ and `tests/fixtures/trigger-cases/matrix.json`.
 | Private or study-derived material enters the public package | Port table; package test; licence decision covers study-derived guidance |
 | Work in the private workspace is lost | Step 1 is a precondition; copy until step 11 |
 | The template change breaks existing study vaults | Study vaults keep their layout; only new story vaults use the split |
-| 29 descriptions reduce trigger precision for documentation | Existing cases as regression gate |
+| 30 descriptions (29 before WM-004) reduce trigger precision for documentation | Existing cases as regression gate |
 
 ## Open decisions for the owner
 

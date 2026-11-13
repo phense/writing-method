@@ -8,6 +8,8 @@ In scope: manuscript text of a vault of kind story, which is story prose, in-wor
 
 Out of scope: tone for documents. Documentation, session replies, vault instruction files and narrated explanatory videos are not manuscript; the [writing mode](../policies/writing-mode.md) policy names what governs them. Working notes in a vault are plain notes, and the voice sheet does not style them.
 
+The narration of a story video is manuscript, not an explanatory video: it is the accepted manuscript or an accepted listening edition, and the sheet governs it. A listening edition follows the sheet revision its chapter was accepted under. Voicing and rendering do not restyle it.
+
 ## Two records
 
 | Record | Where | What it decides |

@@ -292,6 +292,44 @@
       "decision.md"
     ]
   },
+  "story-video-script": {
+    "primary": "story-video-scripting",
+    "supporting": [],
+    "prohibited": [
+      "explaining-concepts",
+      "writing-procedures",
+      "empathic-troubleshooting",
+      "human-prose-drafting",
+      "documentation-authoring",
+      "documentation-planning",
+      "documentation-review",
+      "tutorial-video-scripting",
+      "requesting-code-review",
+      "receiving-code-review",
+      "project-backlog",
+      "presentation-video-production"
+    ],
+    "artifacts": [
+      "decision.md"
+    ]
+  },
+  "story-video-production": {
+    "primary": "presentation-video-production",
+    "supporting": [],
+    "prohibited": [
+      "tutorial-video-scripting",
+      "story-drafting",
+      "story-voice-review",
+      "documentation-authoring",
+      "explaining-concepts",
+      "writing-procedures",
+      "empathic-troubleshooting",
+      "human-prose-drafting"
+    ],
+    "artifacts": [
+      "decision.md"
+    ]
+  },
   "story-vault-readme": {
     "primary": "documentation-authoring",
     "supporting": [],
@@ -303,7 +341,8 @@
       "story-drafting",
       "story-canon-review",
       "story-craft-research",
-      "story-voice-review"
+      "story-voice-review",
+      "story-video-scripting"
     ],
     "artifacts": [
       "decision.md"
@@ -320,7 +359,8 @@
       "story-drafting",
       "story-canon-review",
       "story-craft-research",
-      "story-voice-review"
+      "story-voice-review",
+      "story-video-scripting"
     ],
     "artifacts": [
       "decision.md"
@@ -337,7 +377,8 @@
       "story-drafting",
       "story-canon-review",
       "story-craft-research",
-      "story-voice-review"
+      "story-voice-review",
+      "story-video-scripting"
     ],
     "artifacts": [
       "decision.md"
@@ -385,7 +426,8 @@
       "story-drafting",
       "story-canon-review",
       "story-craft-research",
-      "story-voice-review"
+      "story-voice-review",
+      "story-video-scripting"
     ],
     "artifacts": [
       "decision.md"

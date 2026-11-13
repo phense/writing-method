@@ -16,7 +16,9 @@ A narrated tutorial video uses tutorial-video-scripting, then presentation-video
 then presentation-video-review; a correction to an existing video starts at the phase
 that owns it. "Tutorial" names the purpose and "presentation video" the form: a video
 composed from designed scenes and synthesized narration. Marketing or social clips,
-filmed material and screen recordings are outside this method.
+filmed material and screen recordings are outside this method. A narrated story
+video is scripted by the story family and produced and reviewed by the same two
+video form skills, as the [writing mode](writing-mode.md) policy states.
 
 Shared playbook-authoring and playbook-review support scenario-bound operations
 including publication and export recovery; ordinary text or a simple PDF does not

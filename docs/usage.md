@@ -130,6 +130,32 @@ voice trial first. The chapter is complete when `story-canon-review` has
 reviewed it at a named revision and you have accepted it; your acceptance is a
 decision, not a command result.
 
+## Turn an accepted chapter into a narrated video
+
+> Turn chapter 11 into a narrated video. Read it exactly as it is written.
+
+`story-video-scripting` checks the vault as `story-drafting` does, then checks
+that the chapter is accepted at a named revision. It copies the video project
+template to the directory you name, outside `06-manuscript/`, and writes the
+script files. `video.json` records `"purpose": "story"`, `"edition":
+"verbatim"` and the chapter with its revision. Every narration line is the
+manuscript text, cut at sentence boundaries; no word is added, dropped or
+changed. A scene's picture is a plain description in `script/script.md`.
+`python3 tools/check_script.py` must report no errors; a story script needs no
+source table. The script is ready when you have accepted it.
+
+If the text should differ for the ear, ask for a listening edition instead.
+Each difference from the manuscript is then your decision and is recorded in
+an edition file under `06-manuscript/editions/listening/`. The chapter itself
+stays unchanged.
+
+`presentation-video-production` then voices and renders the accepted script as
+it is, and `presentation-video-review` checks each narration line against the
+named edition. A finding about wording returns to `story-video-scripting` and
+to you, never to a rewrite during production. This path is experimental: no
+video has been produced with it, and the pronunciation of invented names and
+the origin of the pictures are not designed yet.
+
 ## Ask a question inside a story vault
 
 > Why does chapter 11 feel slow, and what should I look at first?

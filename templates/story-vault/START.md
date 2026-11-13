@@ -35,6 +35,8 @@ The brief's `form` decides the layout.
 
 Afterword, author note and blurb live in `06-manuscript/paratext/` in both forms.
 
+A listening edition is an optional version of an accepted chapter for a narrated video, with changes for the ear that you approved one by one. It lives in `06-manuscript/editions/listening/`, from [[90-templates/listening-edition]], and is listed in [[06-manuscript/index|the manuscript index]]. It never changes the written chapter and is not canon. A video read word for word from the manuscript needs no edition file.
+
 Arcs use [[90-templates/arc]] and live in `05-plot/`. A volume is a packaging unit beside the arc: use [[90-templates/volume]], also in `05-plot/`, when the publication profile calls for volumes. Its numeric fields are unset; you fill them. Reviews use [[90-templates/review]] and live in `07-continuity/`. Craft notes on a source use [[90-templates/source-card]] as their format. They are not story canon and are not kept in this vault: keep them in the research workspace the author names, and cite a card here by its source ID.
 
 World and cast notes use [[90-templates/world-entry]], [[90-templates/event]], [[90-templates/people]], [[90-templates/character]], [[90-templates/relationship]], [[90-templates/location]], [[90-templates/organization]], [[90-templates/term]] and [[90-templates/foreshadow]].
@@ -51,6 +53,7 @@ World and cast notes use [[90-templates/world-entry]], [[90-templates/event]], [
 | Canon, chronology and knowledge check | `story-canon-review` |
 | Check prose against the voice sheet | `story-voice-review` |
 | Craft sources and studies of existing works | `story-craft-research` |
+| Script of a narrated video from an accepted chapter | `story-video-scripting` |
 
 ## Instantiating a template
 

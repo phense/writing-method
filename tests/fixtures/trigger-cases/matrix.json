@@ -406,6 +406,66 @@
     }
   },
   {
+    "id": "story-video-script",
+    "request": "Turn an accepted chapter of a story vault into the script of a narrated video that reads the manuscript verbatim.",
+    "primary": "story-video-scripting",
+    "supporting": [],
+    "prohibited": [
+      "native-focused-edit",
+      "explaining-concepts",
+      "writing-procedures",
+      "empathic-troubleshooting",
+      "human-prose-drafting",
+      "documentation-authoring",
+      "documentation-planning",
+      "documentation-review",
+      "tutorial-video-scripting",
+      "requesting-code-review",
+      "receiving-code-review",
+      "project-backlog",
+      "presentation-video-production"
+    ],
+    "handoff": {
+      "consumes": [
+        "kind: story vault with an accepted chapter at a named revision",
+        "voice sheet"
+      ],
+      "produces": [
+        "script files of a video project with purpose story and edition verbatim; the manuscript unchanged"
+      ],
+      "next": "presentation-video-production"
+    }
+  },
+  {
+    "id": "story-video-production",
+    "request": "The script of a story video, an accepted chapter read verbatim, is accepted. Voice it, build the timeline, take check stills and render the video.",
+    "primary": "presentation-video-production",
+    "supporting": [
+      "verification-before-completion"
+    ],
+    "prohibited": [
+      "native-focused-edit",
+      "tutorial-video-scripting",
+      "story-drafting",
+      "story-voice-review",
+      "documentation-authoring",
+      "explaining-concepts",
+      "writing-procedures",
+      "empathic-troubleshooting",
+      "human-prose-drafting"
+    ],
+    "handoff": {
+      "consumes": [
+        "accepted script with purpose story and edition verbatim",
+        "video profile"
+      ],
+      "produces": [
+        "rendered file with passed measurement, check stills and captions; narration wording unchanged"
+      ],
+      "next": "presentation-video-review"
+    }
+  },
+  {
     "id": "story-vault-readme",
     "request": "Write the README of a story vault repository for a co-author.",
     "primary": "documentation-authoring",
@@ -423,7 +483,8 @@
       "story-drafting",
       "story-canon-review",
       "story-craft-research",
-      "story-voice-review"
+      "story-voice-review",
+      "story-video-scripting"
     ],
     "handoff": {
       "consumes": [
@@ -454,7 +515,8 @@
       "story-drafting",
       "story-canon-review",
       "story-craft-research",
-      "story-voice-review"
+      "story-voice-review",
+      "story-video-scripting"
     ],
     "handoff": {
       "consumes": [
@@ -486,7 +548,8 @@
       "story-drafting",
       "story-canon-review",
       "story-craft-research",
-      "story-voice-review"
+      "story-voice-review",
+      "story-video-scripting"
     ],
     "handoff": {
       "consumes": [
@@ -573,7 +636,8 @@
       "story-drafting",
       "story-canon-review",
       "story-craft-research",
-      "story-voice-review"
+      "story-voice-review",
+      "story-video-scripting"
     ],
     "handoff": {
       "consumes": [
