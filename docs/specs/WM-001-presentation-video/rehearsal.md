@@ -83,3 +83,60 @@ the corrected playbook. Still open, and not possible without a machine with
 `ffmpeg`, a configured speech provider and a person who listens: one
 end-to-end run through gate 2 and delivery, one provoked interrupted render,
 the correction path, and the listening check of the sample.
+
+## Rehearsal of the corrected playbook (2026-11-13)
+
+- Artifact revision: playbook and tools of Writing Method 0.4.1 (`4287ad2`),
+  copied to a project folder outside the repository.
+- Environment: one macOS machine (Apple Silicon) as authoring and render
+  machine; Python 3.14, Node 26, ffmpeg 9.0; Azure AI Speech, voice
+  `en-US-AvaMultilingualNeural`, per-line mode. Transcription for the read-back:
+  Azure speech recognition through a helper written for this rehearsal (not
+  part of the template). Delivery location: a local folder; copy with `cp`,
+  checksum with `shasum -a 256`.
+- Method: real execution, no simulation, by the assistant. The assistant was
+  operator and reviewer; no person listened.
+
+| Step | Action | Observed |
+|---|---|---|
+| Before starting | Profile, Python, script check, Node packages, media tools, transcription, delivery location | All as expected; `0 error(s), 0 warning(s)` |
+| Before starting | Review gate 1 | Recorded in `review.md` by the assistant: sources, address, honesty, key term |
+| Before starting | `tools/voice_azure.py --check` | `credentials accepted, 1015 voices available`, then the voice's languages; no `note:` line |
+| Before starting | Scenes: `tools/timeline.py --draft`, `tools/stills.mjs out/draft-stills` | 8 draft stills; one per scene looked at; no `PLACEHOLDER`; `stills/` untouched |
+| P1 | `--samples`, `voice_azure.py --only steps:2`, `verify_speech.py --only steps:2` | `steps:2 timeline`; `1 lines checked, 0 with an unrecognized key term`. Not listened to by a person |
+| P2, P2a | Decision `azure`, `line`; `tools/voice_azure.py` | `8 lines, 37.5 s of speech, 7 new, 481 characters voiced` |
+| P3 | `tools/timeline.py`, `tools/measure.py pace` | 167 to 177 wpm in a range of 140 to 180; `PASSED` |
+| P4 | `tools/verify_speech.py` | `8 lines checked, 0 with an unrecognized key term, 0 below similarity 0.8` |
+| P5 | Stills, every still opened, marks set, `tools/check_review.py` | Before the marks: `0 of 8`, exit 1. After: `8 of 8 stills inspected without finding` |
+| P6, P6b | `render.host` empty; `tools/render.sh` | `rendered: out/sample-video.mp4` in under 25 s |
+| R4 | Second render killed after 8 s | No last line; the earlier `out/sample-video.mp4` was still there with its old checksum, as R4 says. Render processes kept running for some seconds. Deleted the outputs, rendered again: passed |
+| P7, P7a | A 3 s opening made for the rehearsal, with another stream format; `tools/prepend.sh`, `timeline.py --caption-offset 3.0` | `joined with one encode`, `opening length: 3.000000 s`; captions start at 3.35 s |
+| P8 | `tools/measure.py all … --offset 3.0` | 1920x1080, 30 fps, −16.02 LUFS, true peak −2.26 dBTP, 44.579 s against 44.57 s, 5 gaps of 0.66 s; `PASSED` |
+| P8b | Project record written | Seven items present |
+| P9 | Gate 2 machine checks: stills, read-back, measurement, captions, chapters, record | All pass. Listening check: not done; see below |
+| P10, P10b, P11 | Copy to `.new`, checksums, rename, check | Checksums equal; first delivery, so no `.previous` |
+| Correction | Line `steps:1` changed; gate 1 note; Before starting again; P2 to P11 | Scenes check kept all 8 inspection marks; `8 lines … 1 new, 63 characters voiced`; `stills.mjs stills steps` reset 4 marks; render, opening, measurement `PASSED`; delivery kept the earlier file as `.previous` with its checksum |
+| R6 | `tools/probe_settings.py rate=+10%` | `EFFECTIVE` (−9.3 %); the setting was not kept |
+
+A transcription of the delivered file's whole sound track gave every narration
+word in order (similarity 1.0, first word at 3.44 s). That is a machine check
+of the words, not a listening check.
+
+What the rehearsal changed:
+
+- R4 now asks the operator to make sure no render process is still running.
+- A sound file that the voicing tools remove or replace takes its read-back
+  transcription along. The correction left the word file of the replaced line
+  behind; in per-scene mode an old word file could have been read as the new
+  sound's. The playbook no longer asks for a manual deletion.
+
+Observed and not changed: with an opening sequence the first chapter mark is
+at 0:03 and nothing is marked at 0:00.
+
+Not rehearsed: P6a (no render machine), P2b, R2, R3 and the take rule (no
+ElevenLabs connector in this run), R1 (the provider did not limit the run), a
+checksum mismatch in P10, a story video.
+
+Listening check: open. A person has to hear the delivered sample once (key
+term `timeline`, pace, pauses of 0.65 s, tone) and the result goes into
+`review.md` as gate 2.

@@ -176,6 +176,8 @@ def voice(narration: dict, entries: list[dict], prof: dict, audio_dir: Path, syn
         for stale in audio_dir.glob("*.mp3"):
             if OWNED.match(stale.name) and stale.name not in used:
                 stale.unlink()
+                # the read-back transcription of a removed sound describes nothing any more
+                stale.with_suffix(".words.json").unlink(missing_ok=True)
     return {"manifest": manifest, "new": new, "characters": characters}
 
 

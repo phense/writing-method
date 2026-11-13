@@ -389,6 +389,18 @@ class Voicing(unittest.TestCase):
         self.assertEqual(1, result["new"]); self.assertEqual(4, len(self.calls))
         self.assertEqual(3, len(list(self.dir.glob("*.mp3"))))
 
+    def test_a_removed_sound_file_takes_its_read_back_transcription_along(self):
+        self.run_voice()
+        for sound in self.dir.glob("*.mp3"):
+            sound.with_suffix(".words.json").write_text("[]")
+        changed = copy.deepcopy(self.narration); changed["a"][1]["text"] = "Two, corrected."
+        self.run_voice(changed)
+        sounds = {p.stem for p in self.dir.glob("*.mp3")}
+        transcriptions = {p.name[:-len(".words.json")] for p in self.dir.glob("*.words.json")}
+        # the two unchanged lines keep theirs; the replaced line's is gone and the new sound has none yet
+        self.assertEqual(2, len(transcriptions))
+        self.assertTrue(transcriptions < sounds)
+
     def test_foreign_files_in_the_audio_folder_are_left_alone(self):
         (self.dir / "jingle.mp3").write_bytes(b"x")
         self.run_voice()

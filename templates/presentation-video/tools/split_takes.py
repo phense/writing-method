@@ -149,6 +149,9 @@ def main(argv=None) -> int:
                 for old in out_dir.glob("*.mp3"):
                     if own.fullmatch(old.name):
                         old.unlink()
+                        # A line whose text is unchanged keeps its file name, but the sound is new:
+                        # an old read-back transcription beside it would be read as the new sound's.
+                        old.with_suffix(".words.json").unlink(missing_ok=True)
                 for piece in sorted(Path(staging).glob("*.mp3")):
                     shutil.move(str(piece), out_dir / piece.name)
             manifest[scene] = entries_out

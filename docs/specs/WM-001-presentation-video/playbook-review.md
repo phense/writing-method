@@ -209,4 +209,4 @@ PT-01 to PT-07 were applied as the exact edits above in the following revision. 
 
 - Content review: 43 findings in three rounds (1 Critical, 20 Important, 22 Minor), all applied. The last applied edits are unreviewed, so no `Ready` verdict exists.
 - Rehearsal: stale and partial. The record in `rehearsal.md` describes the earlier playbook text. Never executed in any version: gate 2 (P9), P8b, delivery (P10 to P11), R1 to R4 and R6, the ElevenLabs branch of P4, the take rule, a per-scene correction and a story video.
-- The criterion "rehearsed once end to end on the sample video" is not met. It needs a machine with `ffmpeg`, a configured speech provider and a person for the listening check.
+- Rehearsed afterwards, at 0.4.1: one end-to-end run through delivery, an interrupted render, the correction path and the pace probe; see `rehearsal.md`. The listening check by a person and the ElevenLabs branches remain open.
