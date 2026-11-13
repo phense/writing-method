@@ -1,9 +1,11 @@
 ---
 name: empathic-troubleshooting
-description: "Use when writing help for something that has gone wrong or may go wrong, in documentation or an ordinary reply: start from what the reader sees, name likely causes in order, give the first check, then the fix and its confirmation. Not for diagnosing a defect in code you own (engineering diagnosis is outside this plugin), for normal procedures, or for reference lists of error codes."
+description: "Use when writing help for something that has gone wrong or may go wrong, in documentation or an ordinary reply: start from what the reader sees, name likely causes in order, give the first check, then the fix and its confirmation. Not for diagnosing a defect in code you own (engineering diagnosis is outside this plugin), for normal procedures, or for reference lists of error codes. Not for story manuscripts or in-world text."
 ---
 
 # Empathic Troubleshooting
+
+Not for story manuscripts or in-world text: when the target is manuscript, stop and use the story family under [writing mode](../../shared/policies/writing-mode.md).
 
 Apply the shared [proportionality rule](../../shared/policies/proportionality.md)
 before adding work, delegating, or repeating verification.
@@ -26,6 +28,8 @@ user reports that something is not working for them.
 - Ordinary procedures where nothing has failed; use `writing-procedures`.
 - Machine-readable error catalogs. A code table may exist as reference, but
   the troubleshooting text is organized by what the reader experiences.
+- Story manuscripts or in-world text; the story family owns them, under
+  [writing mode](../../shared/policies/writing-mode.md).
 
 ## Entry pattern
 

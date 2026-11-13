@@ -224,5 +224,373 @@
       ],
       "next": "presentation-video-review"
     }
+  },
+  {
+    "id": "story-chapter-draft",
+    "request": "Draft the next chapter of a story from its chapter card, inside a story vault whose voice sheet is filled.",
+    "primary": "story-drafting",
+    "supporting": [],
+    "prohibited": [
+      "native-focused-edit",
+      "explaining-concepts",
+      "writing-procedures",
+      "empathic-troubleshooting",
+      "human-prose-drafting",
+      "documentation-authoring",
+      "documentation-planning",
+      "documentation-review",
+      "tutorial-video-scripting",
+      "requesting-code-review",
+      "receiving-code-review",
+      "project-backlog"
+    ],
+    "handoff": {
+      "consumes": [
+        "kind: story vault with viewpoint, tense and distance set",
+        "chapter card with context packet"
+      ],
+      "produces": [
+        "prose file under 06-manuscript/chapters/"
+      ],
+      "next": "author decision"
+    }
+  },
+  {
+    "id": "story-new-vault",
+    "request": "Start a new story in an unused starter vault.",
+    "primary": "story-bootstrap",
+    "supporting": [],
+    "prohibited": [
+      "native-focused-edit",
+      "explaining-concepts",
+      "writing-procedures",
+      "empathic-troubleshooting",
+      "human-prose-drafting",
+      "documentation-authoring",
+      "documentation-planning",
+      "documentation-review",
+      "tutorial-video-scripting",
+      "requesting-code-review",
+      "receiving-code-review",
+      "project-backlog"
+    ],
+    "handoff": {
+      "consumes": [
+        "kind: starter vault",
+        "premise from the author"
+      ],
+      "produces": [
+        "vault marked kind: story with a story ID and refreshed instruction files"
+      ],
+      "next": "author decision"
+    }
+  },
+  {
+    "id": "story-canon-review",
+    "request": "Check a drafted chapter against the accepted canon before the author accepts it.",
+    "primary": "story-canon-review",
+    "supporting": [],
+    "prohibited": [
+      "native-focused-edit",
+      "explaining-concepts",
+      "writing-procedures",
+      "empathic-troubleshooting",
+      "human-prose-drafting",
+      "documentation-authoring",
+      "documentation-planning",
+      "documentation-review",
+      "tutorial-video-scripting",
+      "requesting-code-review",
+      "receiving-code-review",
+      "project-backlog"
+    ],
+    "handoff": {
+      "consumes": [
+        "drafted chapter at a named revision",
+        "accepted canon state"
+      ],
+      "produces": [
+        "canon review at the named revision"
+      ],
+      "next": "author decision"
+    }
+  },
+  {
+    "id": "story-voice-review",
+    "request": "Judge a range of chapters against the voice sheet, which has two anchor passages and a filled tone palette.",
+    "primary": "story-voice-review",
+    "supporting": [],
+    "prohibited": [
+      "native-focused-edit",
+      "explaining-concepts",
+      "writing-procedures",
+      "empathic-troubleshooting",
+      "human-prose-drafting",
+      "documentation-authoring",
+      "documentation-planning",
+      "documentation-review",
+      "tutorial-video-scripting",
+      "requesting-code-review",
+      "receiving-code-review",
+      "project-backlog"
+    ],
+    "handoff": {
+      "consumes": [
+        "voice sheet with anchor passages and tone palette",
+        "chapter range"
+      ],
+      "produces": [
+        "voice review with classed findings; accepted prose unchanged"
+      ],
+      "next": "author decision"
+    }
+  },
+  {
+    "id": "story-in-world-manual",
+    "request": "Write an in-world how-to manual that is quoted inside a chapter of the story.",
+    "primary": "story-drafting",
+    "supporting": [],
+    "prohibited": [
+      "native-focused-edit",
+      "explaining-concepts",
+      "writing-procedures",
+      "empathic-troubleshooting",
+      "human-prose-drafting",
+      "documentation-authoring",
+      "documentation-planning",
+      "documentation-review",
+      "tutorial-video-scripting",
+      "requesting-code-review",
+      "receiving-code-review",
+      "project-backlog"
+    ],
+    "handoff": {
+      "consumes": [
+        "kind: story vault with viewpoint, tense and distance set",
+        "chapter that contains the in-world document"
+      ],
+      "produces": [
+        "in-world text in the chapter's prose file"
+      ],
+      "next": "author decision"
+    }
+  },
+  {
+    "id": "story-beta-feedback",
+    "request": "Work through beta-reader comments that claim a chapter contradicts the story's canon.",
+    "primary": "story-canon-review",
+    "supporting": [],
+    "prohibited": [
+      "native-focused-edit",
+      "explaining-concepts",
+      "writing-procedures",
+      "empathic-troubleshooting",
+      "human-prose-drafting",
+      "documentation-authoring",
+      "documentation-planning",
+      "documentation-review",
+      "tutorial-video-scripting",
+      "requesting-code-review",
+      "receiving-code-review",
+      "project-backlog"
+    ],
+    "handoff": {
+      "consumes": [
+        "beta-reader comments on a chapter",
+        "accepted canon state"
+      ],
+      "produces": [
+        "canon review that dispositions each comment against cited passages"
+      ],
+      "next": "author decision"
+    }
+  },
+  {
+    "id": "story-vault-readme",
+    "request": "Write the README of a story vault repository for a co-author.",
+    "primary": "documentation-authoring",
+    "supporting": [
+      "project-backlog",
+      "human-prose-drafting",
+      "verification-before-completion"
+    ],
+    "prohibited": [
+      "native-focused-edit",
+      "story-bootstrap",
+      "story-worldbuilding",
+      "story-characters",
+      "story-architecture",
+      "story-drafting",
+      "story-canon-review",
+      "story-craft-research",
+      "story-voice-review"
+    ],
+    "handoff": {
+      "consumes": [
+        "standalone document request",
+        "defined reader"
+      ],
+      "produces": [
+        "one reader-oriented document with recorded self-review"
+      ],
+      "next": "verification-before-completion"
+    }
+  },
+  {
+    "id": "docs-release-note",
+    "request": "Write a release note for administrators in a documentation repository.",
+    "primary": "documentation-authoring",
+    "supporting": [
+      "project-backlog",
+      "human-prose-drafting",
+      "verification-before-completion"
+    ],
+    "prohibited": [
+      "native-focused-edit",
+      "story-bootstrap",
+      "story-worldbuilding",
+      "story-characters",
+      "story-architecture",
+      "story-drafting",
+      "story-canon-review",
+      "story-craft-research",
+      "story-voice-review"
+    ],
+    "handoff": {
+      "consumes": [
+        "standalone document request",
+        "defined reader and subject version"
+      ],
+      "produces": [
+        "one reader-oriented document with recorded self-review"
+      ],
+      "next": "verification-before-completion"
+    }
+  },
+  {
+    "id": "story-world-tutorial-video",
+    "request": "Create an explanatory narrated video about a story's world for its readers.",
+    "primary": "tutorial-video-scripting",
+    "supporting": [
+      "explaining-concepts",
+      "human-prose-drafting",
+      "terminology-guard",
+      "project-backlog"
+    ],
+    "prohibited": [
+      "native-focused-edit",
+      "story-bootstrap",
+      "story-worldbuilding",
+      "story-characters",
+      "story-architecture",
+      "story-drafting",
+      "story-canon-review",
+      "story-craft-research",
+      "story-voice-review"
+    ],
+    "handoff": {
+      "consumes": [
+        "topic, one audience and source material",
+        "video profile"
+      ],
+      "produces": [
+        "reviewed script that passed the script check"
+      ],
+      "next": "presentation-video-production"
+    }
+  },
+  {
+    "id": "story-method-documentation",
+    "request": "Write a how-to guide that documents how to use the story method.",
+    "primary": "documentation-authoring",
+    "supporting": [
+      "project-backlog",
+      "writing-procedures",
+      "human-prose-drafting",
+      "verification-before-completion"
+    ],
+    "prohibited": [
+      "native-focused-edit",
+      "story-bootstrap",
+      "story-worldbuilding",
+      "story-characters",
+      "story-architecture",
+      "story-drafting",
+      "story-canon-review",
+      "story-craft-research",
+      "story-voice-review"
+    ],
+    "handoff": {
+      "consumes": [
+        "standalone document request",
+        "defined reader"
+      ],
+      "produces": [
+        "one reader-oriented document with recorded self-review"
+      ],
+      "next": "verification-before-completion"
+    }
+  },
+  {
+    "id": "study-vault-draft-request",
+    "request": "Ask for a new chapter in the canon of the studied work, inside a study vault.",
+    "primary": "story-craft-research",
+    "supporting": [],
+    "prohibited": [
+      "native-focused-edit",
+      "story-drafting",
+      "explaining-concepts",
+      "writing-procedures",
+      "empathic-troubleshooting",
+      "human-prose-drafting",
+      "documentation-authoring",
+      "documentation-planning",
+      "documentation-review",
+      "tutorial-video-scripting",
+      "requesting-code-review",
+      "receiving-code-review",
+      "project-backlog"
+    ],
+    "handoff": {
+      "consumes": [
+        "kind: study vault",
+        "request to draft against the studied work's canon"
+      ],
+      "produces": [
+        "declined drafting; study notes only"
+      ],
+      "next": "author decision"
+    }
+  },
+  {
+    "id": "vault-parent-session",
+    "request": "Write the README of a workspace directory that contains story vaults; the session is rooted in the parent of the vaults.",
+    "primary": "documentation-authoring",
+    "supporting": [
+      "project-backlog",
+      "human-prose-drafting",
+      "verification-before-completion"
+    ],
+    "prohibited": [
+      "native-focused-edit",
+      "story-bootstrap",
+      "story-worldbuilding",
+      "story-characters",
+      "story-architecture",
+      "story-drafting",
+      "story-canon-review",
+      "story-craft-research",
+      "story-voice-review"
+    ],
+    "handoff": {
+      "consumes": [
+        "standalone document request",
+        "defined reader"
+      ],
+      "produces": [
+        "one reader-oriented document with recorded self-review"
+      ],
+      "next": "verification-before-completion"
+    }
   }
 ]

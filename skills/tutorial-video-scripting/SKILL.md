@@ -1,6 +1,6 @@
 ---
 name: tutorial-video-scripting
-description: "Use when a narrated tutorial video must be scripted from source material: a video that teaches a concept or walks through a procedure for one named audience. Writes the script with chapters, scenes, narration lines written for listening, sources and the pronunciation list, and runs the automatic script check until it passes. Not for producing or rendering the video (use presentation-video-production), reviewing a finished video (use presentation-video-review), marketing or social clips, filmed material or screen recordings, or written documentation."
+description: "Use when a narrated tutorial video must be scripted from source material: a video that teaches a concept or walks through a procedure for one named audience. Writes the script with chapters, scenes, narration lines written for listening, sources and the pronunciation list, and runs the automatic script check until it passes. Not for producing or rendering the video (use presentation-video-production), reviewing a finished video (use presentation-video-review), marketing or social clips, filmed material or screen recordings, or written documentation. Not for story manuscripts or in-world text."
 ---
 
 # Tutorial Video Scripting
@@ -37,6 +37,8 @@ audience, or for a change to the content of an existing one.
   `presentation-video-review`.
 - Marketing or social clips, filmed material, screen recordings.
 - A written guide on the same subject; use `documentation-authoring`.
+- Story manuscripts or in-world text; the story family owns them, under
+  [writing mode](../../shared/policies/writing-mode.md).
 
 ## Consumes
 

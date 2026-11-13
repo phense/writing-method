@@ -24,7 +24,7 @@
           "source_path": "SKILL.md",
           "destination_path": "skills/human-prose-drafting/SKILL.md",
           "source_sha256": "e8269e236bed06ed0fe4824c274112e54950b0cb46b0bafe5e1576ef7c9f93d5",
-          "destination_sha256": "6cd68c9a20d0bc8c2484b93692653f83cc05c8a03179173cde640758bd035def",
+          "destination_sha256": "eb60a8732f86fb1ffb92656700ff4d9aa4b76db6260e68467401133830c7c02c",
           "modification_status": "adapted"
         }
       ]
@@ -127,8 +127,12 @@
       "shared/policies/reader-oriented-output.md",
       "shared/writing/**",
       "templates/documentation/**",
-      "skills/documentation-pdf/SKILL.md"
+      "skills/documentation-pdf/SKILL.md",
+      "shared/policies/writing-mode.md",
+      "skills/story-*/**",
+      "shared/story/**",
+      "templates/story-vault/**"
     ],
-    "scope": "These paths are original implementation, except destinations enumerated in sources, which keep their own licence. No upstream runtime is bundled."
+    "scope": "These paths are original implementation, except destinations enumerated in sources, which keep their own licence. No upstream runtime is bundled. The story family's craft guidance is original writing informed by the attributed sources indexed in shared/story/sources.md; no third-party text is vendored."
   }
 }

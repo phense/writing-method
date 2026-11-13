@@ -1,7 +1,7 @@
 {
   "name": "writing-method",
-  "version": "0.3.0",
-  "description": "Reader-oriented writing, documentation workflows, local PDF delivery and narrated tutorial videos.",
+  "version": "0.4.0",
+  "description": "Reader-oriented writing, documentation workflows, local PDF delivery and narrated tutorial videos, plus an experimental story-writing family kept separate from them.",
   "author": {
     "name": "Peter Hense"
   },
@@ -12,13 +12,15 @@
     "review",
     "pdf",
     "video",
-    "tutorial"
+    "tutorial",
+    "story",
+    "fiction"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Peter's Writing Method",
-    "shortDescription": "Writing, documentation and local PDF workflows",
-    "longDescription": "Reader-oriented planning, authoring, review and PDF delivery with shared method support.",
+    "shortDescription": "Documentation, PDF and tutorial video workflows; story writing (experimental)",
+    "longDescription": "Reader-oriented planning, authoring, review, PDF delivery and narrated tutorial videos with shared method support. A separate, experimental story family covers fiction in a story vault; its manuscripts follow the story's voice sheet, not the documentation rules.",
     "developerName": "Peter Hense",
     "category": "Developer Tools",
     "capabilities": [

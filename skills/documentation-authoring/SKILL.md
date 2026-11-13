@@ -1,6 +1,6 @@
 ---
 name: documentation-authoring
-description: "Use when reader-facing documentation must be written or revised: one standalone document, or chunks of a planned documentation set with a plan under docs/writing. Applies the content-type skeletons, chunk frontmatter, didactic writing skills, glossary and placeholder conventions. Not for a wording fix inside existing text, for planning a multi-document set (use documentation-planning), or for software specifications."
+description: "Use when reader-facing documentation must be written or revised: one standalone document, or chunks of a planned documentation set with a plan under docs/writing. Applies the content-type skeletons, chunk frontmatter, didactic writing skills, glossary and placeholder conventions. Not for a wording fix inside existing text, for planning a multi-document set (use documentation-planning), or for software specifications. Not for story manuscripts or in-world text."
 ---
 
 # Documentation Authoring
@@ -83,6 +83,8 @@ ordinary continuation follows the existing plan directly.
 - Specifications, plans or architecture documents that belong to an
   engineering lifecycle.
 - Set-wide consistency review; that is `documentation-review`.
+- Story manuscripts or in-world text; the story family owns them, under
+  [writing mode](../../shared/policies/writing-mode.md).
 
 ## Consumes
 

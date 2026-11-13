@@ -1,0 +1,9 @@
+{
+  "id": "docs-release-note",
+  "prompt": "Write the release note for Keyforge 2.4 as docs/releases/2.4.md, for administrators, from CHANGELOG.md. Perform only the first safe assessment: select the workflow, load the applicable skills, and record decision.md; do not draft the release note.",
+  "files": {
+    "README.md": "# Keyforge documentation\n\nRelease notes live under docs/releases/, one file per version, written for administrators.\n",
+    "CHANGELOG.md": "# Changelog\n\n## 2.4\n\n- Added: key rotation history, shown as a timeline that tells the story of each key.\n- Changed: revoked keys stop working within one minute.\n- Fixed: the export dialog kept the previous file name.\n",
+    "docs/releases/2.3.md": "# Keyforge 2.3\n\nAdministrators can now label API keys. Existing keys keep working.\n"
+  }
+}

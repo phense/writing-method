@@ -1,9 +1,11 @@
 ---
 name: human-prose-drafting
-description: "Use within documentation-authoring for medium and large texts to apply Humanizer prose guidance from the first sentence, with a brief per-chunk check. Not a separate rewrite phase or a reason to change facts, code, quotations or required document structure."
+description: "Use within documentation-authoring for medium and large texts to apply Humanizer prose guidance from the first sentence, with a brief per-chunk check. Not a separate rewrite phase or a reason to change facts, code, quotations or required document structure. Not for story manuscripts or in-world text."
 ---
 
 # Human Prose Drafting
+
+Not for story manuscripts or in-world text: when the target is manuscript, stop and use the story family under [writing mode](../../shared/policies/writing-mode.md).
 
 Apply the shared [proportionality rule](../../shared/policies/proportionality.md)
 before adding work, delegating, or repeating verification.
@@ -30,6 +32,8 @@ how the sentences may not be built.
   verified source material, never from this skill; when a sentence needs a
   missing detail, write a simpler sentence or record the gap.
 - Small-scale edits inside existing text that keep the surrounding voice.
+- Story manuscripts or in-world text; the story family owns them, under
+  [writing mode](../../shared/policies/writing-mode.md).
 
 ## Two rules while drafting
 

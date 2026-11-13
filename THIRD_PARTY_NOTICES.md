@@ -6,6 +6,20 @@ Copyright (c) 2026 Peter Hense. Original code is MIT licensed. Shared adapted fi
 
 `templates/openspec/escalation.md`: original when distributed.
 
+## Story family
+
+The story family is original writing under the same MIT licence: the skills
+under `skills/story-*/`, the files under `shared/story/`, the vault starter
+under `templates/story-vault/` and `shared/policies/writing-mode.md`.
+
+Its craft guidance is informed by published sources on fiction craft and by
+the maintainer's own analysis of existing works. `shared/story/sources.md`
+indexes every cited source with its title, author or speaker, address and the
+kind of evidence it gives. No third-party text is vendored: the sources are
+attributed as influences, their wording is not reproduced, and the private
+study notes are not distributed. The family therefore has no entry under
+`sources` in `third-party/sources.lock.json`.
+
 ## Humanizer
 
 Source ID: `humanizer`

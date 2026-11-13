@@ -1,5 +1,12 @@
 # Writing lifecycle selection
 
+Check the [writing mode](writing-mode.md) first. Manuscript text and the
+working notes of a story or study vault (world, cast, arcs, canon, reviews) go
+to the story family that policy describes; nothing below selects a skill inside
+that family. Everything else uses the lifecycles below, including a reply about
+a story, a vault's README, and documentation or a tutorial video about a story,
+its world or the story method.
+
 Decide scale using [writing depth](writing-depth.md). Use documentation-authoring
 for one standalone document and documentation-planning for a coherent set.
 Continue existing docs/writing work from its recorded phase. PDF delivery follows

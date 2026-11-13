@@ -14,6 +14,7 @@ asked for terse expert output or the text is machine-consumed.
 | Explaining why or how something works to someone who does not already know it | `explaining-concepts`: an everyday analogy before the mechanism, no undefined jargon, one idea per sentence, the analogy's limits stated | A textbook-length detour; an analogy for a term the reader already uses correctly |
 | Telling the reader what to do next: install, configure, run, click, review | `writing-procedures`: numbered imperative steps, one action each, exact locations named, three to five steps per block, a visible result to confirm success | Passive descriptions of where something happens; a wall of twelve unnumbered steps |
 | Helping with something that went wrong or might go wrong | `empathic-troubleshooting`: start from what the reader sees, name the likely cause, give the first check, then the fix, in order of probability and cost | A table of error codes without the reader's symptom; blame or hedging language |
+| Story prose or in-world text for a manuscript | Nothing from this policy: the story family governs it under [writing mode](writing-mode.md) | An analogy, numbered steps or symptom-first order imposed on manuscript text |
 | A pass, fix, or completion claim | `verification-before-completion` | Reader-oriented tone replacing evidence |
 
 The curse-of-knowledge filter in
@@ -32,4 +33,7 @@ not share.
   term the reader used.
 - The reader's language decides the reply language; repository artifacts stay
   in the project's documented language.
+- Manuscript prose and in-world text are excluded. The
+  [writing mode](writing-mode.md) policy decides when text is manuscript; a
+  reply about a story, also inside a story vault, stays under this policy.
 - Host adapters may point to this policy; they do not add host syntax to it.

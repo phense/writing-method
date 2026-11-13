@@ -1,6 +1,6 @@
 ---
 name: terminology-guard
-description: "Use as a supporting skill when a document or documentation set must use one term per concept: create or extend the glossary before new terms appear, check drafts for banned variants and undefined terms, and align wording with interface labels. Not for choosing content structure, writing the text itself, or code identifiers."
+description: "Use as a supporting skill when a document or documentation set must use one term per concept: create or extend the glossary before new terms appear, check drafts for banned variants and undefined terms, and align wording with interface labels. Not for choosing content structure, writing the text itself, or code identifiers. Not for story manuscripts or in-world text."
 ---
 
 # Terminology Guard
@@ -26,6 +26,8 @@ an inline definition list when more than a handful of terms recur.
   using the terms this skill fixes.
 - Code identifiers, API names and command syntax, which stay exactly as
   implemented and are quoted in code formatting.
+- Story manuscripts or in-world text; the story family owns them, under
+  [writing mode](../../shared/policies/writing-mode.md).
 
 ## Glossary authority
 

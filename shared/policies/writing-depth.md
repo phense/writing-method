@@ -15,6 +15,9 @@ Estimate from the request and existing material, then confirm by inspecting the
 target repository or document tree read-only. Record the chosen scale and its
 evidence in the owning artifact or, for small work, in the reply.
 
+The scale table does not apply to story manuscripts; the
+[writing mode](writing-mode.md) policy sends them to the story family.
+
 | Observable conditions (any one moves the work to that scale) | Scale | Writing lifecycle |
 |---|---|---|
 | One sentence, paragraph, or section inside an existing text; wording, correctness or a single explanation; no new document structure; no new terms that other pages must share | Small | Native focused edit; the reader-oriented rules apply inline |

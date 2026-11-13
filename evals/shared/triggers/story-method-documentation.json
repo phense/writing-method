@@ -1,0 +1,7 @@
+{
+  "id": "story-method-documentation",
+  "prompt": "Write a how-to guide, docs/how-to/start-a-story-vault.md, that shows a new author of our writing group how to set up a story vault from the starter and fill in the brief and the voice sheet. One reader group; no other documentation exists yet. Perform only the first safe assessment: select the workflow, load the applicable skills, and record decision.md; do not draft the guide.",
+  "files": {
+    "README.md": "# Writers' handbook\n\nGuides for the members of our writing group. Each member keeps one story vault per story, copied from the story vault starter. A vault is marked by 00-project/brief.md and 00-project/voice.md.\n"
+  }
+}
