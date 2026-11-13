@@ -22,8 +22,15 @@ machine-written, and this ranks first among the writing rules.
   then 8), all applied. The last edits were not reviewed again.
 - Unscripted routing on Claude, coordinator model, 3 runs per case, at
   `88f2b07`: 10 of 10 cases pass with 30 of 30 hits. The new case
-  `team-announcement` loaded `human-prose-drafting` in 3 of 3 runs. Codex
-  runs only against an installed copy and follows the release.
+  `team-announcement` loaded `human-prose-drafting` in 3 of 3 runs.
+- Unscripted routing on Codex against the installed 0.5.0, 3 runs per case:
+  9 of 10 cases pass with 29 of 30 hits. `team-announcement`: 3 of 3. One
+  run of `tutorial-video` loaded `human-prose-drafting` and
+  `writing-procedures` in place of `tutorial-video-scripting`. Whether the
+  wider description of `human-prose-drafting` caused this is not known; the
+  case was not rerun.
+- Published: release `v0.5.0` with a reproducible archive; the downloaded
+  archive matches `SHA256SUMS`. Installed on Claude and Codex.
 
 ## Limits
 
