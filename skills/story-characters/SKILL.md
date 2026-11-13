@@ -7,6 +7,8 @@ description: "Use when main or supporting characters of a story must be built or
 
 Mode check first, under [writing mode](../../shared/policies/writing-mode.md): find the nearest ancestor of the target file that holds 00-project/brief.md and 00-project/voice.md. Only kind story permits manuscript drafting; kind study permits study notes only; kind starter routes to story-bootstrap.
 
+No run state: this skill has no recovery preamble and hands off to no backlog or run-tracking skill. A story or study vault keeps no backlog and no run directory; its state lives in 00-project/development.md and 00-project/decisions.md.
+
 Character notes are working notes: plain notes that follow neither the voice sheet nor any instructional document structure.
 
 Read the story brief, voice sheet, relevant world constraints and accepted cast notes. Use the [character template](../../templates/story-vault/90-templates/character.md) and [working rules](../../shared/story/rules.md).

@@ -7,6 +7,8 @@ description: "Use when a story project must be started or resumed: creating a st
 
 Mode check first, under [writing mode](../../shared/policies/writing-mode.md): find the nearest ancestor of the target file that holds 00-project/brief.md and 00-project/voice.md. Only kind story permits manuscript drafting; kind study permits study notes only; kind starter routes to story-bootstrap.
 
+No run state: this skill has no recovery preamble and hands off to no backlog or run-tracking skill. A story or study vault keeps no backlog and no run directory; its state lives in 00-project/development.md and 00-project/decisions.md.
+
 Read [workflow](../../shared/story/workflow.md) and [rules](../../shared/story/rules.md). Read the [retrieval contract](../../shared/story/retrieval.md) only if a memory or retrieval tool is available. Paths in this skill resolve from its own folder; story paths resolve from the selected vault.
 
 For a minimal idea or a resumed development conversation, use [guided story development](../../shared/story/story-development.md). Read `00-project/development.md` and `00-project/decisions.md` when they exist; update them from the conversation rather than requiring the author to fill forms. Ask only the next consequential unresolved question and preserve prior delegation.

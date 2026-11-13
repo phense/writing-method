@@ -7,6 +7,8 @@ description: "Use when a fictional world for a story must be developed or extend
 
 Mode check first, under [writing mode](../../shared/policies/writing-mode.md): find the nearest ancestor of the target file that holds 00-project/brief.md and 00-project/voice.md. Only kind story permits manuscript drafting; kind study permits study notes only; kind starter routes to story-bootstrap.
 
+No run state: this skill has no recovery preamble and hands off to no backlog or run-tracking skill. A story or study vault keeps no backlog and no run directory; its state lives in 00-project/development.md and 00-project/decisions.md.
+
 World notes are working notes: plain notes that follow neither the voice sheet nor any instructional document structure.
 
 For technically grounded fiction, read [science and institutions](references/science-and-institutions.md) when capability limits, scientific claims or institutional consequences affect the plot.

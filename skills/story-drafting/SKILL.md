@@ -9,6 +9,8 @@ Mode check first, under [writing mode](../../shared/policies/writing-mode.md): f
 
 For manuscript text the story's voice sheet overrides explaining-concepts, writing-procedures, empathic-troubleshooting and human-prose-drafting, even when those skills are loaded in this session.
 
+No run state: this skill has no recovery preamble and hands off to no backlog or run-tracking skill. A story or study vault keeps no backlog and no run directory; its state lives in 00-project/development.md and 00-project/decisions.md.
+
 ## What counts as manuscript, and where it goes
 
 Manuscript is story prose, any document that exists inside the story (a letter, a report, a case file, an in-world how-to manual), and paratext: afterword, author note and blurb. An in-world manual is written in the voice the story gives its fictional writer, not as instructions for a real reader.

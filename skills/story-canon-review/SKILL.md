@@ -7,6 +7,8 @@ description: "Use when story chapters, short pieces or plans must be checked aga
 
 Mode check first, under [writing mode](../../shared/policies/writing-mode.md): find the nearest ancestor of the target file that holds 00-project/brief.md and 00-project/voice.md. Only kind story permits manuscript drafting; kind study permits study notes only; kind starter routes to story-bootstrap.
 
+No run state: this skill has no recovery preamble and hands off to no backlog or run-tracking skill. A story or study vault keeps no backlog and no run directory; its state lives in 00-project/development.md and 00-project/decisions.md.
+
 The review report is a working note. It never restyles manuscript, and it does not judge voice or tone; that belongs to `story-voice-review`.
 
 Read the relevant accepted notes, manuscript passages and the [review template](../../templates/story-vault/90-templates/review.md); read the [retrieval contract](../../shared/story/retrieval.md) only if a memory or retrieval tool is in use. Establish the exact chapters and revisions in scope. Summaries and retrieval hits locate evidence; original passages decide findings.

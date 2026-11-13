@@ -9,6 +9,8 @@ Mode check first, under [writing mode](../../shared/policies/writing-mode.md): f
 
 For manuscript text the story's voice sheet overrides explaining-concepts, writing-procedures, empathic-troubleshooting and human-prose-drafting, even when those skills are loaded in this session.
 
+No run state: this skill has no recovery preamble and hands off to no backlog or run-tracking skill. A story or study vault keeps no backlog and no run directory; its state lives in 00-project/development.md and 00-project/decisions.md.
+
 This skill is experimental. It reviews manuscript in a vault of kind story only. Read [voice and tone](../../shared/story/voice-and-tone.md), the story's `00-project/voice.md`, the voice cards of the characters who speak in scope, and the [review template](../../templates/story-vault/90-templates/review.md). The report is a working note; the reply about it stays reader-oriented.
 
 ## Preconditions

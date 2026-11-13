@@ -62,6 +62,12 @@ EXCLUDED_READER_SKILLS = PRECEDENCE_READER_SKILLS + [
 ]
 PRECEDENCE_STORY_SKILLS = ["story-drafting", "story-voice-review"]
 
+NO_RUN_STATE = (
+    "No run state: this skill has no recovery preamble and hands off to no backlog or run-tracking skill. "
+    "A story or study vault keeps no backlog and no run directory; its state lives in "
+    "00-project/development.md and 00-project/decisions.md."
+)
+
 # Skill names of the sibling Engineering Method plugin. Both plugins can be
 # installed together, and OpenCode has one flat skill namespace.
 ENGINEERING_SKILLS = {
@@ -409,6 +415,11 @@ class OperativeSentences(unittest.TestCase):
                 paragraphs = paragraphs_after_h1(f"skills/{name}/SKILL.md")
                 self.assertGreaterEqual(len(paragraphs), 2)
                 self.assertEqual(self.sentences["precedence"], paragraphs[1])
+
+    def test_every_story_skill_rules_out_run_state(self):
+        # Hosts otherwise go looking for a recovery preamble and open the backlog skill in a vault.
+        for name in STORY_SKILLS:
+            self.assertIn(NO_RUN_STATE, paragraphs_after_h1(f"skills/{name}/SKILL.md")[:3], name)
 
     def test_every_story_description_ends_with_the_exclusion(self):
         for name in self.policy["families"]["story"]:

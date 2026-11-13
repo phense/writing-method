@@ -7,6 +7,8 @@ description: "Use when the structure of a long story must be outlined: whole-sto
 
 Mode check first, under [writing mode](../../shared/policies/writing-mode.md): find the nearest ancestor of the target file that holds 00-project/brief.md and 00-project/voice.md. Only kind story permits manuscript drafting; kind study permits study notes only; kind starter routes to story-bootstrap.
 
+No run state: this skill has no recovery preamble and hands off to no backlog or run-tracking skill. A story or study vault keeps no backlog and no run directory; its state lives in 00-project/development.md and 00-project/decisions.md.
+
 Outlines, arc notes, volume notes and chapter cards are working notes: plain notes that follow neither the voice sheet nor any instructional document structure.
 
 Read the story brief, accepted cast/world constraints and [workflow](../../shared/story/workflow.md). Use the [arc](../../templates/story-vault/90-templates/arc.md), [volume](../../templates/story-vault/90-templates/volume.md), [chapter card](../../templates/story-vault/90-templates/chapter.md) and [foreshadow](../../templates/story-vault/90-templates/foreshadow.md) templates.

@@ -57,6 +57,9 @@ class WritingContracts(unittest.TestCase):
                 # Story work never loads the reader prose skills, review-feedback handling or a backlog.
                 self.assertTrue(reader_prose|{'requesting-code-review','receiving-code-review','project-backlog'} <= set(case['prohibited']),case['id'])
                 self.assertFalse(set(case['supporting'])-STORY-{'verification-before-completion'},case['id'])
+            elif case['id']=='story-method-documentation':
+                # Documenting the method may read story skills as source material; the two that govern or judge manuscript text stay prohibited.
+                self.assertEqual({'native-focused-edit','story-drafting','story-voice-review'},set(case['prohibited']),case['id'])
             else:
                 self.assertTrue(STORY <= set(case['prohibited']),case['id'])
             if case['id']=='study-vault-draft-request':

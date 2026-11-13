@@ -7,6 +7,8 @@ description: "Use when fiction craft or worldbuilding method must be researched:
 
 Mode check first, under [writing mode](../../shared/policies/writing-mode.md): find the nearest ancestor of the target file that holds 00-project/brief.md and 00-project/voice.md. Only kind story permits manuscript drafting; kind study permits study notes only; kind starter routes to story-bootstrap.
 
+No run state: this skill has no recovery preamble and hands off to no backlog or run-tracking skill. A story or study vault keeps no backlog and no run directory; its state lives in 00-project/development.md and 00-project/decisions.md.
+
 Research notes, source cards and study notes are working notes: plain notes that follow neither a voice sheet nor any instructional document structure.
 
 ## Where the work is kept

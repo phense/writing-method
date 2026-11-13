@@ -347,13 +347,7 @@
     "primary": "documentation-authoring",
     "supporting": [],
     "prohibited": [
-      "story-bootstrap",
-      "story-worldbuilding",
-      "story-characters",
-      "story-architecture",
       "story-drafting",
-      "story-canon-review",
-      "story-craft-research",
       "story-voice-review"
     ],
     "artifacts": [

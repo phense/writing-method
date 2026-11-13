@@ -126,7 +126,7 @@ not that a host obeys it.
 | A reply that discusses plot, characters or craft | `reader-oriented` |
 | A reply that contains a draft passage | The passage goes into a manuscript location or a fenced block and is `manuscript`; the surrounding reply never restyles it |
 | A draft passage requested outside any vault | `manuscript` with the method defaults; the reply states that no voice sheet applies |
-| Documentation about the story method; a vault `README.md` | `reader-oriented`, under `documentation-authoring` |
+| Documentation about the story method; a vault `README.md` | `reader-oriented`, under `documentation-authoring`. Story skills may be read as source material; they do not govern the document. |
 | An in-world document, including an in-world how-to manual | `manuscript`, under `story-drafting` |
 | A story excerpt quoted in documentation | Quoted material, unchanged |
 | An explanatory narrated video about a story or its world | `reader-oriented`, under `tutorial-video-scripting` |
