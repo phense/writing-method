@@ -34,11 +34,41 @@ additional skill that the case prohibited.
 No run selected a reader prose skill as primary for manuscript work, or a story
 skill as primary for a README, release note, tutorial video or method guide.
 
+## Regression: the nine earlier cases at `c68dbc1`
+
+| Host | Passed | Failed (`unexpected_selection`) |
+|---|---|---|
+| Claude | 8 of 9 | `presentation-video-production` |
+| Codex | 8 of 9 | `presentation-video-production` |
+
+The documentation, PDF, tutorial-script, video-review and out-of-scope cases
+passed on both hosts with the story family present. No story skill was selected
+in any of the eighteen runs.
+
+In the failing case both hosts chose `presentation-video-production` as primary
+and additionally applied `documentation-authoring`, which the case prohibits.
+The production skill itself sends the reader to the recovery preamble of
+`documentation-authoring`. Neither that skill nor the case is changed by this
+work.
+
+Baseline comparison of that one case against release 0.3.0 (`29752ab`, without
+the story family):
+
+| Host | 0.3.0 | This branch |
+|---|---|---|
+| Codex | 0 of 1 passed | 0 of 1 passed |
+| Claude | 2 of 3 passed | 0 of 3 passed |
+
+On Codex the failure exists without the story family. On Claude the case is
+unstable without it, and failed every time with it. Three runs per side do not
+show whether this branch makes the case worse. The cause, a production skill
+that requires a skill its routing case prohibits, belongs to WM-001 and is not
+fixed here.
+
 ## Not covered
 
-- The nine routing cases that existed before this work were not rerun, so an
-  effect of the eight added skills on documentation and video routing is
-  unmeasured.
+- The earlier cases ran once per host; apart from `presentation-video-production`
+  no rate exists for them.
 - Each case ran once per host in the first run; the reruns cover only the four
   failed cases. No five-run rate exists for the other cases.
 - Leakage of one family's rules into produced text, a reply inside a vault and
