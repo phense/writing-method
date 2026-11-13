@@ -9,6 +9,17 @@ with mirrored margins, a dark-navy title page, a title page for each part, and
 a running head that names the part, the chapter and the page. The layout and
 the sample text are original.
 
+## Contents
+
+- When to choose it
+- Build
+- Parts, chapters and order
+- Settings
+- What the filter does to the text
+- Pages that end with a few lines
+- Verification
+- Limits
+
 ## When to choose it
 
 | Situation | Template |

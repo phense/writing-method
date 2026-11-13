@@ -1,7 +1,7 @@
 ---
 type: reference
 audience: Authors using Writing Method
-version: 0.3.0
+version: 0.4.0
 ---
 # Writing examples
 
@@ -109,3 +109,62 @@ runs voicing again: one request is sent, because every other line is reused.
 The timeline moves all later lines by itself. The stills of that scene, the
 render and the measurement are repeated, and the review checks the changed
 scene.
+
+## Draft a chapter in a story vault
+
+The story family is experimental. It applies inside a story vault: a directory
+copied from `templates/story-vault/` whose `00-project/brief.md` reads
+`kind: story`.
+
+> Draft chapter 12 from its chapter card.
+
+`story-drafting` first checks the vault: the kind must be `story`, and
+viewpoint, tense and distance must be set in `00-project/voice.md`. It then
+reads the chapter card in `05-plot/chapters/` and writes prose only, into
+`06-manuscript/chapters/`. The voice sheet decides how the prose sounds.
+`explaining-concepts`, `writing-procedures`, `empathic-troubleshooting` and
+`human-prose-drafting` do not apply to it: a chapter gets no analogy, no
+numbered steps and no smoothing of deliberate fragments. If one of the three
+voice fields is still `unset`, no chapter is drafted and you are led to a
+voice trial first. The chapter is complete when `story-canon-review` has
+reviewed it at a named revision and you have accepted it; your acceptance is a
+decision, not a command result.
+
+## Turn an accepted chapter into a narrated video
+
+> Turn chapter 11 into a narrated video. Read it exactly as it is written.
+
+`story-video-scripting` checks the vault as `story-drafting` does, then checks
+that the chapter is accepted at a named revision. It copies the video project
+template to the directory you name, outside `06-manuscript/`, and writes the
+script files. `video.json` records `"purpose": "story"`, `"edition":
+"verbatim"` and the chapter with its revision. Every narration line is the
+manuscript text, cut at sentence boundaries; no word is added, dropped or
+changed. A scene's picture is a plain description in `script/script.md`.
+`python3 tools/check_script.py` must report no errors; a story script needs no
+source table. The script is ready when you have accepted it.
+
+If the text should differ for the ear, ask for a listening edition instead.
+Each difference from the manuscript is then your decision and is recorded in
+an edition file under `06-manuscript/editions/listening/`. The chapter itself
+stays unchanged.
+
+`presentation-video-production` then voices and renders the accepted script as
+it is, and `presentation-video-review` checks each narration line against the
+named edition. A finding about wording returns to `story-video-scripting` and
+to you, never to a rewrite during production. This path is experimental: no
+video has been produced with it, and the pronunciation of invented names and
+the origin of the pictures are not designed yet.
+
+## Ask a question inside a story vault
+
+> Why does chapter 11 feel slow, and what should I look at first?
+
+This is a reply to you, so it stays an ordinary reader-oriented reply even
+though the session is inside a story vault and the subject is the story. The
+answer explains plainly, names what to check first and does not imitate the
+story's voice. The voice sheet styles manuscript files only. If the reply
+contains a draft passage, the passage stands apart in a fenced block or a
+prose file and follows the voice sheet, and the text around it does not. The
+rule for each kind of text is in
+[writing mode](../shared/policies/writing-mode.md).

@@ -16,6 +16,14 @@
 | No secret, credential or private data | | |
 | Key terms flagged in the pronunciation list | | |
 
+For a story video (`"purpose": "story"` in `video.json`), replace the rows
+"Sources confirm the claims of their scenes" and "One audience, one form of
+address, friendly tone" with "Every narration line matches the <edition>
+edition of <chapter-id> at <revision>" (evidence: the comparison and the
+revision compared) and "One audience and one form of address in
+`video.json`". The row on recreated interfaces is not applicable unless
+`recreated` is set. No tone judgement is recorded.
+
 Gate 1: <passed / open> on <date>
 
 ## Gate 2: before delivery

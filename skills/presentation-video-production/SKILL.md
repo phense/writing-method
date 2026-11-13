@@ -1,6 +1,6 @@
 ---
 name: presentation-video-production
-description: "Use when an accepted video script must become a rendered presentation video: verifying key-term pronunciation, voicing the narration with Azure AI Speech or the ElevenLabs connector, deriving the timeline from the measured sound, building scenes, taking check stills and rendering, or when one sentence of an existing video changed. Not for writing or changing the script's content (use tutorial-video-scripting), the acceptance review (use presentation-video-review), filmed material, screen recordings or short-form social video."
+description: "Use when an accepted script of a tutorial or a story video must become a rendered presentation video: verifying key-term pronunciation, voicing the narration with Azure AI Speech or the ElevenLabs connector, deriving the timeline from the measured sound, building scenes, taking check stills and rendering, or when one sentence of an existing video changed. Not for writing or changing the script's content (use tutorial-video-scripting; a story script returns to the story family), the acceptance review (use presentation-video-review), filmed material, screen recordings or short-form social video."
 ---
 
 # Presentation Video Production
@@ -18,19 +18,21 @@ first request to a provider.
 
 ## Recovery preamble
 
-Follow the recovery preamble and the operational state handoffs of
-[documentation-authoring](../documentation-authoring/SKILL.md#recovery-preamble).
+Follow the [recovery gate](../project-backlog/SKILL.md#recovery-gate) and the
+[operational handoffs](../project-backlog/SKILL.md#operational-handoffs) of the
+backlog skill directly. No documentation skill is part of the video lifecycle.
 For an untracked single video, the files on disk are the state: completed
 sound is reused, so every step can be run again after an interruption.
+A story video keeps no run state. Skip this preamble; see [Story scripts](#story-scripts).
 
 ## Trigger
 
-An accepted script (script check passed, author agreed), or a correction to a
-video that already exists.
+An accepted script of a tutorial or a story video (script check passed, author
+agreed), or a correction to a video that already exists.
 
 ## Do not use for
 
-- Deciding what the video says; use `tutorial-video-scripting`.
+- Deciding what the video says; use `tutorial-video-scripting`, or `story-video-scripting` for a story script.
 - The acceptance decision; use `presentation-video-review`.
 - A script that has not passed the script check.
 
@@ -90,8 +92,9 @@ video that already exists.
    twice without the setting. Keep a setting only if it reports EFFECTIVE.
 7. **Timeline.** `python3 tools/timeline.py`. It refuses sound that no
    longer matches the text. Then `python3 tools/measure.py pace`: a scene
-   outside the profile's range is adjusted through wording, an effective
-   provider setting, or the pause value, and measured again.
+   outside the profile's range is adjusted through wording (tutorial scripts
+   only), an effective provider setting, or the pause value, and measured
+   again.
 8. **Read-back.** `python3 tools/verify_speech.py` over all lines. An
    unrecognized key term blocks delivery; lines below the similarity
    threshold are listened to.
@@ -115,7 +118,8 @@ video that already exists.
     pause between lines. A render that exited cleanly is not evidence; this
     measurement is.
 13. **Record.** Update the project `README.md`: chapters with time marks from
-    `out/chapters.txt`, sources, voice and provider, what makes the video
+    `out/chapters.txt`, sources (for a story video the edition and the
+    manuscript revisions instead), voice and provider, what makes the video
     stale.
 
 ### One sentence changed
@@ -123,6 +127,27 @@ video that already exists.
 Edit the line in `src/narration.json`, then repeat steps 5, 7, 8, the stills
 of that scene, and steps 10 to 12. Per-line voicing sends one request; all
 later lines move by themselves.
+
+## Story scripts
+
+`video.json` with `"purpose": "story"` marks a story video. Its narration is
+accepted manuscript (`"edition": "verbatim"`) or an accepted listening edition
+(`"edition": "listening"`) of the revisions named under `based_on`; see
+[writing mode](../../shared/policies/writing-mode.md).
+
+- Voice and render the narration as it is. Never change its wording, tone or
+  order: not to meet the pace range, not to shorten a line, not to ease a
+  pronunciation. Pace is adjusted through an effective provider setting or
+  the pause value only.
+- A wrong name or term is corrected in `pronunciation.json` or with a line's
+  `speak`, which changes the sound and never the caption text or the words.
+- A line that the script check rejects, or that needs other words to work
+  aloud, goes back to `story-video-scripting` and the author. The same holds
+  for "one sentence changed": the changed line arrives from there; this skill
+  voices it and repeats the steps above.
+- Scene pictures follow the plain descriptions in `script/script.md`.
+- A story video keeps no run state. Do not open the backlog skill and create no run
+  directory; the files of the video project are the state.
 
 ## Playbook
 
@@ -145,4 +170,4 @@ not acceptance: the delivery gate belongs to the review.
 
 - `verification-before-completion` before any "rendered" or "ready" claim.
 - `playbook-authoring`, `playbook-review` for the production playbook.
-- `project-backlog` when the video is tracked under a work ID.
+- `project-backlog` when a tutorial video is tracked under a work ID.

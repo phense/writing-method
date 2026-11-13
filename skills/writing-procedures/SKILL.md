@@ -1,9 +1,11 @@
 ---
 name: writing-procedures
-description: "Use when a reader must perform actions: installation, configuration, operation, or any how-to steps in documentation or an ordinary reply. Produces numbered imperative steps, one action each, exact locations named, three to five steps per block, and a check that it worked. Not for conceptual explanation, reference tables, or diagnosing a failure."
+description: "Use when a reader must perform actions: installation, configuration, operation, or any how-to steps in documentation or an ordinary reply. Produces numbered imperative steps, one action each, exact locations named, three to five steps per block, and a check that it worked. Not for conceptual explanation, reference tables, or diagnosing a failure. Not for story manuscripts or in-world text."
 ---
 
 # Writing Procedures
+
+Not for story manuscripts or in-world text: when the target is manuscript, stop and use the story family under [writing mode](../../shared/policies/writing-mode.md).
 
 Apply the shared [proportionality rule](../../shared/policies/proportionality.md)
 before adding work, delegating, or repeating verification.
@@ -27,6 +29,8 @@ ordinary replies.
 - Symptom-first help when something has gone wrong; use
   `empathic-troubleshooting`.
 - Reference tables of options, fields or commands; link to them from a step.
+- Story manuscripts or in-world text; the story family owns them, under
+  [writing mode](../../shared/policies/writing-mode.md).
 
 ## Chapter pattern
 

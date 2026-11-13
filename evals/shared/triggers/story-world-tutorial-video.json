@@ -1,0 +1,14 @@
+{
+  "id": "story-world-tutorial-video",
+  "prompt": "Create a narrated explainer video for new readers of Ember Road that explains how the ranks of the salt-road courier guild work. The source is 01-world/overview.md. Assess the workflow, load its instructions, and record decision.md; do not write the script yet.",
+  "files": {
+    "AGENTS.md": "# Vault instructions\n\nThis directory is one vault. Its kind is stated in the frontmatter of 00-project/brief.md and 00-project/voice.md; here it is `story`. Only kind story permits manuscript drafting; kind study permits study notes only; kind starter is an unused template.\n\nManuscript files follow 00-project/voice.md and nothing from documentation or didactic writing rules. Other vault notes are plain working notes. Replies to the author stay reader-oriented; the voice sheet never styles a reply.\n",
+    "CLAUDE.md": "@AGENTS.md\n",
+    "START.md": "# Ember Road\n\nStory vault. Start with 00-project/brief.md.\n",
+    "00-project/brief.md": "---\nkind: story\nstory_id: ember-road\nform: long-form\npublication_profile: web-serial\n---\n# Story brief\n\nA courier guild carries sealed letters across a salt desert between rival cities. Reader promise: slow-burn travel adventure with a guild intrigue underneath.\n",
+    "00-project/voice.md": "---\nkind: story\nstory_id: ember-road\nvoice_revision: V1\nviewpoint: third person limited\ntense: past\ndistance: close\n---\n# Voice sheet\n\n## Narration contract\n\nViewpoint Sena: third person limited, past tense, close distance. No head-hopping inside a scene.\n\n## Tone palette\n\nBaseline: dry, observant, unhurried.\n\n## Anchor passages\n\n- ch-003, revision r4: the night crossing.\n- ch-008, revision r2: the ledger argument.\n",
+    "00-project/development.md": "# Development state\n\nCurrent pass: drafting arc-01. Next: chapter 12.\n",
+    "01-world/overview.md": "# World overview\n\nThe salt-road courier guild has three ranks. A runner carries unsealed post inside one city. A courier carries sealed letters between cities and may refuse a commission. A warden keeps a gate ledger and settles disputes between couriers and clients.\n",
+    "07-continuity/state.md": "# Current state\n\n- Accepted through ch-011, revision r2.\n- The Ash Court seal is black wax (accepted in ch-004).\n- Oren lost his left hand before the story begins (accepted in ch-002).\n"
+  }
+}

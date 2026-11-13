@@ -236,6 +236,93 @@ class ScriptCheck(unittest.TestCase):
         def orphan(s): s["narration"]["extra"] = [{"text": "Hello."}]
         self.assertIn("scenes", rules(self.run_check(orphan)))
 
+    @staticmethod
+    def as_story(s):
+        s["video"].update(purpose="story", edition="verbatim", story_id="sample-story",
+                          based_on=[{"chapter_id": "ch-01", "revision": "r3"}])
+        for scene in s["scenes"]:
+            scene.pop("sources", None); scene.pop("no_claims", None)
+        s["script"] = s["script"].replace("| S1 |", "| x |")
+
+    def test_story_script_passes_without_sources(self):
+        self.assertEqual([], self.run_check(self.as_story))
+        def listening(s):
+            self.as_story(s); s["video"]["edition"] = "listening"
+        self.assertEqual([], self.run_check(listening))
+
+    def test_story_script_must_name_edition_and_manuscript_revision(self):
+        def no_edition(s):
+            self.as_story(s); s["video"].pop("edition")
+        self.assertEqual({"edition"}, rules(self.run_check(no_edition)))
+        def other_edition(s):
+            self.as_story(s); s["video"]["edition"] = "abridged"
+        self.assertEqual({"edition"}, rules(self.run_check(other_edition)))
+        for bad in (None, [], "ch-01", [{"chapter_id": "ch-01"}], [{"chapter_id": "ch-01", "revision": "r3"}, {"revision": "r3"}]):
+            def based(s, bad=bad):
+                self.as_story(s); s["video"]["based_on"] = bad
+            with self.subTest(based_on=bad):
+                self.assertEqual({"based-on"}, rules(self.run_check(based)))
+
+    def test_story_sentence_length_is_the_authors_choice_but_lines_stay_limited(self):
+        def long_sentence(s):
+            self.as_story(s); s["narration"]["steps"][0]["text"] = " ".join(["word"] * 27) + "."
+        self.assertEqual([], self.run_check(long_sentence))
+        def long_line(s):
+            self.as_story(s); s["narration"]["steps"][0]["text"] = " ".join(["word"] * 29) + "."
+        findings = self.run_check(long_line)
+        self.assertEqual({"line-length"}, rules(findings))
+        self.assertEqual(set(), rules(findings, "warning"))
+
+    def test_story_script_keeps_the_other_checks(self):
+        def broken(s):
+            self.as_story(s)
+            s["video"].update(audience=["listeners", "pupils"], recreated=True)
+            s["scenes"][1].pop("message")
+            s["narration"]["intro"][1]["text"] = "Use password: hunter2secret to sign in."
+            s["narration"]["close"][0].update(text="Ask the IT team.", speak="Please subscribe to our channel today.")
+            s["narration"]["steps"][1]["text"] = "Ask the IT team."
+            s["prof"]["script"]["max_minutes"] = 0.2
+        findings = self.run_check(broken)
+        self.assertEqual({"audience", "message", "secret", "caption-speech", "notice", "length"}, rules(findings))
+        self.assertEqual({"speakable"}, rules(findings, "warning"))
+
+    def test_tutorial_behaviour_is_unchanged_by_the_purpose_field(self):
+        def defects(s):
+            s["scenes"][1].pop("sources"); s["scenes"][2]["sources"] = ["S9"]
+            s["narration"]["steps"][0]["text"] = " ".join(["word"] * 27) + "."
+            s["script"] = s["script"].replace("| S1 |", "| x |")
+        def named(s):
+            defects(s); s["video"]["purpose"] = "tutorial"
+        plain = self.run_check(defects)
+        self.assertEqual({"sources"}, rules(plain))
+        self.assertEqual({"sentence-length"}, rules(plain, "warning"))
+        self.assertEqual(3, sum(f["rule"] == "sources" for f in plain))
+        self.assertEqual(plain, self.run_check(named))
+        # the story fields alone change nothing: only the purpose switches the rules
+        def fields_only(s):
+            defects(s); s["video"].update(edition="verbatim", based_on=[{"chapter_id": "ch-01", "revision": "r3"}])
+        self.assertEqual(plain, self.run_check(fields_only))
+
+    def test_unknown_purpose_is_an_error(self):
+        def marketing(s): s["video"]["purpose"] = "marketing"
+        findings = self.run_check(marketing)
+        self.assertEqual({"purpose"}, rules(findings))
+        def story_like(s):
+            self.as_story(s); s["video"]["purpose"] = "Story"
+        self.assertLessEqual({"purpose", "sources"}, rules(self.run_check(story_like)))
+
+    def test_video_file_accepts_the_story_fields_and_still_rejects_unknown_keys(self):
+        folder = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, folder)
+        video = json.loads((TEMPLATE / "video.json").read_text())
+        story = {**video, "purpose": "story", "edition": "listening", "story_id": "sample-story",
+                 "based_on": [{"chapter_id": "ch-01", "revision": "r3"}]}
+        (folder / "video.json").write_text(json.dumps(story))
+        self.assertEqual(story, profile_mod.load_video(folder))
+        (folder / "video.json").write_text(json.dumps({**story, "editon": "verbatim"}))
+        with self.assertRaisesRegex(profile_mod.ProfileError, "unknown key in video.json: editon"):
+            profile_mod.load_video(folder)
+
 
 class Credentials(unittest.TestCase):
     def setUp(self):

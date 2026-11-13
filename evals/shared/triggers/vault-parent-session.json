@@ -1,0 +1,18 @@
+{
+  "id": "vault-parent-session",
+  "prompt": "Write README.md for this workspace directory. It holds several story vaults and shared notes; a collaborator should learn the layout and where to start. Perform only the first safe assessment: select the workflow, load the applicable skills, and record decision.md; do not draft the README.",
+  "files": {
+    "notes/ideas.md": "# Ideas\n\nLoose premises that are not stories yet.\n",
+    "stories/ember-road/AGENTS.md": "# Vault instructions\n\nThis directory is one vault. Its kind is stated in the frontmatter of 00-project/brief.md and 00-project/voice.md; here it is `story`. Only kind story permits manuscript drafting; kind study permits study notes only; kind starter is an unused template.\n\nManuscript files follow 00-project/voice.md and nothing from documentation or didactic writing rules. Other vault notes are plain working notes. Replies to the author stay reader-oriented; the voice sheet never styles a reply.\n",
+    "stories/ember-road/CLAUDE.md": "@AGENTS.md\n",
+    "stories/ember-road/START.md": "# Ember Road\n\nStory vault. Start with 00-project/brief.md.\n",
+    "stories/ember-road/00-project/brief.md": "---\nkind: story\nstory_id: ember-road\nform: long-form\npublication_profile: web-serial\n---\n# Story brief\n\nA courier guild carries sealed letters across a salt desert between rival cities. Reader promise: slow-burn travel adventure with a guild intrigue underneath.\n",
+    "stories/ember-road/00-project/voice.md": "---\nkind: story\nstory_id: ember-road\nvoice_revision: V1\nviewpoint: third person limited\ntense: past\ndistance: close\n---\n# Voice sheet\n\n## Narration contract\n\nViewpoint Sena: third person limited, past tense, close distance. No head-hopping inside a scene.\n\n## Tone palette\n\nBaseline: dry, observant, unhurried.\n\n## Anchor passages\n\n- ch-003, revision r4: the night crossing.\n- ch-008, revision r2: the ledger argument.\n",
+    "stories/ember-road/00-project/development.md": "# Development state\n\nCurrent pass: drafting arc-01. Next: chapter 12.\n",
+    "stories/ember-road/01-world/overview.md": "# World overview\n\nThe salt-road courier guild has three ranks. A runner carries unsealed post inside one city. A courier carries sealed letters between cities and may refuse a commission. A warden keeps a gate ledger and settles disputes between couriers and clients.\n",
+    "stories/ember-road/07-continuity/state.md": "# Current state\n\n- Accepted through ch-011, revision r2.\n- The Ash Court seal is black wax (accepted in ch-004).\n- Oren lost his left hand before the story begins (accepted in ch-002).\n",
+    "stories/ember-road/06-manuscript/index.md": "# Manuscript order\n\n| Chapter | Prose file | Card | Arc | POV | Accepted revision |\n|---|---|---|---|---|---|\n| ch-010 | 06-manuscript/chapters/ch-010.md | 05-plot/chapters/ch-010.md | arc-01 | Sena | r2 |\n| ch-011 | 06-manuscript/chapters/ch-011.md | 05-plot/chapters/ch-011.md | arc-01 | Sena | r2 |\n| ch-012 | 06-manuscript/chapters/ch-012.md | 05-plot/chapters/ch-012.md | arc-01 | Sena | none |\n",
+    "stories/tin-harbour/00-project/brief.md": "---\nkind: story\nstory_id: tin-harbour\nform: long-form\npublication_profile: unset\n---\n# Story brief\n\nA harbour town sells its tide.\n",
+    "stories/tin-harbour/00-project/voice.md": "---\nkind: story\nstory_id: tin-harbour\nvoice_revision: V0\nviewpoint: unset\ntense: unset\ndistance: unset\n---\n# Voice sheet\n\n## Narration contract\n\nNot decided.\n\n## Tone palette\n\nNot decided.\n\n## Anchor passages\n\nNone.\n"
+  }
+}

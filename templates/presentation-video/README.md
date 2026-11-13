@@ -7,6 +7,16 @@ plugin has changed.
 Replace this page with the record of your video when it is delivered; the
 section **Project record** at the end shows what belongs in it.
 
+## Contents
+
+- Terms
+- What you need
+- Files you write
+- From script to file
+- When something fails
+- Fonts
+- Project record
+
 ## Terms
 
 | Term | Meaning |
@@ -57,6 +67,34 @@ spelling. `min` is the least time in seconds the line stays on screen, for a
 picture that needs longer than the sentence. `show: false` speaks the line
 without a caption. `notice: true` marks the line that tells the viewer that
 interfaces are recreated.
+
+### Story videos
+
+A video that narrates a story (an accepted chapter, range or short piece read
+aloud over pictures) is marked in `video.json`:
+
+```json
+{"purpose": "story", "edition": "verbatim", "story_id": "<story id>",
+ "based_on": [{"chapter_id": "<chapter id>", "revision": "<manuscript revision>"}]}
+```
+
+- `purpose` is `tutorial` when absent. With `story`, the narration is the
+  author's accepted text and no tool or step may reword it.
+- `edition` is `verbatim` (the accepted manuscript, only cut into scenes and
+  lines at sentence boundaries) or `listening` (a derived text with changes for
+  the ear that the author approved; the written manuscript stays unchanged).
+- `based_on` names every chapter or piece narrated and the manuscript revision
+  it was taken from. A changed manuscript makes the script stale.
+
+The script check then requires `edition` and `based_on`, asks for no source
+table and no `sources` per scene, and raises no sentence-length warning; every
+other check stays. A scene's `message` is a working note of what happens in
+the scene and is not spoken; the picture is a plain description in
+`script/script.md`, where the section Tone is left out and the sections
+Sources and Evidenced, approximated, invented may be left out unless
+interfaces are recreated. `script/script.md` also names the paths of the
+texts narrated and, for a listening edition, its `edition_revision`. `audience` and
+`address` stay required (the listener; `address` may be `none`).
 
 ## From script to file
 
@@ -172,6 +210,8 @@ Set `"provider": "elevenlabs"` and `"mode": "scene"` in the profile.
 | `key term not recognized` | The voice mispronounces a key term | Correct it in `pronunciation.json`, voice and verify again |
 | `line N was not heard in the take` | The take dropped or changed a sentence | Request a new take; the scene's existing sound is untouched |
 | `id may contain only lowercase letters, digits and hyphens` | `video.json` id is used in file names and commands | Rename the id |
+| `a story video must name its edition` | `video.json` has `"purpose": "story"` without `edition` | Set `verbatim` or `listening` |
+| `a story video must list the manuscript it narrates` | `based_on` is missing, empty or lacks `chapter_id` or `revision` | Name each narrated chapter with its manuscript revision |
 | An empty box or missing symbol in a still | The fonts cover Latin and Latin Extended only | Draw the mark as a shape or add a font that has it |
 
 ## Fonts

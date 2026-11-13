@@ -5,6 +5,10 @@ Reads video.json, src/scenes.json, src/narration.json and script/script.md and
 reports every violation with scene and line. Errors block voicing (exit 1);
 warnings do not.
 
+`"purpose": "story"` in video.json marks narrated fiction: the narration is an
+accepted manuscript edition, so no source is required and sentence length is
+the author's choice; the edition and the manuscript revisions must be named.
+
 Usage: python3 tools/check_script.py [--json]
 """
 import difflib
@@ -27,6 +31,8 @@ ABBREVIATION = re.compile(r"\b[A-ZÄÖÜ]{2,6}\b")
 # digits a voice may read in an unintended way: times, versions, long numbers, units
 NUMBER = re.compile(r"\b\d+[:./]\d+\b|\b\d{3,}\b|\b\d+\s?(%|[kMG]B|ms|min|s|h|px|€|\$)(?!\w)")
 SCENE_KEY = re.compile(r"[a-z0-9_]+")
+PURPOSES = ("tutorial", "story")
+EDITIONS = ("verbatim", "listening")
 
 
 def finding(severity, rule, message, scene=None, line=None):
@@ -70,6 +76,18 @@ def check(video: dict, scenes: list[dict], narration: dict, script_text: str,
           prof: dict, entries: list[dict]) -> list[dict]:
     out = []
     limits = prof["script"]
+    purpose = video.get("purpose", "tutorial")
+    if purpose not in PURPOSES:
+        out.append(finding("error", "purpose", f"video.json purpose must be one of {', '.join(PURPOSES)}"))
+    story = purpose == "story"
+    if story:
+        # the narration is a manuscript edition: name which one and what it was taken from
+        if video.get("edition") not in EDITIONS:
+            out.append(finding("error", "edition", f"a story video must name its edition: {' or '.join(EDITIONS)}"))
+        based_on = video.get("based_on")
+        if not (isinstance(based_on, list) and based_on and all(
+                isinstance(b, dict) and b.get("chapter_id") and b.get("revision") for b in based_on)):
+            out.append(finding("error", "based-on", "a story video must list the manuscript it narrates: based_on entries with chapter_id and revision"))
 
     # FR-001: one audience, one form of address
     if not isinstance(video.get("audience"), str):
@@ -96,9 +114,9 @@ def check(video: dict, scenes: list[dict], narration: dict, script_text: str,
             out.append(finding("error", "chapter", "scene belongs to no chapter", key))
         if key not in narration or not narration[key]:
             out.append(finding("error", "scenes", "scene has no narration", key))
-        # FR-004: every claim traceable or marked
+        # FR-004: every claim traceable or marked; a story scene makes no claim
         cited = scene.get("sources") or []
-        if not (cited or scene.get("unverified") or scene.get("no_claims")):
+        if not (story or cited or scene.get("unverified") or scene.get("no_claims")):
             out.append(finding("error", "sources", "scene cites no source and is not marked unverified or no_claims", key))
         for sid in cited:
             if sid not in known_sources:
@@ -121,7 +139,7 @@ def check(video: dict, scenes: list[dict], narration: dict, script_text: str,
                 out.append(finding("error", "line-length", f"{count} words, limit {limits['max_line_words']}", key, i))
             for sentence in re.split(r"(?<=[.!?])\s+", text):
                 n = project.words(sentence)
-                if n > limits["max_sentence_words"]:
+                if n > limits["max_sentence_words"] and not story:
                     out.append(finding("warning", "sentence-length", f"sentence of {n} words, hard to follow by ear (limit {limits['max_sentence_words']})", key, i))
             if "speak" not in line:
                 for abbr in sorted(set(ABBREVIATION.findall(text)) - listed):
@@ -147,7 +165,7 @@ def check(video: dict, scenes: list[dict], narration: dict, script_text: str,
         evidence = section(script_text, "Evidenced, approximated, invented")
         if not evidence or "<" in evidence:
             out.append(finding("error", "evidence-list", "script/script.md must list what is evidenced, approximated and invented"))
-    if not known_sources:
+    if not known_sources and not story:
         out.append(finding("error", "sources", "script/script.md lists no source (table rows S1, S2, ...)"))
 
     # FR-036: no length recommendation, one maximum

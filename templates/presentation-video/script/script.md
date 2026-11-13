@@ -2,7 +2,11 @@
 
 Replace the sample content. Keep the headings: `tools/check_script.py` reads
 them. The spoken text lives in `src/narration.json`, the scene list in
-`src/scenes.json`; this file is what a person reviews.
+`src/scenes.json`; this file is what a person reviews. A story video leaves
+out Tone, because the story's own voice governs the narration, and may leave
+out Sources and Evidenced, approximated, invented unless interfaces are
+recreated; it names the edition, the revisions and the paths of the texts
+narrated instead.
 
 ## Audience
 

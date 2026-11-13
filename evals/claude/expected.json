@@ -171,5 +171,287 @@
     "artifacts": [
       "decision.md"
     ]
+  },
+  "story-chapter-draft": {
+    "primary": "story-drafting",
+    "supporting": [],
+    "prohibited": [
+      "explaining-concepts",
+      "writing-procedures",
+      "empathic-troubleshooting",
+      "human-prose-drafting",
+      "documentation-authoring",
+      "documentation-planning",
+      "documentation-review",
+      "tutorial-video-scripting",
+      "requesting-code-review",
+      "receiving-code-review",
+      "project-backlog"
+    ],
+    "artifacts": [
+      "decision.md"
+    ]
+  },
+  "story-new-vault": {
+    "primary": "story-bootstrap",
+    "supporting": [],
+    "prohibited": [
+      "explaining-concepts",
+      "writing-procedures",
+      "empathic-troubleshooting",
+      "human-prose-drafting",
+      "documentation-authoring",
+      "documentation-planning",
+      "documentation-review",
+      "tutorial-video-scripting",
+      "requesting-code-review",
+      "receiving-code-review",
+      "project-backlog"
+    ],
+    "artifacts": [
+      "decision.md"
+    ]
+  },
+  "story-canon-review": {
+    "primary": "story-canon-review",
+    "supporting": [],
+    "prohibited": [
+      "explaining-concepts",
+      "writing-procedures",
+      "empathic-troubleshooting",
+      "human-prose-drafting",
+      "documentation-authoring",
+      "documentation-planning",
+      "documentation-review",
+      "tutorial-video-scripting",
+      "requesting-code-review",
+      "receiving-code-review",
+      "project-backlog"
+    ],
+    "artifacts": [
+      "decision.md"
+    ]
+  },
+  "story-voice-review": {
+    "primary": "story-voice-review",
+    "supporting": [],
+    "prohibited": [
+      "explaining-concepts",
+      "writing-procedures",
+      "empathic-troubleshooting",
+      "human-prose-drafting",
+      "documentation-authoring",
+      "documentation-planning",
+      "documentation-review",
+      "tutorial-video-scripting",
+      "requesting-code-review",
+      "receiving-code-review",
+      "project-backlog"
+    ],
+    "artifacts": [
+      "decision.md"
+    ]
+  },
+  "story-in-world-manual": {
+    "primary": "story-drafting",
+    "supporting": [],
+    "prohibited": [
+      "explaining-concepts",
+      "writing-procedures",
+      "empathic-troubleshooting",
+      "human-prose-drafting",
+      "documentation-authoring",
+      "documentation-planning",
+      "documentation-review",
+      "tutorial-video-scripting",
+      "requesting-code-review",
+      "receiving-code-review",
+      "project-backlog"
+    ],
+    "artifacts": [
+      "decision.md"
+    ]
+  },
+  "story-beta-feedback": {
+    "primary": "story-canon-review",
+    "supporting": [],
+    "prohibited": [
+      "explaining-concepts",
+      "writing-procedures",
+      "empathic-troubleshooting",
+      "human-prose-drafting",
+      "documentation-authoring",
+      "documentation-planning",
+      "documentation-review",
+      "tutorial-video-scripting",
+      "requesting-code-review",
+      "receiving-code-review",
+      "project-backlog"
+    ],
+    "artifacts": [
+      "decision.md"
+    ]
+  },
+  "story-video-script": {
+    "primary": "story-video-scripting",
+    "supporting": [],
+    "prohibited": [
+      "explaining-concepts",
+      "writing-procedures",
+      "empathic-troubleshooting",
+      "human-prose-drafting",
+      "documentation-authoring",
+      "documentation-planning",
+      "documentation-review",
+      "tutorial-video-scripting",
+      "requesting-code-review",
+      "receiving-code-review",
+      "project-backlog",
+      "presentation-video-production"
+    ],
+    "artifacts": [
+      "decision.md"
+    ]
+  },
+  "story-listening-edition": {
+    "primary": "story-video-scripting",
+    "supporting": [],
+    "prohibited": [
+      "explaining-concepts",
+      "writing-procedures",
+      "empathic-troubleshooting",
+      "human-prose-drafting",
+      "documentation-authoring",
+      "documentation-planning",
+      "documentation-review",
+      "tutorial-video-scripting",
+      "requesting-code-review",
+      "receiving-code-review",
+      "project-backlog",
+      "story-drafting"
+    ],
+    "artifacts": [
+      "decision.md"
+    ]
+  },
+  "story-video-production": {
+    "primary": "presentation-video-production",
+    "supporting": [],
+    "prohibited": [
+      "tutorial-video-scripting",
+      "story-drafting",
+      "story-voice-review",
+      "documentation-authoring",
+      "explaining-concepts",
+      "writing-procedures",
+      "empathic-troubleshooting",
+      "human-prose-drafting"
+    ],
+    "artifacts": [
+      "decision.md"
+    ]
+  },
+  "story-vault-readme": {
+    "primary": "documentation-authoring",
+    "supporting": [],
+    "prohibited": [
+      "story-bootstrap",
+      "story-worldbuilding",
+      "story-characters",
+      "story-architecture",
+      "story-drafting",
+      "story-canon-review",
+      "story-craft-research",
+      "story-voice-review",
+      "story-video-scripting"
+    ],
+    "artifacts": [
+      "decision.md"
+    ]
+  },
+  "docs-release-note": {
+    "primary": "documentation-authoring",
+    "supporting": [],
+    "prohibited": [
+      "story-bootstrap",
+      "story-worldbuilding",
+      "story-characters",
+      "story-architecture",
+      "story-drafting",
+      "story-canon-review",
+      "story-craft-research",
+      "story-voice-review",
+      "story-video-scripting"
+    ],
+    "artifacts": [
+      "decision.md"
+    ]
+  },
+  "story-world-tutorial-video": {
+    "primary": "tutorial-video-scripting",
+    "supporting": [],
+    "prohibited": [
+      "story-bootstrap",
+      "story-worldbuilding",
+      "story-characters",
+      "story-architecture",
+      "story-drafting",
+      "story-canon-review",
+      "story-craft-research",
+      "story-voice-review",
+      "story-video-scripting"
+    ],
+    "artifacts": [
+      "decision.md"
+    ]
+  },
+  "story-method-documentation": {
+    "primary": "documentation-authoring",
+    "supporting": [],
+    "prohibited": [
+      "story-drafting",
+      "story-voice-review"
+    ],
+    "artifacts": [
+      "decision.md"
+    ]
+  },
+  "study-vault-draft-request": {
+    "primary": "story-craft-research",
+    "supporting": [],
+    "prohibited": [
+      "explaining-concepts",
+      "writing-procedures",
+      "empathic-troubleshooting",
+      "human-prose-drafting",
+      "documentation-authoring",
+      "documentation-planning",
+      "documentation-review",
+      "tutorial-video-scripting",
+      "requesting-code-review",
+      "receiving-code-review",
+      "project-backlog"
+    ],
+    "artifacts": [
+      "decision.md"
+    ]
+  },
+  "vault-parent-session": {
+    "primary": "documentation-authoring",
+    "supporting": [],
+    "prohibited": [
+      "story-bootstrap",
+      "story-worldbuilding",
+      "story-characters",
+      "story-architecture",
+      "story-drafting",
+      "story-canon-review",
+      "story-craft-research",
+      "story-voice-review",
+      "story-video-scripting"
+    ],
+    "artifacts": [
+      "decision.md"
+    ]
   }
 }

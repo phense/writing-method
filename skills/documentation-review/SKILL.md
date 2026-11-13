@@ -1,6 +1,6 @@
 ---
 name: documentation-review
-description: "Use when drafted chunks of a documentation set under docs/writing must be checked for set-wide consistency before acceptance: frontmatter against the manifest, one content type per chunk, step-block and validation rules, terminology, curse-of-knowledge gaps, placeholders and cross-references. Not for code review, for reviewing a single standalone document, or for writing corrections."
+description: "Use when drafted chunks of a documentation set under docs/writing must be checked for set-wide consistency before acceptance: frontmatter against the manifest, one content type per chunk, step-block and validation rules, terminology, curse-of-knowledge gaps, placeholders and cross-references. Not for code review, for reviewing a single standalone document, or for writing corrections. Not for story manuscripts or in-world text."
 ---
 
 # Documentation Review
@@ -70,6 +70,8 @@ change that affects already drafted chunks.
 - A standalone document; `documentation-authoring` performs a recorded
   self-review with the same checks.
 - Making the corrections; findings return to `documentation-authoring`.
+- Story manuscripts or in-world text; the story family owns them, under
+  [writing mode](../../shared/policies/writing-mode.md).
 
 ## Consumes
 

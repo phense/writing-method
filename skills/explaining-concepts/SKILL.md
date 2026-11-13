@@ -1,9 +1,11 @@
 ---
 name: explaining-concepts
-description: "Use when a technical concept, mechanism, or design must be explained to a reader who lacks the writer's expertise, in documentation or an ordinary reply. Introduces each concept with an everyday analogy before the mechanism and removes undefined jargon. Not for step-by-step instructions, reference tables, or error diagnosis."
+description: "Use when a technical concept, mechanism, or design must be explained to a reader who lacks the writer's expertise, in documentation or an ordinary reply. Introduces each concept with an everyday analogy before the mechanism and removes undefined jargon. Not for step-by-step instructions, reference tables, or error diagnosis. Not for story manuscripts or in-world text."
 ---
 
 # Explaining Concepts
+
+Not for story manuscripts or in-world text: when the target is manuscript, stop and use the story family under [writing mode](../../shared/policies/writing-mode.md).
 
 Apply the shared [proportionality rule](../../shared/policies/proportionality.md)
 before adding work, delegating, or repeating verification.
@@ -28,6 +30,8 @@ applies this skill to ordinary replies as well as to documents.
   understanding. Reference text may link to a concept chunk instead.
 - Readers who demonstrably share the vocabulary and asked for the short
   expert version.
+- Story manuscripts or in-world text; the story family owns them, under
+  [writing mode](../../shared/policies/writing-mode.md).
 
 ## Explanation pattern
 
