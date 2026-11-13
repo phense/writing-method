@@ -35,6 +35,9 @@ agreed), or a correction to a video that already exists.
 - Deciding what the video says; use `tutorial-video-scripting`, or `story-video-scripting` for a story script.
 - The acceptance decision; use `presentation-video-review`.
 - A script that has not passed the script check.
+- Filmed material, screen recordings, marketing clips and short-form social
+  video. They are outside the video method: for such a request this skill is
+  neither the primary nor a supporting skill.
 
 ## Consumes
 
