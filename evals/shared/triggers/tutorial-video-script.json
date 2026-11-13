@@ -1,0 +1,8 @@
+{
+  "id": "tutorial-video-script",
+  "prompt": "Create a narrated tutorial video for new staff that shows how to request leave in the HR portal. The source is docs/leave.md. Assess the workflow and load its instructions; do not write the script yet.",
+  "files": {
+    "README.md": "# HR portal\n\nStaff documentation lives under docs/.\n",
+    "docs/leave.md": "# Request leave\n\n1. Open the portal.\n2. Choose Leave.\n3. Enter the dates and send.\n"
+  }
+}

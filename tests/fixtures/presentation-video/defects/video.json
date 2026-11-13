@@ -1,0 +1,8 @@
+{
+  "id": "defects",
+  "title": "Seeded defects",
+  "audience": "Reviewers",
+  "address": "you",
+  "goal": "Find five defects.",
+  "recreated": true
+}

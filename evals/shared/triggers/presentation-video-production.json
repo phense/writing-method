@@ -1,0 +1,9 @@
+{
+  "id": "presentation-video-production",
+  "prompt": "The script of the tutorial video in videos/leave passed the script check and is accepted. Voice it, derive the timeline and render the video. Assess the workflow and load its instructions; do not voice or render yet.",
+  "files": {
+    "README.md": "# Videos\n\nvideos/leave holds an accepted script.\n",
+    "videos/leave/video.json": "{\"id\": \"leave\", \"title\": \"Request leave\", \"audience\": \"New staff\", \"address\": \"you\", \"goal\": \"Request leave alone.\", \"recreated\": true}\n",
+    "videos/leave/src/narration.json": "{\"intro\": [{\"text\": \"This video shows how you request leave.\", \"notice\": true}]}\n"
+  }
+}

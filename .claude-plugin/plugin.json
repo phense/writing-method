@@ -1,8 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "writing-method",
-  "version": "0.1.0",
-  "description": "Reader-oriented writing, documentation workflows and local PDF delivery.",
+  "version": "0.2.0",
+  "description": "Reader-oriented writing, documentation workflows, local PDF delivery and narrated tutorial videos.",
   "author": {
     "name": "Peter Hense"
   },
@@ -11,7 +11,9 @@
     "writing",
     "documentation",
     "review",
-    "pdf"
+    "pdf",
+    "video",
+    "tutorial"
   ],
   "displayName": "Peter's Writing Method",
   "homepage": "https://github.com/phense/writing-method",

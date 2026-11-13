@@ -87,5 +87,89 @@
     "artifacts": [
       "decision.md"
     ]
+  },
+  "tutorial-video-script": {
+    "primary": "tutorial-video-scripting",
+    "supporting": [],
+    "prohibited": [
+      "presentation-video-production",
+      "presentation-video-review",
+      "documentation-planning",
+      "speckit-specify",
+      "speckit-plan",
+      "speckit-tasks",
+      "orchestrated-implementation",
+      "speckit-converge",
+      "openspec-propose",
+      "openspec-apply",
+      "openspec-archive",
+      "systematic-debugging"
+    ],
+    "artifacts": [
+      "decision.md"
+    ]
+  },
+  "presentation-video-production": {
+    "primary": "presentation-video-production",
+    "supporting": [],
+    "prohibited": [
+      "tutorial-video-scripting",
+      "documentation-authoring",
+      "documentation-pdf",
+      "speckit-specify",
+      "speckit-plan",
+      "speckit-tasks",
+      "orchestrated-implementation",
+      "speckit-converge",
+      "openspec-propose",
+      "openspec-apply",
+      "openspec-archive",
+      "systematic-debugging"
+    ],
+    "artifacts": [
+      "decision.md"
+    ]
+  },
+  "presentation-video-review": {
+    "primary": "presentation-video-review",
+    "supporting": [],
+    "prohibited": [
+      "presentation-video-production",
+      "tutorial-video-scripting",
+      "documentation-review",
+      "speckit-specify",
+      "speckit-plan",
+      "speckit-tasks",
+      "orchestrated-implementation",
+      "speckit-converge",
+      "openspec-propose",
+      "openspec-apply",
+      "openspec-archive",
+      "systematic-debugging"
+    ],
+    "artifacts": [
+      "decision.md"
+    ]
+  },
+  "marketing-clip-out-of-scope": {
+    "primary": "native-focused-edit",
+    "supporting": [],
+    "prohibited": [
+      "tutorial-video-scripting",
+      "presentation-video-production",
+      "presentation-video-review",
+      "speckit-specify",
+      "speckit-plan",
+      "speckit-tasks",
+      "orchestrated-implementation",
+      "speckit-converge",
+      "openspec-propose",
+      "openspec-apply",
+      "openspec-archive",
+      "systematic-debugging"
+    ],
+    "artifacts": [
+      "decision.md"
+    ]
   }
 }

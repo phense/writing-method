@@ -1,0 +1,16 @@
+[
+  {
+    "key": "open",
+    "chapter": "Open",
+    "message": "The safe opens from the menu.",
+    "sources": [
+      "S1"
+    ]
+  },
+  {
+    "key": "sync",
+    "chapter": "Sync",
+    "message": "Changes arrive within a second.",
+    "sources": []
+  }
+]

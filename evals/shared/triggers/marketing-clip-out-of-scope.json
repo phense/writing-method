@@ -1,0 +1,7 @@
+{
+  "id": "marketing-clip-out-of-scope",
+  "prompt": "Make a 20-second vertical Instagram reel that advertises our new product with upbeat music. Assess which workflow applies and say so; do not produce anything.",
+  "files": {
+    "README.md": "# Marketing\n\nCampaign assets.\n"
+  }
+}

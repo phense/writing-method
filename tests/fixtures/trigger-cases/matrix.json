@@ -113,5 +113,116 @@
       ],
       "next": "verification-before-completion"
     }
+  },
+  {
+    "id": "tutorial-video-script",
+    "request": "Create a narrated tutorial video that shows new staff how to use the shared password safe, from our existing documentation.",
+    "primary": "tutorial-video-scripting",
+    "supporting": [
+      "explaining-concepts",
+      "writing-procedures",
+      "human-prose-drafting",
+      "terminology-guard",
+      "project-backlog"
+    ],
+    "prohibited": [
+      "native-focused-edit",
+      "documentation-authoring",
+      "documentation-planning",
+      "presentation-video-production",
+      "systematic-debugging",
+      "openspec-propose",
+      "speckit-specify"
+    ],
+    "handoff": {
+      "consumes": [
+        "topic, one audience and source material",
+        "video profile"
+      ],
+      "produces": [
+        "reviewed script that passed the script check"
+      ],
+      "next": "presentation-video-production"
+    }
+  },
+  {
+    "id": "presentation-video-production",
+    "request": "The script is accepted and passed the script check. Voice it, build the timeline, take check stills and render the video.",
+    "primary": "presentation-video-production",
+    "supporting": [
+      "verification-before-completion",
+      "playbook-authoring",
+      "playbook-review"
+    ],
+    "prohibited": [
+      "native-focused-edit",
+      "tutorial-video-scripting",
+      "documentation-authoring",
+      "documentation-pdf",
+      "systematic-debugging",
+      "openspec-propose",
+      "speckit-specify"
+    ],
+    "handoff": {
+      "consumes": [
+        "accepted script and video profile"
+      ],
+      "produces": [
+        "rendered file with passed measurement, check stills and captions"
+      ],
+      "next": "presentation-video-review"
+    }
+  },
+  {
+    "id": "presentation-video-review",
+    "request": "The tutorial video is rendered. Check it before we deliver it: stills, sound and the file.",
+    "primary": "presentation-video-review",
+    "supporting": [
+      "terminology-guard",
+      "verification-before-completion"
+    ],
+    "prohibited": [
+      "native-focused-edit",
+      "presentation-video-production",
+      "tutorial-video-scripting",
+      "documentation-review",
+      "systematic-debugging",
+      "openspec-propose",
+      "speckit-specify"
+    ],
+    "handoff": {
+      "consumes": [
+        "rendered file, check stills, measurement"
+      ],
+      "produces": [
+        "review.md with both gates and findings"
+      ],
+      "next": "verification-before-completion"
+    }
+  },
+  {
+    "id": "video-one-line-correction",
+    "request": "In the finished tutorial video one sentence names the wrong menu. Correct that sentence and deliver the video again.",
+    "primary": "presentation-video-production",
+    "supporting": [
+      "verification-before-completion"
+    ],
+    "prohibited": [
+      "native-focused-edit",
+      "documentation-authoring",
+      "documentation-planning",
+      "systematic-debugging",
+      "openspec-propose",
+      "speckit-specify"
+    ],
+    "handoff": {
+      "consumes": [
+        "existing video project with one changed narration line"
+      ],
+      "produces": [
+        "one line voiced again, re-rendered file with passed measurement"
+      ],
+      "next": "presentation-video-review"
+    }
   }
 ]

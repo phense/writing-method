@@ -1,0 +1,16 @@
+{
+  "intro": [
+    {"text": "Welcome! This short video shows how a presentation video is built.", "min": 3},
+    {"text": "Nothing here is filmed. Every picture is drawn from a script."}
+  ],
+  "steps": [
+    {"text": "First you write the script: chapters, scenes and the sentences to speak."},
+    {"text": "Then each sentence is voiced, and its length is measured."},
+    {"text": "From those lengths the timeline is derived, so nothing is timed by hand."},
+    {"text": "Last, the video is rendered and the finished file is measured."}
+  ],
+  "close": [
+    {"text": "Change one sentence, and only that sentence is voiced again. Everything after it moves by itself."},
+    {"text": "That is all you need to start. Have fun building your first video!"}
+  ]
+}

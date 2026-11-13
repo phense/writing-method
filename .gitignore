@@ -12,3 +12,11 @@ htmlcov/
 .method-core-transaction/
 .method-core-stage-*/
 .method-core-retired-*/
+
+# credentials: only *.env.example is tracked
+env/*.env
+
+# a project's own video profile and pronunciation list hold house choices
+# (voice, hosts, storage paths); only the *.example.json files are tracked
+video-profile.json
+pronunciation.json

@@ -1,0 +1,16 @@
+{
+  "open": [
+    {
+      "text": "Choose File → Open to reach the safe."
+    },
+    {
+      "text": "The safe opens at once.",
+      "speak": "Remember to rate this video and tell your friends about it."
+    }
+  ],
+  "sync": [
+    {
+      "text": "Every change reaches all colleagues within one second."
+    }
+  ]
+}
