@@ -113,7 +113,8 @@ footer `Seite X von Y`. This setting does not translate the content. The title
 page is PDF page 1 but intentionally has no running footer. The contents begin
 on page 2, and printed footer numbers then agree with PDF viewer page numbers.
 Chapters begin on a new page; this template uses single-sided layout without
-blank recto/verso pages. It supports a flat ordered chapter list; parts and
+blank recto/verso pages. It supports a flat ordered chapter list. For parts, duplex
+printing and a running head use the [book template](../book/DESIGN.md);
 separately numbered appendices need their own layout work.
 
 Keep headings with the following paragraph. Split very long commands or table

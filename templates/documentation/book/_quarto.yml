@@ -1,0 +1,49 @@
+project:
+  type: book
+  output-dir: _book
+
+book:
+  title: "A clear guide"
+  subtitle: "User manual v1.0 · November 2026"
+  author: "Documentation team"
+  output-file: manual
+  chapters:
+    - index.md
+    - part: "Getting started"
+      chapters:
+        - chapters/01-start.md
+        - chapters/02-structure.md
+    - part: "Reference"
+      chapters:
+        - chapters/03-settings.md
+        - chapters/04-check.md
+
+lang: en
+# Label above the title and on the imprint page. Default: "Manual" / "Handbuch".
+document-kind: "User manual"
+# Back of the title page. Remove the block to leave that page empty.
+imprint:
+  version: "1.0"
+  date: "13 November 2026"
+  organisation:
+    - "Example Organisation"
+    - "1 Sample Street"
+    - "12345 Sample Town"
+  author:
+    - "Documentation team"
+# Pictures taller than this many millimetres are narrowed. Fixed widths override it.
+image-max-height: 118
+# image-widths:
+#   overview.png: "120mm"
+execute:
+  enabled: false
+
+format:
+  em-book-typst:
+    papersize: a4
+    font-paths:
+      - fonts
+    toc: true
+    number-sections: true
+    section-numbering: "1.1"
+    keep-typ: true

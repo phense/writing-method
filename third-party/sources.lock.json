@@ -28,6 +28,70 @@
           "modification_status": "adapted"
         }
       ]
+    },
+    {
+      "id": "source-sans-3",
+      "project": "Source Sans 3",
+      "repository": "https://github.com/adobe-fonts/source-sans.git",
+      "revision": "ed1808970eb3c7301c9a523bee26473ba0bb62fa",
+      "license": {
+        "spdx": "OFL-1.1",
+        "source_path": "LICENSE.md",
+        "sha256": "89ad2c4f66dd29127527493e729c31e731f111cf10faf5774c3db9275ed0c22c"
+      },
+      "copyright": "Copyright 2010-2022 Adobe (http://www.adobe.com/), with Reserved Font Name 'Source'. All Rights Reserved. Source is a trademark of Adobe in the United States and/or other countries.",
+      "modification_summary": "Six OpenType files and the licence text are distributed unmodified as the default typeface of the book PDF template.",
+      "files": [
+        {
+          "source_path": "LICENSE.md",
+          "destination_path": "templates/documentation/book/fonts/LICENSE-SourceSans3.md",
+          "source_sha256": "89ad2c4f66dd29127527493e729c31e731f111cf10faf5774c3db9275ed0c22c",
+          "destination_sha256": "89ad2c4f66dd29127527493e729c31e731f111cf10faf5774c3db9275ed0c22c",
+          "modification_status": "unmodified"
+        },
+        {
+          "source_path": "OTF/SourceSans3-Regular.otf",
+          "destination_path": "templates/documentation/book/fonts/SourceSans3-Regular.otf",
+          "source_sha256": "08df266400933d3178d081a45f94a08814c3e55b4b7dd2e0ff69cb1329f13ab6",
+          "destination_sha256": "08df266400933d3178d081a45f94a08814c3e55b4b7dd2e0ff69cb1329f13ab6",
+          "modification_status": "unmodified"
+        },
+        {
+          "source_path": "OTF/SourceSans3-It.otf",
+          "destination_path": "templates/documentation/book/fonts/SourceSans3-It.otf",
+          "source_sha256": "430b9f0eb1170be0981706d14b6cf87122efba9d86c373bbdf69daf276421462",
+          "destination_sha256": "430b9f0eb1170be0981706d14b6cf87122efba9d86c373bbdf69daf276421462",
+          "modification_status": "unmodified"
+        },
+        {
+          "source_path": "OTF/SourceSans3-Semibold.otf",
+          "destination_path": "templates/documentation/book/fonts/SourceSans3-Semibold.otf",
+          "source_sha256": "36f1cd2c344aa3109e64429bce41a41e4b2b923beb2db19b8dbf9bb56f05a4f9",
+          "destination_sha256": "36f1cd2c344aa3109e64429bce41a41e4b2b923beb2db19b8dbf9bb56f05a4f9",
+          "modification_status": "unmodified"
+        },
+        {
+          "source_path": "OTF/SourceSans3-SemiboldIt.otf",
+          "destination_path": "templates/documentation/book/fonts/SourceSans3-SemiboldIt.otf",
+          "source_sha256": "81204ed282543df2d93db214c98b5ec1c9ce735c4c82e4323d5ae5ee69c6b8b7",
+          "destination_sha256": "81204ed282543df2d93db214c98b5ec1c9ce735c4c82e4323d5ae5ee69c6b8b7",
+          "modification_status": "unmodified"
+        },
+        {
+          "source_path": "OTF/SourceSans3-Bold.otf",
+          "destination_path": "templates/documentation/book/fonts/SourceSans3-Bold.otf",
+          "source_sha256": "7776ddb9f3eb58683e59f28d558d8896b768c2d0c80799fb3f1c56c54dfd98c9",
+          "destination_sha256": "7776ddb9f3eb58683e59f28d558d8896b768c2d0c80799fb3f1c56c54dfd98c9",
+          "modification_status": "unmodified"
+        },
+        {
+          "source_path": "OTF/SourceSans3-BoldIt.otf",
+          "destination_path": "templates/documentation/book/fonts/SourceSans3-BoldIt.otf",
+          "source_sha256": "05e97d9adc01059607e97b167a68afb25680db904db7aba831dc2510f14b6515",
+          "destination_sha256": "05e97d9adc01059607e97b167a68afb25680db904db7aba831dc2510f14b6515",
+          "modification_status": "unmodified"
+        }
+      ]
     }
   ],
   "original": {
@@ -65,6 +129,6 @@
       "templates/documentation/**",
       "skills/documentation-pdf/SKILL.md"
     ],
-    "scope": "These paths are original implementation. All adapted destinations are enumerated separately in sources; no upstream runtime is bundled."
+    "scope": "These paths are original implementation, except destinations enumerated in sources, which keep their own licence. No upstream runtime is bundled."
   }
 }

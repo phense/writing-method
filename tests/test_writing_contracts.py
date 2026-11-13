@@ -53,16 +53,26 @@ class WritingContracts(unittest.TestCase):
             result=run('backlog','init','--project-key','WM');self.assertEqual(0,result.returncode,result.stderr)
             result=run('backlog','add','--id','WM-001','--title','Write handbook','--priority','P1');self.assertEqual(0,result.returncode,result.stderr)
             self.assertIn('WM-001',(project/'BACKLOG.md').read_text())
+            # The book layout ships complete: a copy without its filter or checker cannot be rendered or verified.
+            book=installed/'templates/documentation/book'
+            for name in ['_quarto.yml','_brand.yml','index.md','DESIGN.md','tools/check-pdf.py','_extensions/em-book/_extension.yml','_extensions/em-book/typst-template.typ','_extensions/em-book/typst-show.typ','_extensions/em-book/book-structure.lua','_extensions/em-book/chunk-title.lua']:
+                self.assertTrue((book/name).is_file(),name)
+            listed=re.findall(r'^\s+- (chapters/.+\.md)$',(book/'_quarto.yml').read_text(),re.M)
+            self.assertEqual(sorted(p.name for p in (book/'chapters').glob('*.md')),sorted(Path(n).name for n in listed))
+            self.assertIn('em-book-typst',(installed/'skills/documentation-pdf/SKILL.md').read_text())
             template=installed/'templates/documentation/pdf/DESIGN.md';template.unlink()
             self.assertTrue(any('DESIGN.md' in e for e in validate_repository(installed)))
     def test_attribution_covers_current_adaptations_and_original_writing(self):
         lock=json.loads((ROOT/'third-party/sources.lock.json').read_text())
-        self.assertEqual({'humanizer'},{s['id'] for s in lock['sources']})
+        self.assertEqual({'humanizer','source-sans-3'},{s['id'] for s in lock['sources']})
         for source in lock['sources']:
             for mapping in source['files']:
-                if mapping['modification_status']=='adapted':
+                if mapping['modification_status'] in ('adapted','unmodified'):
                     self.assertEqual(mapping['destination_sha256'],hashlib.sha256((ROOT/mapping['destination_path']).read_bytes()).hexdigest())
         notices=(ROOT/'THIRD_PARTY_NOTICES.md').read_text()
         self.assertIn('https://github.com/blader/humanizer.git',notices)
         self.assertIn('Permission is hereby granted',notices)
+        # Bundled fonts must travel with their licence text, in the notices and beside the files.
+        self.assertIn('SIL OPEN FONT LICENSE',notices.upper())
+        self.assertTrue((ROOT/'templates/documentation/book/fonts/LICENSE-SourceSans3.md').is_file())
 if __name__=='__main__': unittest.main()

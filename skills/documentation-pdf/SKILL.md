@@ -13,12 +13,31 @@ Humanizer guidance in authoring; PDF export does not rewrite the text.
 
 - A reviewed document or the accepted chunk manifest in `docs/writing/<doc-id>/plan.md`.
 - Documentation language, title, output path and any brand requirements.
-- The bundled [book configuration](../../templates/documentation/pdf/_quarto.yml),
+- The bundled single-sided template: [configuration](../../templates/documentation/pdf/_quarto.yml),
   [brand](../../templates/documentation/pdf/_brand.yml) and
   [design guide](../../templates/documentation/pdf/DESIGN.md).
+- The bundled book template for long manuals: [configuration](../../templates/documentation/book/_quarto.yml),
+  [brand](../../templates/documentation/book/_brand.yml),
+  [design guide](../../templates/documentation/book/DESIGN.md) and
+  [PDF checker](../../templates/documentation/book/tools/check-pdf.py).
+
+## Choose the layout
+
+Two templates exist. Choose one before copying anything, and keep an existing
+project on the layout it already uses unless the user asks for a change.
+
+| Document | Template | Render target |
+|---|---|---|
+| Short document or a few chapters, single-sided, no parts | [pdf](../../templates/documentation/pdf/DESIGN.md) | `em-manual-typst` |
+| Long manual grouped into parts, duplex printing or binding, readers who look up single chapters | [book](../../templates/documentation/book/DESIGN.md) | `em-book-typst` |
+
+The book layout adds a back of the title page, part title pages and empty
+left-hand pages. Do not choose it to make a short document look larger. When
+the documentation plan names parts or reader groups and has more than about
+ten chapters, use the book layout; ask only when the plan leaves it open.
 
 Resolve template resources relative to this skill, never the invoking cwd.
-Read the design guide before configuring the output. Use Quarto 1.10.18 for the
+Read the chosen template's design guide before configuring the output. Use Quarto 1.10.18 for the
 verified baseline; inspect `quarto --version` and `quarto typst --version`.
 Quarto is an external export dependency, not bundled in the plugin. Install
 from the official release only when needed and verify its published checksum.
@@ -50,7 +69,8 @@ Rendering is local; no online Typst account or document upload is needed.
 
 ## Render and verify
 
-From the book directory run `quarto render --to em-manual-typst`. The default
+From the book directory run `quarto render --to em-manual-typst`, or
+`--to em-book-typst` for the book layout. The default
 output is `_book/manual.pdf`; a different `book.output-file` changes that name.
 Keep generated output and `.quarto/` out of the source repository.
 
@@ -67,6 +87,19 @@ Check the actual PDF, not only the renderer's exit code:
   book.
 - Compare the source files before and after rendering; export must not change
   prose, facts or chunk metadata.
+
+For the book layout additionally:
+
+- List parts and chapters in `book.chapters` in manifest order; set
+  `document-kind` and the `imprint` block. Source Sans 3 is bundled in
+  `fonts/` with its licence; copy both. Place any other family named in
+  `_brand.yml` there too.
+- Render with `quarto render --to em-book-typst` and run the copied
+  `tools/check-pdf.py` on the PDF (needs PyMuPDF). It must report no errors.
+- Every chapter and part title page opens on a right-hand page; title page,
+  its back, part title pages and empty left-hand pages carry no page number.
+- Resolve each entry under `short_last_pages` with a fixed picture width or a
+  shorter text, as the book design guide describes, or record why it stays.
 
 Use `pdfinfo`, `pdftotext` and page images when available. Record tool versions,
 command, source revision, output path, checks and remaining limitations in the
