@@ -532,7 +532,6 @@
     "supporting": [],
     "prohibited": [
       "native-focused-edit",
-      "story-drafting",
       "explaining-concepts",
       "writing-procedures",
       "empathic-troubleshooting",

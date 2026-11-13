@@ -42,7 +42,7 @@ class WritingContracts(unittest.TestCase):
         self.assertEqual({'standalone-document','documentation-set','existing-documentation-plan','documentation-pdf','tutorial-video-script','presentation-video-production','presentation-video-review','video-one-line-correction',
                           # Story-positive cases: a story skill is primary and the reader prose skills are prohibited.
                           'story-chapter-draft','story-new-vault','story-canon-review','story-voice-review','story-in-world-manual','story-beta-feedback',
-                          # Study vault: story-craft-research is primary and declines the request; story-drafting is prohibited.
+                          # Study vault: story-craft-research is primary and the request is declined; story-drafting may be opened for its mode check.
                           'study-vault-draft-request',
                           # Negative cases: every story skill is prohibited.
                           'story-vault-readme','docs-release-note','story-world-tutorial-video','story-method-documentation','vault-parent-session'},{c['id'] for c in matrix})
@@ -63,7 +63,9 @@ class WritingContracts(unittest.TestCase):
             else:
                 self.assertTrue(STORY <= set(case['prohibited']),case['id'])
             if case['id']=='study-vault-draft-request':
-                self.assertIn('story-drafting',case['prohibited'])
+                # The drafting skill may be opened: its own mode check is what declines the request. The harness cannot see the refusal, only the selection.
+                self.assertEqual('story-craft-research',case['primary'])
+                self.assertNotIn('story-drafting',case['prohibited'])
         # Both hosts expect the same selection for every routing case that has a trigger file.
         triggers={json.loads(p.read_text())['id'] for p in (ROOT/'evals/shared/triggers').glob('*.json')}
         expected={host:json.loads((ROOT/'evals'/host/'expected.json').read_text()) for host in ('claude','codex')}
