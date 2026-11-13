@@ -313,6 +313,27 @@
       "decision.md"
     ]
   },
+  "story-listening-edition": {
+    "primary": "story-video-scripting",
+    "supporting": [],
+    "prohibited": [
+      "explaining-concepts",
+      "writing-procedures",
+      "empathic-troubleshooting",
+      "human-prose-drafting",
+      "documentation-authoring",
+      "documentation-planning",
+      "documentation-review",
+      "tutorial-video-scripting",
+      "requesting-code-review",
+      "receiving-code-review",
+      "project-backlog",
+      "story-drafting"
+    ],
+    "artifacts": [
+      "decision.md"
+    ]
+  },
   "story-video-production": {
     "primary": "presentation-video-production",
     "supporting": [],

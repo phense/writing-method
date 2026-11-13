@@ -80,8 +80,10 @@ The script check then requires `edition` and `based_on`, asks for no source
 table and no `sources` per scene, and raises no sentence-length warning; every
 other check stays. A scene's `message` is a working note of what happens in
 the scene and is not spoken; the picture is a plain description in
-`script/script.md`, where the sections Sources and Evidenced, approximated,
-invented may be left out unless interfaces are recreated. `audience` and
+`script/script.md`, where the section Tone is left out and the sections
+Sources and Evidenced, approximated, invented may be left out unless
+interfaces are recreated. `script/script.md` also names the paths of the
+texts narrated and, for a listening edition, its `edition_revision`. `audience` and
 `address` stay required (the listener; `address` may be `none`).
 
 ## From script to file

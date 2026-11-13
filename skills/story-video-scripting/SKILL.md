@@ -1,6 +1,6 @@
 ---
 name: story-video-scripting
-description: "Use when an accepted chapter, chapter range or short piece of a story vault must become the script of a narrated story video, an audiobook with pictures: the accepted manuscript segmented word for word into scenes and narration lines, or an author-approved listening edition, with the script files the production step reads. Not for a tutorial video about a story or its world, for drafting new story text, for changing canon, or for voicing or rendering. Not for a study vault or an unused starter vault. Not for session replies, documentation or presentation videos."
+description: "Use when an accepted chapter, chapter range or short piece of a story vault must become the script of a narrated story video, an audiobook with pictures: the accepted manuscript segmented word for word into scenes and narration lines, or an author-approved listening edition, with the script files the production step reads. Not for a tutorial video about a story or its world, for drafting new story text, for changing canon, or for voicing or rendering. Not for a study vault or an unused starter vault. Not for session replies, documentation or tutorial videos."
 ---
 
 # Story video scripting
@@ -11,7 +11,7 @@ For manuscript text the story's voice sheet overrides explaining-concepts, writi
 
 No run state: this skill has no recovery preamble and hands off to no backlog or run-tracking skill. A story or study vault keeps no backlog and no run directory; its state lives in 00-project/development.md and 00-project/decisions.md.
 
-This skill is experimental. It turns accepted story text into the script of a narrated presentation video: scenes, narration lines and plain picture descriptions. The story family owns the text; the form skills voice, time, render and check the accepted script and never restyle it. Nothing is voiced or rendered here.
+This skill is experimental. It turns accepted story text into the script of a narrated story video: scenes, narration lines and plain picture descriptions. The story family owns the text; the form skills voice, time, render and check the accepted script and never restyle it. Nothing is voiced or rendered here.
 
 ## When to use
 
@@ -28,7 +28,8 @@ The author wants an accepted chapter, a chapter range or a short piece told as a
 
 - The vault is of kind story. In a starter, stop and route to `story-bootstrap`. In a study vault, decline: nothing is scripted from a studied work.
 - Every unit in scope is accepted, and its accepted revision is named: the `Accepted revision` column of `06-manuscript/index.md`, confirmed by the acceptance record of the chapter card or short piece. A unit without a recorded acceptance is not scripted; say which one is missing and stop.
-- The voice sheet `00-project/voice.md` is read at the revision the unit was accepted under. It governs every narration line.
+- The voice sheet `00-project/voice.md` is read at the revision the unit was accepted under. It governs every narration line. The tutorial listening style in `shared/media/spoken-style.md` does not apply to story narration.
+- The mode check runs on the manuscript unit being scripted, not on the path of the video project. A video project outside the vault still takes its mode and voice sheet from the vault that holds the unit. Only the narration `text` is manuscript; every other file of the video project is a working note.
 
 ## Choose the edition with the author
 
@@ -81,7 +82,7 @@ The script lives in a video project, a copy of the [project template](../../temp
 | File | Content for a story video |
 | --- | --- |
 | `video.json` | The fields below |
-| `script/script.md` | For the author's review: listener, edition, the chapters with their revisions, the scene table with the picture description of each scene, and the names that must be spoken correctly. A listening edition also names its `edition_revision`. No source table. |
+| `script/script.md` | For the author's review: listener, edition, the chapters with their revisions, the scene table with the picture description of each scene, and the names that must be spoken correctly. It also states the path of the vault relative to the video project and the path of each prose or edition file the narration was taken from; a listening edition is named with its `edition_revision`. Once the author has accepted the script, add the decision ID of the acceptance. No source table and no Tone section: the voice sheet governs the narration. |
 | `src/scenes.json` | Scene order; per scene its `key` (lowercase letters, digits, `_`), `chapter` and `message`. No `sources` and no `no_claims` field. |
 | `src/narration.json` | Per scene the narration lines. `text` is the edition's wording. |
 | `pronunciation.json` | Fixed spoken forms, in the existing format |
@@ -100,7 +101,7 @@ The script lives in a video project, a copy of the [project template](../../temp
   "address": "none",
   "goal": "<what the listener hears>",
   "recreated": false,
-  "stale_when": "A unit in based_on receives a later accepted revision."
+  "stale_when": "A unit in based_on receives a later accepted revision, or its listening edition receives a later accepted edition revision."
 }
 ```
 
@@ -134,6 +135,7 @@ For `"purpose": "story"` the check requires no sources, checks `edition` and `ba
 - A **line-length error** is resolved by the clause split above, never by rewording.
 - A **speakable warning** on a number or an abbreviation is decided line by line. A `speak` form may spell the same words the way they are read aloud; the caption `text` stays as the edition has it.
 - A **length error** is resolved by a split at a chapter or scene break the author chooses. A verbatim part receives no added opening or closing words.
+- A **secret error** on story wording (a spoken password, `the secret: ...`) is never resolved by rewording the line or by a `speak` form, and the check is not edited or bypassed. Stop and show the author the line. A real credential is removed by the author. Story wording is resolved by the author's recorded decision in `00-project/decisions.md`: a listening edition, or a manuscript revision with a new accepted revision, that changes the punctuation or wording so the check passes.
 
 Errors block voicing. `verification-before-completion` applies to this check and to nothing the author decides.
 
@@ -150,6 +152,7 @@ Then hand the video project to `presentation-video-production`, see [production]
 | A narration line differs from the verbatim manuscript | This skill: fix the transcription against the accepted revision |
 | The wording of a listening edition should change | The author: a recorded decision and a new `edition_revision`, then this skill |
 | The accepted manuscript itself reads wrongly aloud | The author: a listening edition, or a manuscript revision through `story-drafting` with a new accepted revision. Never a silent change in the script. |
+| The script check reports a secret in story wording | The author: see the secret error under the script check. Never a reworded line. |
 | Pronunciation, pace, pauses, picture or the rendered file | Production, in the video project |
 
 No wording finding on a story script goes to the tutorial scripting skill, and no form skill rewrites a line.

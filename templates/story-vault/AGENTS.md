@@ -33,7 +33,7 @@ Drafting also needs `viewpoint`, `tense` and `distance` set in the frontmatter o
 
 Afterword, author note and blurb live in `06-manuscript/paratext/` in both forms. In-world documents, such as a letter, a report or a manual that exists inside the story, are manuscript. `06-manuscript/index.md` gives the order; do not rely on file names.
 
-A listening edition under `06-manuscript/editions/listening/<chapter-id>.md` is manuscript too: prose only, derived from an accepted chapter for a narrated video, with every difference approved by the author. It is not canon, and it never changes the chapter it derives from. The files of a video project are kept outside `06-manuscript/`.
+A listening edition under `06-manuscript/editions/listening/<chapter-id>.md` is manuscript too: prose only, derived from an accepted chapter for a narrated video, with every difference approved by the author. It is not canon, and it never changes the chapter it derives from. The files of a video project are kept outside `06-manuscript/`. The narration lines of a story video project are manuscript wherever the project lies; its other files are working notes.
 
 `publication_profile` in the brief is `unset`, `web-serial`, `light-novel` or `both`. It may stay unset. The only default the method supplies is about 100 chapters per sub-arc under `web-serial` (see `90-templates/arc.md`); otherwise do not assume lengths, chapter counts or illustration counts for a profile, and use only figures the author has recorded.
 

@@ -41,8 +41,8 @@ order and stop at the first that holds.
 | Order | Condition | Mode | Governed by |
 |---|---|---|---|
 | 1 | The file is a reader-facing vault file (`README.md`, `START.md`, `AGENTS.md` or `CLAUDE.md`) or a reader-facing deliverable about the story or the vault, wherever it is stored: documentation or a tutorial-video script with its production files | `reader-oriented` | The reader family's rules |
-| 2 | The text is story prose, in-world text or paratext: it goes into a manuscript location of a `kind: story` vault, or the author explicitly asks for story prose | `manuscript` | The voice sheet, then `shared/story/rules.md`. Nothing from the reader family. |
-| 3 | The text is another file of a story or study vault, or a research note | `working-note` | The story skills. Plain notes: neither the voice sheet nor didactic structure. |
+| 2 | The text is story prose, in-world text or paratext: it goes into a manuscript location of a `kind: story` vault, or the author explicitly asks for story prose; or it is the narration `text` in `src/narration.json` of a video project whose `video.json` has `purpose: story`, wherever the project is stored: a segmented copy of manuscript text | `manuscript` | The voice sheet, then `shared/story/rules.md`. Nothing from the reader family. |
+| 3 | The text is another file of a story or study vault, a research note, or another file of a story video project (`video.json`, a scene `message`, `script/script.md`, `pronunciation.json`), wherever it is stored | `working-note` | The story skills. Plain notes: neither the voice sheet nor didactic structure. |
 | 4 | Everything else, including every reply to the author | `reader-oriented` | The reader family's rules, unchanged |
 
 The subject never sets the mode. A reply that talks about a story is still a
@@ -52,7 +52,9 @@ reply, and it stays reader-oriented inside a story vault as well.
 
 A vault is the nearest ancestor of the target file that holds both
 `00-project/brief.md` and `00-project/voice.md`. Its `kind` field in the
-frontmatter decides what may be written there.
+frontmatter decides what may be written there. For a story video the vault is
+the one that holds the unit being scripted, not an ancestor of the video
+project.
 
 | `kind` | Permits | Otherwise |
 |---|---|---|
@@ -77,6 +79,9 @@ In both forms a listening edition is a prose-only file under
 `06-manuscript/editions/listening/`, one per chapter or piece. It is manuscript
 and follows the voice sheet; it names the manuscript revision it is based on.
 A verbatim edition needs no file: the manuscript itself is the text.
+Narration lines of a story video are a copy. The authoritative text stays at
+its fixed location (the chapter, the piece or the listening edition), and the
+narration takes its mode and voice sheet from that unit's vault.
 
 The split into prose files applies to long-form work only. A short piece keeps
 card and prose in one note, and the heading draws the line: only the text under
@@ -93,7 +98,7 @@ read, and this file is what they are compared with.
 
 | Carrier | Content |
 |---|---|
-| Description of every story skill | Ends with the exclusion of session replies, documentation and presentation videos |
+| Description of every story skill | Ends with the exclusion of session replies, documentation and presentation videos. `story-video-scripting` scripts a story video, so its description ends with the exclusion of session replies, documentation and tutorial videos instead. |
 | First paragraph of every story skill body | The mode check: find the vault, read its kind |
 | Second paragraph of the story skills listed under `precedence_story_skills` | The precedence sentence: the voice sheet overrides the four didactic and prose skills for manuscript text |
 | Description of the eight reader skills listed under `excluded_reader_skills` | Ends with the exclusion of story manuscripts and in-world text |
@@ -106,7 +111,7 @@ read, and this file is what they are compared with.
 |---|---|---|
 | 1. Names | Every story skill starts with `story-`; no name equals a shared, reader or engineering skill name or contains `continuity` | The names are as stated |
 | 2. Descriptions and opening lines | Reciprocal exclusions and the precedence sentence | The sentences are present and equal the policy block. Whether a model follows them is statistical. |
-| 3. Link firewall | Story files link only into `shared/story/`, `templates/story-vault/`, other story skills, this file, `shared/policies/proportionality.md` and `skills/verification-before-completion/SKILL.md`. For a story video they also link the video project template, the two form skills and `shared/media/speech-synthesis.md`. Reader files and form skills never link into the story directories. Backticked skill names are checked against the family map as well; form skills may be named by both families and may name skills of both. | A skill cannot pull the other family's rule files in through links |
+| 3. Link firewall | Story files link only into `shared/story/`, `templates/story-vault/`, other story skills, this file, `shared/policies/proportionality.md` and `skills/verification-before-completion/SKILL.md`. For a story video they also link the video project template, the two form skills and `shared/media/speech-synthesis.md`. Reader files and form skills never link into the story directories. Links are not followed further: a form skill carries tutorial-only links that its Story scripts section sets aside for `purpose: story`. Backticked skill names are checked against the family map as well; form skills may be named by both families and may name skills of both. | A skill cannot pull the other family's rule files in through links |
 | 4. No lifecycle graph | No story skill appears in `shared/policies/lifecycle-handoffs.md` | The graph contains no story node |
 | 5. Vault kind | Only `kind: story` permits drafting, and only with the three voice fields filled | The starter and the skills state the rule |
 
@@ -142,7 +147,7 @@ not that a host obeys it.
 | A story excerpt quoted in documentation | Quoted material, unchanged |
 | An explanatory narrated video about a story or its world | `reader-oriented`, under `tutorial-video-scripting` |
 | A tutorial video about a story, its world or the story method | Stays with `tutorial-video-scripting`, also inside a story vault; no story skill scripts it |
-| Narration of a story video (an accepted chapter, range or short piece read aloud over pictures) | `manuscript`, written by the story family under `story-video-scripting`, as a `verbatim` or a `listening` edition; voiced and rendered by the form skills, which never restyle it. Wording findings return to the story family and the author. |
+| Narration of a story video (an accepted chapter, range or short piece read aloud over pictures) | `manuscript`, written by the story family under `story-video-scripting`, as a `verbatim` or a `listening` edition; voiced and rendered by the form skills, which never restyle it. The tutorial listening style in `shared/media/spoken-style.md` does not apply to story narration. Wording findings return to the story family and the author. |
 | Any other dramatised fiction: an audio-only book, a performance with several voices | Outside the method for now |
 | Beta-reader or author feedback on a chapter | `story-canon-review` for canon, `story-voice-review` for voice; not `receiving-code-review` |
 | Notes and craft exercises in a study vault | `working-note`, under `story-craft-research`; never a draft against the studied work's canon |
@@ -202,6 +207,7 @@ The entries under `sentences` are the exact text the carriers hold.
     "story_opening": "Mode check first, under [writing mode](../../shared/policies/writing-mode.md): find the nearest ancestor of the target file that holds 00-project/brief.md and 00-project/voice.md. Only kind story permits manuscript drafting; kind study permits study notes only; kind starter routes to story-bootstrap.",
     "precedence": "For manuscript text the story's voice sheet overrides explaining-concepts, writing-procedures, empathic-troubleshooting and human-prose-drafting, even when those skills are loaded in this session.",
     "story_description_suffix": "Not for session replies, documentation or presentation videos.",
+    "story_video_description_suffix": "Not for session replies, documentation or tutorial videos.",
     "reader_description_clause": "Not for story manuscripts or in-world text.",
     "reader_opening": "Not for story manuscripts or in-world text: when the target is manuscript, stop and use the story family under [writing mode](../../shared/policies/writing-mode.md).",
     "vault_instruction": "Manuscript files follow 00-project/voice.md and nothing from documentation or didactic writing rules. Other vault notes are plain working notes. Replies to the author stay reader-oriented; the voice sheet never styles a reply."

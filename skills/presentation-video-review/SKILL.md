@@ -18,6 +18,7 @@ Follow the [recovery gate](../project-backlog/SKILL.md#recovery-gate) and the
 [operational handoffs](../project-backlog/SKILL.md#operational-handoffs) of the
 backlog skill directly. No documentation skill is part of the video lifecycle.
 For an untracked single video the review record on disk is the state.
+A story video keeps no run state. Skip this preamble; see [Story scripts](#story-scripts).
 
 ## Trigger
 
@@ -36,7 +37,9 @@ about to be delivered (gate 2).
   rendered file, `video-profile.json`.
 - The subject itself, to verify claims against it. For a story script
   instead: the manuscript or listening edition at the revisions named in
-  `video.json`.
+  `video.json` and, for a listening edition, the `edition_revision` named in
+  `script/script.md`. The vault and the edition file are found from the paths
+  in `script/script.md`.
 
 ## Produces
 
@@ -116,23 +119,37 @@ accepted manuscript (`"edition": "verbatim"`) or an accepted listening edition
 or changes its wording, tone or order.
 
 - **Gate 1** replaces the source, tone, honesty and term checks with one
-  comparison: every narration line matches the named edition at the revision
-  under `based_on`, in order and without gaps. Verbatim: word for word against
-  the manuscript; only the cut into scenes and lines may differ. Listening:
-  word for word against the edition file. A difference is a finding, Critical
-  when words were changed, added or dropped. Also confirm one audience and
+  comparison: every narration line matches the named edition at its
+  revision, in order and without gaps. Verbatim: word for word against the
+  manuscript at the `revision` under `based_on`; only the cut into scenes and
+  lines may differ. Listening: word for word against the edition file named
+  in `script/script.md`, at the `edition_revision` named there; the edition's
+  `based_on_revision` must equal the `revision` under `based_on`. An edition
+  file at another revision than the one `script/script.md` names makes the
+  script stale: an Important finding. The comparison is on the caption
+  `text`. Every `speak` form is read against its `text`: it may respell the
+  same words for the voice, never add, drop, replace or reorder a word; the
+  script check's similarity threshold does not prove this. A difference is a
+  finding, Critical when words were changed, added or dropped. Also confirm one audience and
   form of address in `video.json`, that invented names and other key terms
   are in the pronunciation list, and that no secret or private data of a real
   person is in text or planned picture. The checks for recreated interfaces
   apply only when `recreated` is set.
 - **Gate 2** is unchanged except for the listening check: judge
   pronunciation, pace, pauses and audible cuts, not style. A tone or a
-  sentence the reviewer would have written differently is not a finding. The
+  sentence the reviewer would have written differently is not a finding.
+  Re-read every `speak` form added or changed since gate 1 against its
+  `text` under the same rule. The
   project record names the edition and the manuscript revisions in place of
   sources.
 - Wording findings return to `story-video-scripting` and the author: a
   transcription error is fixed against the manuscript; any other change is an
   author decision. They never go to `tutorial-video-scripting`.
+- The tutorial listening style in `shared/media/spoken-style.md` does not apply to story narration.
+- The review record takes the story rows named in the review template in
+  place of the source and tone rows, and records no tone judgement.
+- A story video keeps no run state. Do not open the backlog skill and create no run
+  directory; the review record in the video project is the state.
 
 ## Completion
 

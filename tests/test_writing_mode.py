@@ -54,6 +54,16 @@ FORM_SKILLS = [
     "presentation-video-production",
     "presentation-video-review",
 ]
+# What the Story scripts section of a form skill has to say, beyond its heading.
+FORM_STORY_RULE = "wording, tone or order"
+FORM_STORY_RETURN = "`story-video-scripting`"
+FORM_TUTORIAL_ONLY = "adjusted through wording (tutorial scripts only)"
+FORM_NO_RUN_STATE = "A story video keeps no run state."
+LISTENING_STYLE_RULE = (
+    "The tutorial listening style in `shared/media/spoken-style.md` does not apply to "
+    "story narration."
+)
+STORY_VIDEO_SKILL = "story-video-scripting"
 STORY_SIDE_PREFIXES = ["shared/story/", "templates/story-vault/", "skills/story-"]
 PRECEDENCE_READER_SKILLS = [
     "explaining-concepts",
@@ -105,6 +115,8 @@ S2 = (
     "those skills are loaded in this session."
 )
 S3 = "Not for session replies, documentation or presentation videos."
+# The one story skill that scripts a presentation video excludes tutorial videos instead.
+S3_VIDEO = "Not for session replies, documentation or tutorial videos."
 S4 = "Not for story manuscripts or in-world text."
 S5 = (
     "Not for story manuscripts or in-world text: when the target is manuscript, stop "
@@ -119,6 +131,7 @@ CONTRACT_SENTENCES = {
     "story_opening": S1,
     "precedence": S2,
     "story_description_suffix": S3,
+    "story_video_description_suffix": S3_VIDEO,
     "reader_description_clause": S4,
     "reader_opening": S5,
     "vault_instruction": S6,
@@ -458,6 +471,9 @@ class OperativeSentences(unittest.TestCase):
             paragraphs[:3])
         description = skill_description("story-video-scripting")
         self.assertTrue(description.startswith("Use when "), description)
+        # It scripts a presentation video, so it cannot end by excluding presentation videos.
+        self.assertTrue(description.endswith(self.sentences["story_video_description_suffix"]), description)
+        self.assertNotIn(self.sentences["story_description_suffix"], description)
 
     def test_form_descriptions_carry_no_family_exclusion(self):
         # A form skill serves both families, so neither family's exclusion sentence may end it.
@@ -467,14 +483,16 @@ class OperativeSentences(unittest.TestCase):
                 self.assertTrue(description.startswith("Use when "), description)
                 self.assertIn("story video", description)
                 self.assertNotIn(self.sentences["story_description_suffix"], description)
+                self.assertNotIn(self.sentences["story_video_description_suffix"], description)
                 self.assertNotIn(self.sentences["reader_description_clause"], description)
 
     def test_every_story_description_ends_with_the_exclusion(self):
         for name in self.policy["families"]["story"]:
             with self.subTest(skill=name):
-                self.assertTrue(
-                    skill_description(name).endswith(self.sentences["story_description_suffix"]),
-                    skill_description(name))
+                key = ("story_video_description_suffix" if name == STORY_VIDEO_SKILL
+                       else "story_description_suffix")
+                self.assertTrue(skill_description(name).endswith(self.sentences[key]),
+                                skill_description(name))
 
     def test_excluded_reader_descriptions_end_with_the_story_exclusion(self):
         for name in self.policy["excluded_reader_skills"]:
@@ -556,7 +574,35 @@ class LinkFirewall(unittest.TestCase):
         # A form skill may name skills of both families in backticks; it never restyles a story script.
         for name in self.policy["families"]["form"]:
             with self.subTest(skill=name):
-                self.assertIn("\n## Story scripts\n", read(f"skills/{name}/SKILL.md"))
+                text = read(f"skills/{name}/SKILL.md")
+                self.assertIn("\n## Story scripts\n", text)
+                section = squash(text.split("\n## Story scripts\n", 1)[1].split("\n## ", 1)[0])
+                self.assertIn(FORM_STORY_RULE, section)
+                self.assertIn("never", section.lower())
+                self.assertIn(FORM_STORY_RETURN, section)
+                # A story video is never sent to the backlog recovery gate, in the preamble or in the section.
+                self.assertIn(FORM_NO_RUN_STATE, section)
+                preamble = squash(text.split("\n## Recovery preamble\n", 1)[1].split("\n## ", 1)[0])
+                self.assertIn(FORM_NO_RUN_STATE, preamble)
+        production = read("skills/presentation-video-production/SKILL.md")
+        self.assertIn(FORM_TUTORIAL_ONLY, squash(production))
+        self.assertIn("Pace is adjusted through an effective provider setting or the pause value only.",
+                      squash(production.split("\n## Story scripts\n", 1)[1].split("\n## ", 1)[0]))
+
+    def test_tutorial_listening_style_is_set_aside_for_story_narration(self):
+        # The review skill links the tutorial listening style; the rule that it does not govern a story is stated where it is read.
+        review = read("skills/presentation-video-review/SKILL.md")
+        self.assertIn(LISTENING_STYLE_RULE,
+                      squash(review.split("\n## Story scripts\n", 1)[1].split("\n## ", 1)[0]))
+        self.assertIn(LISTENING_STYLE_RULE, squash(read("skills/story-video-scripting/SKILL.md")))
+        self.assertIn(LISTENING_STYLE_RULE, squash(read(HUB)))
+
+    def test_hub_decides_the_files_of_a_story_video_project(self):
+        hub = read(HUB)
+        row = next(line for line in hub.splitlines() if line.startswith("| 2 |"))
+        self.assertIn("`src/narration.json`", row)
+        self.assertIn("`purpose: story`", row)
+        self.assertIn("story video project", next(line for line in hub.splitlines() if line.startswith("| 3 |")))
 
     def test_policy_files_refer_to_the_story_side_only_through_the_hub(self):
         story_side = self.policy["reader_link_deny_prefixes"]
@@ -760,6 +806,7 @@ class StoryPackageHygiene(unittest.TestCase):
                     "evals/shared/triggers/story-chapter-draft.json",
                     "evals/shared/triggers/story-video-script.json",
                     "evals/shared/triggers/story-video-production.json",
+                    "evals/shared/triggers/story-listening-edition.json",
                     "shared/story/rules.md", f"{VAULT}/AGENTS.md"}
         expected |= {f"skills/{name}/SKILL.md" for name in STORY_SKILLS + READER_SKILLS + FORM_SKILLS}
         self.assertEqual(set(), expected - scanned)

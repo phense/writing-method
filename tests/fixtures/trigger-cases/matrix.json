@@ -437,6 +437,37 @@
     }
   },
   {
+    "id": "story-listening-edition",
+    "request": "Change sentences of an accepted chapter for the audio version only; the written manuscript stays as it is.",
+    "primary": "story-video-scripting",
+    "supporting": [],
+    "prohibited": [
+      "native-focused-edit",
+      "explaining-concepts",
+      "writing-procedures",
+      "empathic-troubleshooting",
+      "human-prose-drafting",
+      "documentation-authoring",
+      "documentation-planning",
+      "documentation-review",
+      "tutorial-video-scripting",
+      "requesting-code-review",
+      "receiving-code-review",
+      "project-backlog",
+      "story-drafting"
+    ],
+    "handoff": {
+      "consumes": [
+        "kind: story vault with an accepted chapter at a named revision",
+        "voice sheet"
+      ],
+      "produces": [
+        "a listening edition with every difference approved by the author; the manuscript unchanged"
+      ],
+      "next": "presentation-video-production"
+    }
+  },
+  {
     "id": "story-video-production",
     "request": "The script of a story video, an accepted chapter read verbatim, is accepted. Voice it, build the timeline, take check stills and render the video.",
     "primary": "presentation-video-production",

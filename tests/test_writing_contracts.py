@@ -45,17 +45,17 @@ class WritingContracts(unittest.TestCase):
                           # Story-positive cases: a story skill is primary and the reader prose skills are prohibited.
                           'story-chapter-draft','story-new-vault','story-canon-review','story-voice-review','story-in-world-manual','story-beta-feedback',
                           # Narrated story video (WM-004): the story family scripts it, a form skill voices and renders the accepted script.
-                          'story-video-script','story-video-production',
+                          'story-video-script','story-listening-edition','story-video-production',
                           # Study vault: story-craft-research is primary and the request is declined; story-drafting may be opened for its mode check.
                           'study-vault-draft-request',
                           # Negative cases: every story skill is prohibited.
                           'story-vault-readme','docs-release-note','story-world-tutorial-video','story-method-documentation','vault-parent-session'},{c['id'] for c in matrix})
         self.assertEqual(len(matrix),len({c['id'] for c in matrix}))
         story_primary={c['id'] for c in matrix if c['primary'] in STORY}
-        self.assertEqual({'story-chapter-draft','story-new-vault','story-canon-review','story-voice-review','story-in-world-manual','story-beta-feedback','study-vault-draft-request','story-video-script'},story_primary)
+        self.assertEqual({'story-chapter-draft','story-new-vault','story-canon-review','story-voice-review','story-in-world-manual','story-beta-feedback','study-vault-draft-request','story-video-script','story-listening-edition'},story_primary)
         reader_prose={'explaining-concepts','writing-procedures','empathic-troubleshooting','human-prose-drafting','documentation-authoring','documentation-planning','documentation-review','tutorial-video-scripting'}
         new_cases=[c for c in matrix if c['id'].startswith(('story-','study-','vault-','docs-release'))]
-        self.assertEqual(14,len(new_cases))
+        self.assertEqual(15,len(new_cases))
         for case in new_cases:
             if case['primary'] in STORY:
                 # Story work never loads the reader prose skills, review-feedback handling or a backlog.
@@ -66,6 +66,10 @@ class WritingContracts(unittest.TestCase):
                     self.assertEqual('story-video-scripting',case['primary'])
                     self.assertTrue({'tutorial-video-scripting','presentation-video-production'} <= set(case['prohibited']),case['id'])
                     self.assertEqual('presentation-video-production',case['handoff']['next'])
+                if case['id']=='story-listening-edition':
+                    # A listening edition belongs to the story video skill; the manuscript skill would revise the book text.
+                    self.assertEqual('story-video-scripting',case['primary'])
+                    self.assertIn('story-drafting',case['prohibited'])
             elif case['id']=='story-video-production':
                 # A form skill is primary: it voices the accepted story script as it is. Nothing that writes, restyles or judges the text may load.
                 self.assertIn(case['primary'],FORM)

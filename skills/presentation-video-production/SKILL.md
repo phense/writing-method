@@ -23,6 +23,7 @@ Follow the [recovery gate](../project-backlog/SKILL.md#recovery-gate) and the
 backlog skill directly. No documentation skill is part of the video lifecycle.
 For an untracked single video, the files on disk are the state: completed
 sound is reused, so every step can be run again after an interruption.
+A story video keeps no run state. Skip this preamble; see [Story scripts](#story-scripts).
 
 ## Trigger
 
@@ -139,12 +140,14 @@ accepted manuscript (`"edition": "verbatim"`) or an accepted listening edition
   pronunciation. Pace is adjusted through an effective provider setting or
   the pause value only.
 - A wrong name or term is corrected in `pronunciation.json` or with a line's
-  `speak`, which changes the sound and never the caption text.
+  `speak`, which changes the sound and never the caption text or the words.
 - A line that the script check rejects, or that needs other words to work
   aloud, goes back to `story-video-scripting` and the author. The same holds
   for "one sentence changed": the changed line arrives from there; this skill
   voices it and repeats the steps above.
 - Scene pictures follow the plain descriptions in `script/script.md`.
+- A story video keeps no run state. Do not open the backlog skill and create no run
+  directory; the files of the video project are the state.
 
 ## Playbook
 
@@ -167,4 +170,4 @@ not acceptance: the delivery gate belongs to the review.
 
 - `verification-before-completion` before any "rendered" or "ready" claim.
 - `playbook-authoring`, `playbook-review` for the production playbook.
-- `project-backlog` when the video is tracked under a work ID.
+- `project-backlog` when a tutorial video is tracked under a work ID.

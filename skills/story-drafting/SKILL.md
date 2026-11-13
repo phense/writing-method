@@ -1,6 +1,6 @@
 ---
 name: story-drafting
-description: "Use when story manuscript must be drafted or revised: scenes, chapters and short pieces with controlled viewpoint, distinctive voice, dialogue, rhythm and canon dependencies, including in-world documents such as a letter, report or manual inside the story, and afterword or blurb. Not for documentation humanizing, for promises to evade AI detectors, or for judging accepted prose. Not for a study vault or an unused starter vault. Not for session replies, documentation or presentation videos."
+description: "Use when story manuscript must be drafted or revised: scenes, chapters and short pieces with controlled viewpoint, distinctive voice, dialogue, rhythm and canon dependencies, including in-world documents such as a letter, report or manual inside the story, and afterword or blurb. Not for documentation humanizing, for promises to evade AI detectors, or for judging accepted prose. Not for a listening edition of an accepted chapter for a narrated story video. Not for a study vault or an unused starter vault. Not for session replies, documentation or presentation videos."
 ---
 
 # Story drafting
@@ -25,6 +25,8 @@ Write prose to the path given by `form` in the brief:
 | `short-form` | Under the heading `## Manuscript` of one note per piece in `06-manuscript/pieces/`, from the [short piece template](../../templates/story-vault/90-templates/short-piece.md) | The same note, outside that heading |
 
 When the author asks for a story passage outside any vault, write it in a fenced block with the method defaults below and say that no voice sheet applies. The reply around a passage is a reply, not manuscript, and never restyles it.
+
+Files under `06-manuscript/editions/` are created and changed by `story-video-scripting`, not here. A change that alters what happens still comes back to this skill as a manuscript revision.
 
 ## Before drafting
 
