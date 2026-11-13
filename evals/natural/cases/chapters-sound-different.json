@@ -1,0 +1,18 @@
+{
+  "id": "chapters-sound-different",
+  "prompt": "Die Kapitel 10 bis 12 klingen irgendwie nicht mehr so wie am Anfang. Kannst du das prüfen?",
+  "files": {
+    "AGENTS.md": "# Vault instructions\n\nThis directory is one vault. Its kind is stated in the frontmatter of 00-project/brief.md and 00-project/voice.md; here it is `story`. Only kind story permits manuscript drafting; kind study permits study notes only; kind starter is an unused template.\n\nManuscript files follow 00-project/voice.md and nothing from documentation or didactic writing rules. Other vault notes are plain working notes. Replies to the author stay reader-oriented; the voice sheet never styles a reply.\n",
+    "CLAUDE.md": "@AGENTS.md\n",
+    "START.md": "# Ember Road\n\nStory vault. Start with 00-project/brief.md.\n",
+    "00-project/brief.md": "---\nkind: story\nstory_id: ember-road\nform: long-form\npublication_profile: web-serial\n---\n# Story brief\n\nA courier guild carries sealed letters across a salt desert between rival cities. Reader promise: slow-burn travel adventure with a guild intrigue underneath.\n",
+    "00-project/voice.md": "---\nkind: story\nstory_id: ember-road\nvoice_revision: V1\nviewpoint: third person limited\ntense: past\ndistance: close\n---\n# Voice sheet\n\n## Narration contract\n\nViewpoint Sena: third person limited, past tense, close distance. No head-hopping inside a scene.\n\n## Tone palette\n\nBaseline: dry, observant, unhurried. Permitted excursion: gallows humour under physical danger, returning to baseline by the end of the scene. Excluded: slapstick, narrator sentimentality.\n\n## Language conventions\n\nBritish spelling. Guild ranks are lower-case. No modern idiom in dialogue.\n\n## Anchor passages\n\n- ch-003, revision r4: the night crossing, from \"The salt sang under her boots\" to the scene break.\n- ch-008, revision r2: the ledger argument with Oren, whole scene.\n\n## Deliberate exceptions\n\nch-009 uses present tense for the fever dream.\n\n## Change log\n\n- V1 accepted by the author after the voice trial.\n",
+    "00-project/development.md": "# Development state\n\nCurrent pass: drafting arc-01. Next: chapter 12.\n",
+    "01-world/overview.md": "# World overview\n\nThe salt-road courier guild has three ranks. A runner carries unsealed post inside one city. A courier carries sealed letters between cities and may refuse a commission. A warden keeps a gate ledger and settles disputes between couriers and clients.\n",
+    "07-continuity/state.md": "# Current state\n\n- Accepted through ch-011, revision r2.\n- The Ash Court seal is black wax (accepted in ch-004).\n- Oren lost his left hand before the story begins (accepted in ch-002).\n",
+    "06-manuscript/index.md": "# Manuscript order\n\n| Chapter | Prose file | Card | Arc | POV | Accepted revision |\n|---|---|---|---|---|---|\n| ch-010 | 06-manuscript/chapters/ch-010.md | 05-plot/chapters/ch-010.md | arc-01 | Sena | r2 |\n| ch-011 | 06-manuscript/chapters/ch-011.md | 05-plot/chapters/ch-011.md | arc-01 | Sena | r2 |\n| ch-012 | 06-manuscript/chapters/ch-012.md | 05-plot/chapters/ch-012.md | arc-01 | Sena | none |\n",
+    "06-manuscript/chapters/ch-010.md": "Sena counted the water skins twice. Two were short, and nobody on the wall would meet her eye.\n",
+    "06-manuscript/chapters/ch-011.md": "OMG, thought Sena, this desert is literally the worst. She was super done with salt.\n",
+    "06-manuscript/chapters/ch-012.md": "The Brine Gate had closed its ledger before Sena reached it. She read her own name there, entered in a hand that was not hers, and went round by the tannery stair.\n\nOren was waiting where the vats ended. He held out the letter, seal unbroken, and she saw that the wax was the wrong red.\n"
+  }
+}
