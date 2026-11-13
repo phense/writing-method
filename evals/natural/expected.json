@@ -1,7 +1,8 @@
 {
   "admin-guide": {
     "any": [
-      "documentation-authoring"
+      "documentation-authoring",
+      "writing-procedures"
     ],
     "prohibited": [
       "story-drafting",

@@ -28,7 +28,7 @@ it.
 - Target: one video project, authoring machine <authoring machine>, render
   machine <render machine or "none">, speech provider <azure | elevenlabs>
 - Readiness deadline: before the first video is delivered from this project
-- Last edited: <date>
+- Last edited: <last edited>
 - Review and rehearsal evidence: <relative link>
 
 ## When to use / when not to use
@@ -56,7 +56,7 @@ Instantiation inputs, filled once when the playbook is copied into a project:
 | <copy command>, <checksum command> | The commands that copy to <delivery location> and compute a checksum there |
 | <transcription command> | `transcribe` in the profile |
 | <connector status check> | ElevenLabs only: how the connector reports an existing generation and fetches its result |
-| <date>, <relative link> | Last edit, and the review and rehearsal record |
+| <last edited>, <relative link> | Date of the last edit, and the review and rehearsal record |
 
 An input the project cannot name is a blocker for the step that uses it, not
 a value to guess.
@@ -69,10 +69,14 @@ Run-time variables, left as written:
 | `<id>` | `python3 tools/profile.py --get video.id` |
 | `<file>` | `out/<id>.mp4`, or `out/<id>-with-opening.mp4` after P7a |
 | `<length>` | The seconds printed by `tools/prepend.sh` as `opening length` |
+| `<date>`, `<name>`, `<languages>`, `<take>`, `<code>`, `<N>`, lists | As printed by the tools or written in `review.md` |
+| `<value>` | The rate to probe, for example `+10%` |
+| `<render.remote_dir>` | `python3 tools/profile.py --get render.remote_dir` |
 
 ## Before starting
 
-Run from the video project. Each check must succeed before step P1.
+Run from the video project. Each check must succeed before step P1; of the
+two provider rows, the one for the profile's `speech.provider`.
 
 | Check | Command | Expected |
 |---|---|---|
@@ -82,7 +86,7 @@ Run from the video project. Each check must succeed before step P1.
 | Review gate 1 | Open `review.md` | `Gate 1: passed on <date>`, and "Script revision reviewed" names the current script |
 | Media tools | `ffmpeg -version && ffprobe -version && node --version` | Each command prints its version and exits without error |
 | Node packages | `npm ls remotion` | A version, no `missing` |
-| Scenes | `python3 tools/timeline.py --draft && node tools/stills.mjs stills`, then look at one still per scene | No still shows `PLACEHOLDER`. The draft timeline is replaced in P3 |
+| Scenes | `python3 tools/timeline.py --draft && node tools/stills.mjs out/draft-stills`, then look at one still per scene in `out/draft-stills/` | No still shows `PLACEHOLDER`. `stills/` and `stills/stills.json` are not touched. `src/timeline.json` is now a draft; it is replaced in P3 |
 | Transcription | `python3 tools/profile.py --get transcribe` | Prints a command containing `{audio}`. Empty: stop; P4 and P2b cannot run |
 | Delivery location | `python3 tools/profile.py --get delivery.location` | The path named in this playbook. Empty: stop |
 | Provider (Azure) | `python3 tools/voice_azure.py --check` | `credentials accepted` and a line `voice <name>: <languages>`. A line starting `note:` is corrected in the profile first |
@@ -108,14 +112,14 @@ step that changes a delivered file.
 
 | Step | Actor and target | Condition / action | Expected evidence | Failure / next step |
 |---|---|---|---|---|
-| P1 | Author, project | `python3 tools/verify_speech.py --samples`. Azure: `python3 tools/voice_azure.py --only <list it printed>`; a person listens to each of these lines (an assistant hands the file names under `public/audio/` to the author and waits); then `python3 tools/verify_speech.py --only <same list>`. ElevenLabs: no sample voicing exists; go to P2; P4 is the first key-term check | Each key term heard correctly; `0 with an unrecognized key term` | Wrong term: correct `pronunciation.json`, repeat P1 |
+| P1 | Author, project | `python3 tools/verify_speech.py --samples`. No line `voice them first:` printed: go to P2. Azure: `python3 tools/voice_azure.py --only <list it printed>`; a person listens to each of these lines (an assistant hands the file names under `public/audio/` to the author and waits); then `python3 tools/verify_speech.py --only <same list>`. ElevenLabs: no sample voicing exists; go to P2; P4 is the first key-term check | Each key term heard correctly; `0 with an unrecognized key term` | Wrong term: correct `pronunciation.json`, repeat P1. Lines `below similarity`: as in P4 |
 | P2 | Author, project | Decision: `python3 tools/profile.py --get speech.provider` and `python3 tools/profile.py --get speech.mode` | `azure` and `line`: P2a. `elevenlabs` and `scene`: P2b | Any other pair: stop; correct the profile; repeat Before starting |
 | P2a | Author, Azure | `python3 tools/voice_azure.py` | `N lines, … new` | Stops with `stopped at <scene>:<line>`: go to R1 |
 | P2b | Author, connector | `python3 tools/split_takes.py prompts`; for each scene without a stored take, generate the printed passage once through the connector with the profile's voice, wait until it is done, and store it at once as `takes/<scene>-take1.mp3`; transcribe each take to `takes/<scene>-take1.words.json` (a list of `{"word", "start", "end"}`) with <transcription command>; `python3 tools/split_takes.py` | `<scene>: <take> (match 0.90 or higher), N lines` per scene | Generation error or timeout: go to R2. Take rejected: go to R3 |
 | P3 | Author, project | `python3 tools/timeline.py && python3 tools/measure.py pace` | `PASSED` | `text changed after voicing` or missing sound: repeat P2. `OUT OF RANGE`: go to R6 |
-| P4 | Author, project | `python3 tools/verify_speech.py` | `0 with an unrecognized key term` | Unrecognized key term: correct `pronunciation.json`, repeat from P2. Lines `below similarity`: a person listens to each; wrong: correct `pronunciation.json`, repeat from P2; right: note the line in `review.md` |
+| P4 | Author, project | `python3 tools/verify_speech.py` | `0 with an unrecognized key term` | Unrecognized key term: correct `pronunciation.json`, repeat from P2. Lines `below similarity`: a person listens to each; wrong: correct `pronunciation.json`, repeat from P2; right: note the line in `review.md`. ElevenLabs (P2b): the stored take keeps the wrong sound. After the author agrees (it is charged), generate one new take of the affected scene from `python3 tools/split_takes.py prompts <scene>`, store it as `takes/<scene>-take<N+1>.mp3`, transcribe it to `takes/<scene>-take<N+1>.words.json`, run `python3 tools/split_takes.py <scene>` (see the take rule under Correction of a delivered video), then P3 and P4. Still wrong after that: stop and escalate |
 | P5 | Author, project | `node tools/stills.mjs stills`; look at every still; set `"inspected": true` for it in `stills/stills.json`, or write the defect into its `"finding"`; `python3 tools/check_review.py` | `N of N stills inspected without finding` | Defect: correct the scene, `node tools/stills.mjs stills <scene>`, repeat P5 for it |
-| P6 | Author | Decision: render machine named in the profile and reachable? | Yes: P6a. No: P6b | |
+| P6 | Author | Decision: `python3 tools/profile.py --get render.host` | Prints a host and the render-machine check of Before starting succeeded: P6a. Empty, or the check fails: P6b | |
 | P6a | Author, render machine | `tools/render-remote.sh` | `done in … s: out/<id>.mp4` | Interrupted or unreachable: go to R4 |
 | P6b | Author, authoring machine | `tools/render.sh` | `rendered: out/<id>.mp4` | Interrupted: go to R4 |
 | P7 | Author | Decision: `python3 tools/profile.py --get opening` | Prints a path: P7a. Empty: P8 | |
@@ -141,6 +145,10 @@ for it. Run Before starting, then P2 to P11.
 - P2b: after the author agrees, one new take of that scene, stored under the
   next free number `takes/<scene>-take<N+1>.mp3` with its own word file. Never
   overwrite an existing take: its word file would no longer match the sound.
+  The line `split_takes.py` prints for the scene must name the new take. If
+  it names an older take, move that scene's older takes with their word files
+  to `takes/superseded/` (the tool reads only `takes/<scene>-take*.mp3`) and
+  run `python3 tools/split_takes.py <scene>` again.
 - P5: `node tools/stills.mjs stills <scene>` and inspect that scene's stills.
   A run without a scene resets every inspection mark.
 
@@ -153,24 +161,28 @@ rerun; repeat only the transcription and `python3 tools/split_takes.py`.
 
 | ID | Situation | Recognize | Action |
 |---|---|---|---|
-| R1 | Voicing stopped | Message names the scene and line reached; finished files are in `public/audio/` | `still rate limited`: wait, run P2a again; finished lines are not requested again. `provider not reachable`: check the network, run P2a again. `the provider rejected the key` or `provider answered HTTP <code>`: run `python3 tools/voice_azure.py --check`; still rejected: escalate |
+| R1 | Voicing stopped | Message names the scene and line reached; finished files are in `public/audio/` | `still rate limited`: wait, run P2a again; finished lines are not requested again. `provider not reachable`: check the network, run P2a again. `the provider rejected the key` or `provider answered HTTP <code>`: run `python3 tools/voice_azure.py --check`; still rejected: escalate. `credentials accepted`: run P2a once more; it stops again at the same line with the same message: stop and escalate with the output |
 | R2 | Connector generation failed or timed out | No file stored for the scene | Use <connector status check> to find the existing generation and fetch its result. Start a new generation only after the author agrees: each one is charged |
-| R3 | Take rejected | `match` below the profile's threshold, or `line N was not heard` | The scene's existing sound is untouched. Listen to the take. After the author agrees (it is charged), request one new take and store it as `-take2`; `python3 tools/split_takes.py <scene>` chooses the better one. Second take rejected too: stop and escalate. Do not lower the threshold to pass |
+| R3 | Take rejected | `match` below the profile's threshold, or `line N was not heard` | The scene's existing sound is untouched. Listen to the take. After the author agrees (it is charged), request one new take, store it as `-take2` and transcribe it to `takes/<scene>-take2.words.json` with <transcription command>; `python3 tools/split_takes.py <scene>` chooses the better one. Second take rejected too: stop and escalate. Do not lower the threshold to pass |
 | R4 | Render interrupted | The command ended without its last line (`rendered: …` or `done in …`). An `out/<id>.mp4` from an earlier render is not the result | Delete `out/raw.mp4` and any earlier `out/<id>.mp4` and `out/<id>-with-opening.mp4`, then run P6 again. No partial file is a result |
-| R5 | Delivery measurement failed | Last line `FAILED`; the failing row shows `FAIL` (file), `OUT OF RANGE` (pace) or `N outside ±` (pauses) | Pace: R6. Resolution or frame rate: correct `picture` in the profile, `python3 tools/timeline.py`, then P5 and P6. Duration or pauses: `python3 tools/timeline.py`, then P6 and P7. Loudness or peak: P6 once. If `out/<id>.mp4` passes and only the file with the opening fails, the opening sequence is the cause: correct that file, then P7. The same row fails a second time: stop and escalate; do not change a profile limit to pass |
-| R6 | Pace out of range | `pace <scene> … OUT OF RANGE [low, high]` in the output of `tools/measure.py` | Story video: never change wording, tone or order of a line. Azure: `python3 tools/probe_settings.py rate=<value>` (short paid requests); keep the setting under `speech.settings` in the profile only if it prints `EFFECTIVE`; then repeat P2 and P3 (a changed setting voices every line again). ElevenLabs: no pace setting is defined; stop and escalate. Tutorial only: a changed wording is produced by `tutorial-video-scripting`, must pass `python3 tools/check_script.py`, then repeat P2 and P3. Story line that needs other words, or no effective setting: stop and return to the story scripting skill and the author. The pause value does not change the pace measurement. Changing `pace_wpm` in the profile or under `overrides` in `video.json` is an owner decision recorded in the project `README.md`, not a fix the operator chooses |
+| R5 | Delivery measurement failed | Last line `FAILED`; the failing row shows `FAIL` (file), `OUT OF RANGE` (pace) or `N outside ±` (pauses) | Pace: R6. Resolution or frame rate: correct `picture` in the profile, `python3 tools/timeline.py`, then P5 and P6. Duration or pauses: `python3 tools/timeline.py`, then P6 and P7. Loudness or peak: P6 once. Sound track: R4. With an opening: `python3 tools/measure.py all out/<id>.mp4`. If `out/<id>.mp4` passes and only the file with the opening fails, the opening sequence is the cause: correct that file, then P7. The same row fails a second time: stop and escalate; do not change a profile limit to pass |
+| R6 | Pace out of range | `pace <scene> … OUT OF RANGE [low, high]` in the output of `tools/measure.py` | Story video: never change wording, tone or order of a line. Azure: `python3 tools/probe_settings.py rate=<value>` (short paid requests); keep the setting under `speech.settings` in the profile only if its last line is exactly `EFFECTIVE` (a line starting `NOT EFFECTIVE` means: do not keep it); then repeat P2 and P3 (a changed setting voices every line again). ElevenLabs: no pace setting is defined; stop and escalate. Tutorial only: a changed wording is produced by `tutorial-video-scripting`, then start again at Before starting (script check and gate 1 for the changed script). Story line that needs other words, or no effective setting: stop and return to the story scripting skill and the author. The pause value does not change the pace measurement. Changing `pace_wpm` in the profile or under `overrides` in `video.json` is an owner decision recorded in the project `README.md`, not a fix the operator chooses |
 
-Rollback: nothing at <delivery location> is changed before P10b. Locally P2
-replaces the sound of changed lines, P3 and P7a rewrite `src/timeline.json`,
+Rollback: no delivered file at <delivery location> is changed before P10b
+(P10 only adds `<file name>.new`). Locally P2
+replaces the sound of changed lines, the Scenes check, P3 and P7a rewrite `src/timeline.json`,
 `out/captions.vtt` and `out/chapters.txt`, and P6 and P7a overwrite
 `out/<id>.mp4` and `out/<id>-with-opening.mp4`. After P10b the previous
-delivered file is `<file name>.previous`; keep it until P11 has passed.
+delivered file is `<file name>.previous`; keep it until P11 has passed. After P11 it stays until the next delivery
+replaces it; removing it earlier is the owner's decision.
 
 ## Escalation and preserved evidence
 
 Escalate to <owner role> through <channel> when `--check` still reports a
-rejected key, when P2a stops with `still rate limited` on three separate
-runs, when a second take is rejected, when a copy mismatches twice, when the
+rejected key, when P2a stops twice at the same line although `--check`
+accepts the credentials, when P2a stops with `still rate limited` on three separate
+runs, when a second take is rejected, when a copy mismatches twice, when the delivered file mismatches in P11,
+when a pace range cannot be met in R6 without an owner decision, when the
 same measurement row fails twice, or when a key term stays wrong after a
 phonetic entry, a language mark and a second voice. Preserve: the command
 output of the failed step, `out/measure.json`, the rejected take and its word
