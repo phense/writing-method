@@ -1,0 +1,6 @@
+node_modules/
+out/
+stills/
+takes/*.mp3
+__pycache__/
+env/*.env

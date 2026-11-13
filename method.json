@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "name": "writing-method",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "method_skills": [
     "documentation-authoring",
     "documentation-pdf",
@@ -10,7 +10,10 @@
     "empathic-troubleshooting",
     "explaining-concepts",
     "human-prose-drafting",
+    "presentation-video-production",
+    "presentation-video-review",
     "terminology-guard",
+    "tutorial-video-scripting",
     "visual-placeholders",
     "writing-procedures"
   ]

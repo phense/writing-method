@@ -1,0 +1,5 @@
+[
+  {"key": "intro", "chapter": "Start", "message": "A video is built from a script, not recorded.", "no_claims": true},
+  {"key": "steps", "chapter": "The four steps", "message": "Script, voice, picture and render follow one another.", "sources": ["S1"]},
+  {"key": "close", "chapter": "Next", "message": "Change one sentence and only that sentence is voiced again.", "sources": ["S1"]}
+]

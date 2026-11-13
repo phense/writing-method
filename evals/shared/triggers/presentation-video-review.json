@@ -1,0 +1,8 @@
+{
+  "id": "presentation-video-review",
+  "prompt": "The tutorial video videos/leave/out/leave.mp4 is rendered. Check it before delivery. Assess the workflow and load its instructions; do not review yet.",
+  "files": {
+    "README.md": "# Videos\n\nvideos/leave is rendered and waits for delivery.\n",
+    "videos/leave/out/measure.json": "{\"passed\": true}\n"
+  }
+}

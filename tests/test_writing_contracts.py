@@ -10,7 +10,7 @@ import tempfile
 import unittest
 from scripts.validate_plugin import validate_repository
 ROOT=Path(__file__).resolve().parents[1]
-WRITING={'documentation-planning','documentation-authoring','documentation-review','documentation-pdf','human-prose-drafting','explaining-concepts','writing-procedures','empathic-troubleshooting','terminology-guard','visual-placeholders'}
+WRITING={'documentation-planning','documentation-authoring','documentation-review','documentation-pdf','human-prose-drafting','explaining-concepts','writing-procedures','empathic-troubleshooting','terminology-guard','visual-placeholders','tutorial-video-scripting','presentation-video-production','presentation-video-review'}
 SHARED={'project-backlog','verification-before-completion','dispatching-parallel-agents','using-git-worktrees','requesting-code-review','receiving-code-review','playbook-authoring','playbook-review'}
 
 class WritingContracts(unittest.TestCase):
@@ -20,8 +20,9 @@ class WritingContracts(unittest.TestCase):
     def test_review_retry_preserves_chunks_and_blocks_unresolved_findings(self):
         text=(ROOT/'shared/policies/lifecycle-handoffs.md').read_text()
         graph=json.loads(re.search(r'```json\n(.*?)\n```',text,re.S).group(1))
-        self.assertEqual({'documentation':'documentation-authoring'},graph['executors'])
-        self.assertEqual([{'from':'documentation-review','to':'documentation-authoring','condition':'actionable findings returned for affected chunks','artifact':'docs/writing/<doc-id>/review.md findings','preserves':'accepted chunks and stable chunk IDs'}],graph['retry_transitions'])
+        self.assertEqual({'documentation':'documentation-authoring','presentation-video':'presentation-video-production'},graph['executors'])
+        self.assertEqual({'from':'documentation-review','to':'documentation-authoring','condition':'actionable findings returned for affected chunks','artifact':'docs/writing/<doc-id>/review.md findings','preserves':'accepted chunks and stable chunk IDs'},graph['retry_transitions'][0])
+        self.assertEqual({('documentation-review','documentation-authoring'),('presentation-video-review','presentation-video-production'),('presentation-video-review','tutorial-video-scripting')},{(r['from'],r['to']) for r in graph['retry_transitions']})
         edge=next(e for e in graph['edges'] if e['from']=='documentation-review')
         self.assertEqual('verification-before-completion',edge['to'])
         self.assertIn('no open Critical or Important',edge['completion_guard'])
@@ -35,7 +36,7 @@ class WritingContracts(unittest.TestCase):
                 self.assertIn(contract," ".join(text.split()))
     def test_routing_scenarios_use_only_available_primary_and_supporting_skills(self):
         matrix=json.loads((ROOT/'tests/fixtures/trigger-cases/matrix.json').read_text())
-        self.assertEqual({'standalone-document','documentation-set','existing-documentation-plan','documentation-pdf'},{c['id'] for c in matrix})
+        self.assertEqual({'standalone-document','documentation-set','existing-documentation-plan','documentation-pdf','tutorial-video-script','presentation-video-production','presentation-video-review','video-one-line-correction'},{c['id'] for c in matrix})
         for case in matrix:
             self.assertIn(case['primary'],WRITING)
             self.assertTrue(set(case['supporting']) <= WRITING|SHARED)

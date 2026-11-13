@@ -1,0 +1,20 @@
+{
+  "language": "en-US",
+  "speech": {
+    "provider": "azure",
+    "voice": "en-US-AvaMultilingualNeural",
+    "voice_languages": ["en-US", "de-DE", "fr-FR", "es-ES"],
+    "settings": {},
+    "mode": "line"
+  },
+  "pace_wpm": [140, 180],
+  "pause": {"line": 0.65, "scene_start": 0.5, "scene_end": 1.0, "caption_lead": 0.15},
+  "script": {"max_line_words": 28, "max_sentence_words": 22, "max_minutes": 45},
+  "picture": {"width": 1920, "height": 1080, "fps": 30, "min_font_px": 28, "margin_px": 60},
+  "loudness": {"lufs": -16.0, "tolerance": 1.0, "true_peak_max": -1.5},
+  "opening": null,
+  "render": {"host": null, "remote_dir": "render"},
+  "delivery": {"location": null, "keep_intermediate": false},
+  "transcribe": null,
+  "env_file": null
+}

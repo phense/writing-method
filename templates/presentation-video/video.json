@@ -1,0 +1,9 @@
+{
+  "id": "sample-video",
+  "title": "How a presentation video is built",
+  "audience": "Authors who build their first video with this template",
+  "address": "you",
+  "goal": "The viewer can name the four steps from script to finished file.",
+  "recreated": false,
+  "stale_when": "The tools in this template change their names or order."
+}

@@ -1,0 +1,156 @@
+{
+  "fps": 30,
+  "total": 44.167,
+  "total_frames": 1325,
+  "picture": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "min_font_px": 28,
+    "margin_px": 60
+  },
+  "pause": {
+    "line": 0.65,
+    "scene_start": 0.5,
+    "scene_end": 1.0,
+    "caption_lead": 0.15
+  },
+  "chapters": [
+    {
+      "title": "Start",
+      "start": 0.0
+    },
+    {
+      "title": "The four steps",
+      "start": 10.4
+    },
+    {
+      "title": "Next",
+      "start": 31.133
+    }
+  ],
+  "scenes": [
+    {
+      "key": "intro",
+      "chapter": "Start",
+      "message": "A video is built from a script, not recorded.",
+      "start": 0.0,
+      "start_frame": 0,
+      "length": 10.4,
+      "frames": 312,
+      "lines": [
+        {
+          "text": "Welcome! This short video shows how a presentation video is built.",
+          "show": true,
+          "file": null,
+          "at": 0.35,
+          "audio_at": 0.5,
+          "speech_start": 0.5,
+          "speech_end": 4.625,
+          "duration": 4.125,
+          "slot": 4.775
+        },
+        {
+          "text": "Nothing here is filmed. Every picture is drawn from a script.",
+          "show": true,
+          "file": null,
+          "at": 5.125,
+          "audio_at": 5.275,
+          "speech_start": 5.275,
+          "speech_end": 9.4,
+          "duration": 4.125,
+          "slot": 5.275
+        }
+      ]
+    },
+    {
+      "key": "steps",
+      "chapter": "The four steps",
+      "message": "Script, voice, picture and render follow one another.",
+      "start": 10.4,
+      "start_frame": 312,
+      "length": 20.733,
+      "frames": 622,
+      "lines": [
+        {
+          "text": "First you write the script: chapters, scenes and the sentences to speak.",
+          "show": true,
+          "file": null,
+          "at": 0.35,
+          "audio_at": 0.5,
+          "speech_start": 0.5,
+          "speech_end": 5.0,
+          "duration": 4.5,
+          "slot": 5.15
+        },
+        {
+          "text": "Then each sentence is voiced, and its length is measured.",
+          "show": true,
+          "file": null,
+          "at": 5.5,
+          "audio_at": 5.65,
+          "speech_start": 5.65,
+          "speech_end": 9.4,
+          "duration": 3.75,
+          "slot": 4.4
+        },
+        {
+          "text": "From those lengths the timeline is derived, so nothing is timed by hand.",
+          "show": true,
+          "file": null,
+          "at": 9.9,
+          "audio_at": 10.05,
+          "speech_start": 10.05,
+          "speech_end": 14.925,
+          "duration": 4.875,
+          "slot": 5.525
+        },
+        {
+          "text": "Last, the video is rendered and the finished file is measured.",
+          "show": true,
+          "file": null,
+          "at": 15.425,
+          "audio_at": 15.575,
+          "speech_start": 15.575,
+          "speech_end": 19.7,
+          "duration": 4.125,
+          "slot": 5.275
+        }
+      ]
+    },
+    {
+      "key": "close",
+      "chapter": "Next",
+      "message": "Change one sentence and only that sentence is voiced again.",
+      "start": 31.133,
+      "start_frame": 934,
+      "length": 13.033,
+      "frames": 391,
+      "lines": [
+        {
+          "text": "Change one sentence, and only that sentence is voiced again. Everything after it moves by itself.",
+          "show": true,
+          "file": null,
+          "at": 0.35,
+          "audio_at": 0.5,
+          "speech_start": 0.5,
+          "speech_end": 6.5,
+          "duration": 6.0,
+          "slot": 6.65
+        },
+        {
+          "text": "That is all you need to start. Have fun building your first video!",
+          "show": true,
+          "file": null,
+          "at": 7.0,
+          "audio_at": 7.15,
+          "speech_start": 7.15,
+          "speech_end": 12.025,
+          "duration": 4.875,
+          "slot": 6.025
+        }
+      ]
+    }
+  ],
+  "draft": true
+}
