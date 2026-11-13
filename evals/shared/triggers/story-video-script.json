@@ -1,6 +1,6 @@
 {
   "id": "story-video-script",
-  "prompt": "Turn chapter 11 of this story into the script of a narrated video, an audiobook with pictures. The chapter is accepted at revision r2 in 06-manuscript/chapters/ch-011.md and is to be read verbatim. The video project goes to 08-video/ch-011/. Perform only the first safe assessment: select the workflow, load the applicable skills, and record decision.md; do not write the script and do not voice anything.",
+  "prompt": "Turn chapter 11 of this story into the script of a narrated video, an audiobook with pictures. The chapter is accepted at revision r2 in 06-manuscript/chapters/ch-011.md and is to be read verbatim. The video project goes to 08-video/ch-011/. Perform only the first safe assessment: select the workflow, load the applicable skills, and record decision.md in the root of this vault; do not write the script and do not voice anything.",
   "files": {
     "AGENTS.md": "# Vault instructions\n\nThis directory is one vault. Its kind is stated in the frontmatter of 00-project/brief.md and 00-project/voice.md; here it is `story`. Only kind story permits manuscript drafting; kind study permits study notes only; kind starter is an unused template.\n\nManuscript files follow 00-project/voice.md and nothing from documentation or didactic writing rules. Other vault notes are plain working notes. Replies to the author stay reader-oriented; the voice sheet never styles a reply.\n",
     "CLAUDE.md": "@AGENTS.md\n",
