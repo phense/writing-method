@@ -9,6 +9,8 @@ Mode check first, under [writing mode](../../shared/policies/writing-mode.md): f
 
 No run state: this skill has no recovery preamble and hands off to no backlog or run-tracking skill. A story or study vault keeps no backlog and no run directory; its state lives in 00-project/development.md and 00-project/decisions.md.
 
+The [#1 prose rule](../../shared/story/rules.md#1-prose-rule-natural-prose) applies to every note this skill writes: nothing in it reads as machine-written.
+
 Research notes, source cards and study notes are working notes: plain notes that follow neither a voice sheet nor any instructional document structure.
 
 ## Where the work is kept

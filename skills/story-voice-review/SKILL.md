@@ -1,6 +1,6 @@
 ---
 name: story-voice-review
-description: "Use when a drafted chapter, short piece or chapter range of a story vault must be judged against that story's voice sheet and character voice cards, including author or beta-reader feedback on how the prose sounds. Reports findings and never edits accepted prose. Not for canon or chronology checks, for drafting or revising prose, or for a general style check. Not for session replies, documentation or presentation videos."
+description: "Use when a drafted chapter, short piece or chapter range of a story vault must be judged against that story's voice sheet and character voice cards, including author or beta-reader feedback on how the prose sounds. Reports findings and never edits accepted prose. Not for canon or chronology checks, for drafting or revising prose, or for a style check beyond the sheet, the cards and the #1 prose rule. Not for session replies, documentation or presentation videos."
 ---
 
 # Story voice review
@@ -28,9 +28,10 @@ Read for the narration contract of each viewpoint, the tone palette with its exc
 Every finding cites the passage, with file and location, and one basis:
 
 - a clause of the voice sheet or of a character voice card, or
-- a named default from [story drafting](../story-drafting/SKILL.md), labelled "method default, not sheet".
+- a named default from [story drafting](../story-drafting/SKILL.md), labelled "method default, not sheet", or
+- a pattern of the [#1 prose rule](../../shared/story/rules.md#1-prose-rule-natural-prose) in narration that neither the sheet nor a card supports, labelled "prose rule #1": groups A, C and E, and group B where several of its patterns stand in one passage. Class it as a sheet gap.
 
-Drop an observation that has neither. There is no banned-word list and no universal style standard; a fragment, a repetition or a joke is a finding only where the sheet or a card says so.
+Drop an observation that has none of these. Beyond that rule there is no banned-word list and no universal style standard. A fragment, a repetition or a joke is a finding only where the sheet or a card says so; the prose rule does not make it one.
 
 Class each finding as one of:
 

@@ -40,6 +40,8 @@ For premise-to-pilot feedback or broad prose revision, use [story and prose qual
 
 Draft the requested unit, normally a scene or chapter. Let viewpoint determine attention, vocabulary, judgment and available knowledge. Maintain the agreed tense, distance and rules for viewpoint changes. A narrator may know more than a character only when the chosen narration permits it. Stay inside the sheet's tone palette: leave the baseline only for a permitted excursion, and return as the sheet describes.
 
+Apply the [#1 prose rule](../../shared/story/rules.md#1-prose-rule-natural-prose) to every sentence: where the voice sheet is silent, its groups A, C and E are defects in narration, and group B where several of its patterns stand in one passage.
+
 Apply [storytelling rule #1](../../shared/story/rules.md#1-storytelling-rule-therefore--but) while drafting and as the first structural revision check: each consequential beat follows through cause and consequence or a complication that changes the response. If the passage is only an "and then" sequence, repair the story connection before polishing sentences. The causal relationship must be present in the events; the manuscript need not use the literal words "therefore" or "but". Preserve purposeful quiet consequences and intentional delayed revelation.
 
 Ground action in concrete perceptions and decisions. Make dialogue purposeful through competing wants, omissions and subtext; distinguish speakers by experience and register, using their voice cards. Use action and reaction to show emotional change, with direct telling when it is clearer or deliberately part of the voice. Avoid explanatory lines that merely repeat what the scene already conveyed.
@@ -58,7 +60,7 @@ These names let a draft note or a voice review point at one default. They apply 
 
 | Name | Default |
 | --- | --- |
-| Causal beats | Consequential beats connect through consequence or complication, not "and then" (rule #1). |
+| Causal beats | Consequential beats connect through consequence or complication, not "and then" (storytelling rule #1). |
 | Viewpoint-bound attention | Attention, vocabulary, judgment and knowledge come from the viewpoint; the narrator knows more only where the narration permits it. |
 | Held narration | Tense, distance and the rules for viewpoint changes stay as agreed within the unit. |
 | Grounded action | Action rests on concrete perceptions and decisions. |
@@ -66,10 +68,10 @@ These names let a draft note or a voice review point at one default. They apply 
 | Distinct speakers | Speakers differ by experience and register, not by a swapped vocabulary or a catchphrase. |
 | No redundant explanation | No line merely repeats what the scene already conveyed; direct telling stays where it is clearer or part of the voice. |
 | Rhythm for the moment | Sentence and paragraph length serve this moment; no fixed ratio, no uniform scaffold. |
-| Preserved devices | Deliberate fragments, repeated motifs, figurative language, humor, dialect and silence stay. |
+| Preserved devices | Deliberate fragments, repeated motifs, figurative language, humor, dialect and silence stay; the #1 prose rule does not remove them. |
 | World-true detail | New detail belongs to this world and this viewpoint; nothing is added as fact merely to make prose vivid. |
 
-There is no banned-word list and no universal style standard behind these names.
+There is no banned-word list and no universal style standard behind these names; the word lists of the #1 prose rule hold examples and are read in context.
 
 ## Revision
 

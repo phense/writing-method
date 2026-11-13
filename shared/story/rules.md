@@ -14,6 +14,12 @@ This is a structural check, not a requirement to repeat those words in manuscrip
 
 Attribution: Trey Parker and Matt Stone's NYU craft advice, as presented in the [excerpt recorded as CW06](https://www.youtube.com/shorts/2v3Z9OTC4dA). **Its position as rule #1 is a maintainer requirement of 2026-11-12.** The operational checks and long-fiction qualifications above are this method's synthesis; no empirical reader-quality result is claimed. See [CW06 in the source index](sources.md#cw06-inspected-scope) for inspected scope.
 
+## #1 prose rule: natural prose
+
+**No manuscript sentence may read as machine-written.** [Writing rule #1](../policies/natural-prose.md) lists the patterns and why readers recognize them; its position is a maintainer requirement of 2026-11-13. The storytelling rule above governs how beats connect, this rule how sentences are built; neither replaces the other.
+
+The voice sheet stays the first authority. A device the sheet names, such as fragments, a repeated opening or a list of three used for rhythm, is the author's choice and no finding. Fragments, repetition, figurative language and humor are devices of prose: a row of fragments or a repeated opening is no finding unless the sheet excludes it. Where the sheet is silent, the other patterns of the rule's groups A, C and E are defects in narration: staged insight, inflation in place of a concrete perception, and anything left over from a chat. Group B, even rhythm, is a defect where several of its patterns stand in one passage. The word lists of the rule hold examples and are read in context. Working notes follow the rule in full. The rule is a writing requirement and makes no claim about detection. A character may speak in such a pattern when the character's voice card supports it.
+
 ## Further craft heuristics
 
 2. Build enough world to support the next meaningful story decision. Mark other questions open. Wrede's questionnaire is selective; completeness is not a prerequisite for prose. (WB01, WB12, WB14)

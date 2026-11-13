@@ -2,5 +2,6 @@ node_modules/
 out/
 stills/
 takes/*.mp3
+takes/superseded/
 __pycache__/
 env/*.env

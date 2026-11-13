@@ -17,7 +17,7 @@ The narration of a story video is manuscript, not an explanatory video: it is th
 | Voice sheet | [`00-project/voice.md`](../../templates/story-vault/00-project/voice.md) of the vault | How the narration sounds: the narration contract per viewpoint, tone palette, language conventions, anchor passages, deliberate exceptions, paratext register |
 | Character voice card | The voice card section of each [character note](../../templates/story-vault/90-templates/character.md) | How one character sounds in dialogue and, as a viewpoint, what the narration attends to |
 
-For manuscript text the voice sheet comes first, then the [story rules](rules.md) and the defaults named in [story drafting](../../skills/story-drafting/SKILL.md). A default applies only where the sheet is silent, and a review that relies on one labels it "method default, not sheet".
+For manuscript text the voice sheet comes first, then the [story rules](rules.md) with their #1 prose rule, and the defaults named in [story drafting](../../skills/story-drafting/SKILL.md). A default applies only where the sheet is silent, and a review that relies on one labels it "method default, not sheet".
 
 ## Lifecycle of the voice sheet
 
@@ -58,6 +58,6 @@ Dialogue examples on a card reference accepted passages. A card distinguishes ch
 
 ## Checking the voice
 
-The [story voice review](../../skills/story-voice-review/SKILL.md) skill judges a chapter or a range against the sheet and the cards and reports findings in four classes: unintended deviation, deliberate exception, sheet gap and candidate sheet change. It needs at least two anchor passages and a filled tone palette; without them it routes back to the trial, which can supply both. An anchor may be a trial passage. It uses no banned-word list and no universal style standard, and it does not edit accepted prose.
+The [story voice review](../../skills/story-voice-review/SKILL.md) skill judges a chapter or a range against the sheet and the cards and reports findings in four classes: unintended deviation, deliberate exception, sheet gap and candidate sheet change. It needs at least two anchor passages and a filled tone palette; without them it routes back to the trial, which can supply both. An anchor may be a trial passage. Beyond the #1 prose rule of the [story rules](rules.md) it uses no banned-word list and no universal style standard, and it does not edit accepted prose.
 
 A voice review is one input to the author's acceptance of a chapter. It is not a measurement of quality, and passing it proves nothing about how readers will respond.

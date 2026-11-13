@@ -98,5 +98,15 @@
       "story-voice-review",
       "story-video-scripting"
     ]
+  },
+  "team-announcement": {
+    "any": [
+      "human-prose-drafting"
+    ],
+    "prohibited": [
+      "story-drafting",
+      "story-voice-review",
+      "story-video-scripting"
+    ]
   }
 }

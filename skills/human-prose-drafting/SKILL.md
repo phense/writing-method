@@ -1,6 +1,6 @@
 ---
 name: human-prose-drafting
-description: "Use within documentation-authoring for medium and large texts to apply Humanizer prose guidance from the first sentence, with a brief per-chunk check. Not a separate rewrite phase or a reason to change facts, code, quotations or required document structure. Not for story manuscripts or in-world text."
+description: "Use whenever prose for people is written or revised and no other writing skill covers it: an email, announcement, post, notice, commit or pull-request description; and as a supporting skill within documentation-authoring for medium and large texts. Applies writing rule #1, natural prose without machine patterns, from the first sentence, with a brief check before delivery. Not a separate rewrite phase or a reason to change facts, code, quotations or required document structure. Not for story manuscripts or in-world text."
 ---
 
 # Human Prose Drafting
@@ -10,14 +10,24 @@ Not for story manuscripts or in-world text: when the target is manuscript, stop 
 Apply the shared [proportionality rule](../../shared/policies/proportionality.md)
 before adding work, delegating, or repeating verification.
 
-Write for the defined reader and subject from the first sentence. Apply the
-patterns below while choosing words and organizing each paragraph. The writing
+Write for the defined reader and subject from the first sentence. Apply
+[writing rule #1](../../shared/policies/natural-prose.md) while choosing words and organizing each paragraph. The writing
 lifecycle includes a short check of each chunk, with no separate humanizing phase.
 
 Adapted from blader/humanizer (MIT); patterns trace to Wikipedia's "Signs of AI
 writing" maintained by WikiProject AI Cleanup. See the third-party notices.
+The pattern catalogue itself lives in writing rule #1, which applies to every
+text; this skill applies it to documentation and to short texts that no
+other skill covers.
 
 ## Trigger
+
+Use for a short standalone text a person will read that no other writing
+skill covers: an email, an announcement, a post, a notice, a commit or
+pull-request description. For such a text read the rule, write, and run its
+delivery check once; nothing is recorded. A document, also a release note,
+belongs to `documentation-authoring`, and this skill supports it there. An
+ordinary reply belongs to the didactic skills.
 
 Use inside `documentation-authoring` for every chunk or standalone document at
 the medium or large scale, and inside `documentation-review` as one check.
@@ -43,88 +53,29 @@ how the sentences may not be built.
 2. Choose for the defined reader. Vary sentence length as speech does; name
    the actor; use the number of items the meaning has; pick the plain word.
 
-## Constraints by strength
+## The patterns
 
-Use these patterns as contextual writing guidance, not a string blacklist.
-The staged rhetoric in group A warrants attention on one occurrence. Weak
-signals such as a dash or a three-item list need context before changing them.
-User instructions, required templates, glossary terms, source fidelity and
-project style take precedence over stylistic preferences here.
+Read [writing rule #1](../../shared/policies/natural-prose.md) before the first
+sentence. It holds the patterns in five groups, the reasons readers recognize
+them, the exceptions and the scope. Use it as contextual guidance, not as a
+string blacklist: the staged forms of its group A are a defect on one
+occurrence, and a pattern it marks as weak needs context before you change
+anything. User instructions, required templates, glossary terms, source
+fidelity and project style take precedence over its style preferences.
 
-### A. State instead of staging
+Documentation adds these to the rule:
 
-- **No "not X but Y".** Also not "not just X, it's Y", "X rather than Y" as a
-  reveal, or the split form "This does not mean X. It means Y." State the
-  point. Keep a contrast only when the negative half corrects a belief the
-  reader actually holds.
-- **No one-line closers or fragment rows.** No "That is the real win.", no
-  sentence-long paragraph that restates the one before, no "No prior. No
-  nostalgia." Merge fragments into one sentence with a specific claim.
-- **No sayings dressed as depth.** Not "at its core", "the real question is",
-  "what really matters", "X is the language of Y". Write the specific claim.
-- **No run-up before the point.** Not "Let's dive in", "Here's what you need
-  to know", "Honestly?", "Here's the thing". Begin with the point.
-- **No arguing with no one.** Not "This isn't about", "To be clear", "A
-  tempting approach would be", "You might think". Keep an objection only
-  when the text attributes it or the reader would actually weigh it.
-
-### B. Rhythm follows meaning
-
-- **No forced triads.** Three items only when the meaning has three; three
-  parallel examples plus a lesson is the same tell at paragraph scale.
-- **No repeated sentence openings** in a row unless deliberate for rhythm.
-- **Avoid dash chains.** Use periods, commas, colons or parentheses when they
-  make the sentence easier to read. Keep meaningful ranges, names and dashes
-  required by the project's style. *Weak alone.*
-- **No stacked qualifiers.** "could potentially possibly" becomes "may". Keep
-  scope statements, safety notices and honest uncertainty. *Weak alone.*
-- **Hyphenate only where grammar needs it**: "a high-quality report", "the
-  report is high quality". *Weak alone.*
 - **Name the actor.** "You do not need a configuration file", not "No
-  configuration file needed". Procedures already require this. *Weak alone.*
-
-### C. Facts without inflation
-
-- **Avoid the stock words**: actually, additionally, align with, bolstered,
-  crucial, deep dive, delve, emphasizing, enduring, enhance, fostering,
-  garner, highlight (verb), interplay, intricate, key (adjective), landscape
-  (abstract), meticulous, pivotal, quietly, robust (figurative), showcase,
-  tapestry, testament, underscore (verb), valuable, vibrant. Keep precise
-  technical senses, glossary terms and interface names. This is a watch list,
-  not a ban on words that accurately describe the subject.
-- **No inflated significance.** Not "marks a pivotal moment", "plays a key
-  role", "the future looks bright", and no closing send-off paragraph. End on
-  the last concrete fact.
-- **No vague association.** Not "associated with", "in connection with" when
-  the subject shows the actual relationship; when it does not, keep the vague
-  wording rather than inventing a role.
-- **No shallow -ing riders**: "highlighting", "ensuring", "reflecting",
-  "showcasing" bolted onto a fact. Keep the fact.
-- **No sales language**: boasts, vibrant, rich (figurative), nestled,
-  renowned, breathtaking, seamless, powerful. State what the thing is.
-- **No borrowed authority.** Not "experts believe", not a list of outlets.
-  Name the source and what it said, or leave the claim out.
-- **Use is, are and has.** Not "serves as", "features", "boasts", "offers".
-
-### D. Formatting carries information
-
+  configuration file needed". Procedures already require this.
 - **Bold only for interface labels** as `writing-procedures` requires, and
-  for the first words of a list item when the reader scans by them. No bold
-  for emphasis, no list where every item is a bold label with a colon and a
-  sentence that repeats the label.
-- **Prefer sentence-case headings** and avoid decorative emojis, arrows and
-  rules. Preserve required headings, anchors and template title structure.
+  for the first words of a list item when the reader scans by them.
+- **Sentence-case headings.** Preserve required headings, anchors and
+  template title structure.
+- **No heading repeated in the first sentence** below it.
+- **Hyphenate only where grammar needs it**: "a high-quality report", "the
+  report is high quality".
 - **Straight quotation marks** unless the project's style guide says
-  otherwise. *Weak alone.*
-
-### E. Nothing left over from the chat
-
-- **No chatbot residue**: "Great question", "I hope this helps", "Let me
-  know", "Would you like", "Here is a". Documentation stands on its own.
-- **No knowledge-limit disclaimers or guesses.** Not "details are limited in
-  available sources, it appears". State what the subject shows or leave it
-  out; never present a guess as a fact.
-- **No heading repeated in the first sentence.**
+  otherwise.
 - **No writing about the previous version** except in release notes,
   changelogs and migration guides. Describe current behavior.
 
@@ -132,15 +83,16 @@ project style take precedence over stylistic preferences here.
 
 Concept, task, reference and troubleshooting text stays neutral and plain,
 addresses the reader as "you", and keeps the project's glossary terms. The
-plan or project contract decides the language of the text; the tells above have
+plan or project contract decides the language of the text; the patterns of the rule have
 equivalents in every language and are treated the same. Do not add opinions,
 humor or asides to documentation; those belong to personal writing.
 
 ## Chunk check
 
-Before marking a chunk drafted, read it once for the five tells that most
-often survive drafting: a not-X-but-Y contrast, a one-line closer, a dash, a
-triad, a bold label. Assess each in context, including the exceptions below.
+Before marking a chunk drafted, read it once for the seven patterns of the
+rule's delivery check: a contrast with nothing, a one-line closer, a list of
+three, a participle phrase at a sentence end, a stock word, a bold label, a
+line addressed to the person who asked. Assess each in context, including the exceptions below.
 Correct unnecessary rhetoric within the chunk; retain useful structure. Confirm the fix dropped no fact, step, warning or
 claim. This check is part of authoring the chunk and adds no separate
 humanizing stage or extra output artifact.

@@ -369,7 +369,7 @@ class PolicyBlock(unittest.TestCase):
         # A story video is scripted from the video project template and handed to the form skills.
         self.assertEqual(
             {"prefixes": STORY_SIDE_PREFIXES + ["templates/presentation-video/"],
-             "files": [HUB, "shared/policies/proportionality.md",
+             "files": [HUB, "shared/policies/natural-prose.md", "shared/policies/proportionality.md",
                        "skills/verification-before-completion/SKILL.md",
                        "skills/presentation-video-production/SKILL.md",
                        "skills/presentation-video-review/SKILL.md",

@@ -9,6 +9,8 @@ Mode check first, under [writing mode](../../shared/policies/writing-mode.md): f
 
 No run state: this skill has no recovery preamble and hands off to no backlog or run-tracking skill. A story or study vault keeps no backlog and no run directory; its state lives in 00-project/development.md and 00-project/decisions.md.
 
+The [#1 prose rule](../../shared/story/rules.md#1-prose-rule-natural-prose) applies to every note this skill writes: nothing in it reads as machine-written.
+
 Read [workflow](../../shared/story/workflow.md) and [rules](../../shared/story/rules.md). Read the [retrieval contract](../../shared/story/retrieval.md) only if a memory or retrieval tool is available. Paths in this skill resolve from its own folder; story paths resolve from the selected vault.
 
 For a minimal idea or a resumed development conversation, use [guided story development](../../shared/story/story-development.md). Read `00-project/development.md` and `00-project/decisions.md` when they exist; update them from the conversation rather than requiring the author to fill forms. Ask only the next consequential unresolved question and preserve prior delegation.

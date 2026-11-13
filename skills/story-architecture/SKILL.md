@@ -9,6 +9,8 @@ Mode check first, under [writing mode](../../shared/policies/writing-mode.md): f
 
 No run state: this skill has no recovery preamble and hands off to no backlog or run-tracking skill. A story or study vault keeps no backlog and no run directory; its state lives in 00-project/development.md and 00-project/decisions.md.
 
+The [#1 prose rule](../../shared/story/rules.md#1-prose-rule-natural-prose) applies to every note this skill writes: nothing in it reads as machine-written.
+
 Outlines, arc notes, volume notes and chapter cards are working notes: plain notes that follow neither the voice sheet nor any instructional document structure.
 
 Read the story brief, accepted cast/world constraints and [workflow](../../shared/story/workflow.md). Use the [arc](../../templates/story-vault/90-templates/arc.md), [volume](../../templates/story-vault/90-templates/volume.md), [chapter card](../../templates/story-vault/90-templates/chapter.md) and [foreshadow](../../templates/story-vault/90-templates/foreshadow.md) templates.

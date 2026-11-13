@@ -1,13 +1,19 @@
 ---
 type: reference
 audience: Authors and maintainers familiar with their coding assistant and Git
-version: 0.4.1
+version: 0.5.0
 ---
 # Writing Method
 
 Writing Method provides reader-oriented writing, documentation planning, review, local PDF delivery and narrated tutorial videos for Claude, Codex and OpenCode. A separate, experimental family of skills supports story writing; see [Story writing (experimental)](#story-writing-experimental). Install it on its own or alongside [Engineering Method](https://github.com/phense/engineering-method). Both bundle shared support from [Method Core](https://github.com/phense/method-core); no sibling checkout is needed at runtime.
 
 The three repositories remain under `phense`, share the `agent-methods` topic and have independent Issues and pull requests. Report a writing behavior here, an engineering behavior in Engineering Method, and shared adapter/state/playbook behavior in Method Core.
+
+## Writing rule #1: natural prose
+
+No text written with this method may read as machine-written. The rule comes before every other writing rule and covers replies, documentation, messages, video narration and story manuscript. [Writing rule #1](shared/policies/natural-prose.md) explains why readers recognize such text, lists the patterns in five groups (staged insight, even rhythm, inflation in place of fact, formatting as decoration, leftovers from a chat) and states what to write instead. Every documentation, didactic, video-script and story skill refers to it, the story skills through the story rules. The skills from the shared core (playbooks, code review, backlog, verification, worktrees, parallel agents) do not. For a story, the voice sheet decides first and the rule applies where the sheet is silent.
+
+The rule is carried by the skills. A reply for which no skill of this method loads is not reached by it, and whether a host follows it is not measured.
 
 ## Included skills
 
@@ -75,7 +81,7 @@ The rule set is chosen for each piece of text, not for the session or the subjec
 
 | Text | Mode | Governed by |
 |---|---|---|
-| Story prose, in-world text such as a letter or manual inside the story, afterword and blurb, a listening edition, the narration of a story video | manuscript | The story's voice sheet, then the story rules. Nothing from the documentation skills. |
+| Story prose, in-world text such as a letter or manual inside the story, afterword and blurb, a listening edition, the narration of a story video | manuscript | The story's voice sheet, then the story rules, which include writing rule #1 for prose. Nothing from the documentation skills. |
 | Any other note in a story vault or study vault: brief, world entry, chapter card, review, study note | working note | The story skills. Plain notes without the story's voice and without didactic structure. |
 | Everything else: every reply to you, a vault's `README.md`, documentation, tutorial videos | reader-oriented | The rules of the sections above, unchanged |
 
@@ -124,7 +130,7 @@ claude plugin install writing-method@writing-method
 
 For a session-scoped Claude test use `claude --plugin-dir /absolute/path/to/writing-method`. For OpenCode, run `python3 scripts/install-opencode --check` from this checkout, inspect the proposed path, then repeat without `--check`. It installs an owned `writing-method.js` loader pointing to this retained directory. Gemini support is deferred until its adapter is verified.
 
-Restart the assistant session after installation and inspect its plugin inventory for `writing-method` 0.4.1. An installed listing proves discovery; a live authoring request is separate behavior evidence. With both methods installed, use the invoking method's namespace for shared support, such as `writing-method:playbook-authoring`, and run one copy.
+Restart the assistant session after installation and inspect its plugin inventory for `writing-method` 0.5.0. An installed listing proves discovery; a live authoring request is separate behavior evidence. With both methods installed, use the invoking method's namespace for shared support, such as `writing-method:playbook-authoring`, and run one copy.
 
 ## Project state and updates
 

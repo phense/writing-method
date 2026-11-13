@@ -21,9 +21,9 @@ voice_revision: unset
 
 ## Voice review
 
-Fill this section only for a voice review. State the voice sheet revision and the character voice cards used. Every finding cites a passage and either a clause of the sheet or a card, or a named default of the drafting skill marked "method default, not sheet".
+Fill this section only for a voice review. State the voice sheet revision and the character voice cards used. Every finding cites a passage and either a clause of the sheet or a card, or a named default of the drafting skill marked "method default, not sheet", or a pattern of the #1 prose rule marked "prose rule #1".
 
-| Passage (file and location) | Clause, or "method default, not sheet" | Class | Note |
+| Passage (file and location) | Clause, "method default, not sheet" or "prose rule #1" | Class | Note |
 | --- | --- | --- | --- |
 
 Classes: unintended deviation, deliberate exception, sheet gap, candidate sheet change.

@@ -10,6 +10,8 @@ Not for story manuscripts or in-world text: when the target is manuscript, stop 
 Apply the shared [proportionality rule](../../shared/policies/proportionality.md)
 before adding work, delegating, or repeating verification.
 
+[Writing rule #1](../../shared/policies/natural-prose.md) applies to every sentence written under this skill: no pattern that reads as machine-written.
+
 The reader arrives with a symptom, not an error code, and often under time
 pressure. Troubleshooting text meets them at the symptom, tells them the most
 likely reason in plain words, and leads them through the cheapest check first.

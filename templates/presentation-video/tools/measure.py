@@ -12,6 +12,7 @@ Usage: python3 tools/measure.py pace
        python3 tools/measure.py all out/video.mp4 [--offset SECONDS]
 """
 import argparse
+import subprocess
 import sys
 from pathlib import Path
 
@@ -127,6 +128,11 @@ def main(argv=None) -> int:
                 failed |= bool(bad)
     except (audio.ToolMissing, profile_mod.ProfileError, FileNotFoundError) as error:
         print(f"measure: {error}", file=sys.stderr)
+        return 1
+    except (ValueError, subprocess.CalledProcessError):
+        # ffprobe or the loudness pass could not read the file: no sound track, or a partial file
+        print(f"measure: {args.video} has no sound track or cannot be read", file=sys.stderr)
+        print("FAILED")
         return 1
     report["passed"] = not failed
     project.write_json(root / "out" / "measure.json", report)

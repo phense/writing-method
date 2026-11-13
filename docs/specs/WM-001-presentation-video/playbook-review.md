@@ -205,8 +205,74 @@ Independent, read-only, same method as the second review. PS-01 to PS-14: all re
 
 PT-01 to PT-07 were applied as the exact edits above in the following revision. That revision has not been reviewed again.
 
-## State after three reviews
+## Fourth review at `1a80caa`
 
-- Content review: 43 findings in three rounds (1 Critical, 20 Important, 22 Minor), all applied. The last applied edits are unreviewed, so no `Ready` verdict exists.
-- Rehearsal: stale and partial. The record in `rehearsal.md` describes the earlier playbook text. Never executed in any version: gate 2 (P9), P8b, delivery (P10 to P11), R1 to R4 and R6, the ElevenLabs branch of P4, the take rule, a per-scene correction and a story video.
-- The criterion "rehearsed once end to end on the sample video" is not met. It needs a machine with `ffmpeg`, a configured speech provider and a person for the listening check.
+- Reviewers: two independent assistant reviewers with different tasks (the
+  whole procedure; agreement of the playbook with the tools and the edits
+  since the third review). Each finding was checked again by a further
+  independent reviewer who tried to refute it. Read-only; no provider call, no
+  render.
+- Verdict at `1a80caa`: Changes required. 15 findings, all confirmed: 4
+  Important (two describe the same gap), 11 Minor.
+
+| ID | Severity | Finding | Change applied |
+|---|---|---|---|
+| QA-01, QB-01 | Important | R4 checked for a running render only on the authoring machine, gave no action for a listed process and deleted the outputs before the check | R4 checks the machine that rendered, waits, has a limit and an escalation, and deletes afterwards |
+| QA-02 | Important | R3 said the tool chooses the better take; it uses the highest word match, so a take that drops a short line can win over a complete one | R3 moves the rejected take to `takes/superseded/` first, and the printed line must name the new take |
+| QB-02 | Important | A run of `split_takes.py` without a scene cuts every scene and removes every read-back word file, so a one-line correction transcribed the whole video again | Correction and interruption name `<scene>` |
+| QA-03 | Minor | The removal of word files by `split_takes.py` had no test and no evidence for the operator | Unit test `TakeReplacement`; `ls` check before P4 |
+| QA-04 | Minor | R5 did not lead back through P7 to P8, so an old joined file could be measured again | R5 states the return path |
+| QA-05, QB-06 | Minor | P10b and Completion had no first-delivery case; P10b could be run twice | Guard on `.new`, first-delivery text, escalation |
+| QA-06 | Minor | The order of pronunciation attempts existed only in the skill | P1 states the order and the stop |
+| QB-03 | Minor | "No step deletes working files" contradicted the next sentence and R4 | Reworded |
+| QB-04 | Minor | A file without sound ended `measure.py` with a Python error | `measure.py` prints `has no sound track or cannot be read` and `FAILED`; R5 recognizes it |
+| QB-05 | Minor | A render that fails for another reason had no stop | Second failure: P6b once, then escalate |
+| QB-07 | Minor | R3 quoted no literal message; two rejections and the missing word file were not listed | Literal messages; P2b names the missing word file |
+| QB-08 | Minor | Resuming P5 as allowed reset every inspection mark | Interruption text names the per-scene command |
+| QB-09 | Minor | `takes/superseded/` was not ignored | `.gitignore` |
+
+These edits are again unreviewed. Checked by execution after the edits: the
+unit tests, and `measure.py file` on a one-second file without sound
+(`has no sound track or cannot be read`, `FAILED`, exit 1).
+
+## Fifth review at `7196174`
+
+- Reviewer: one independent assistant reviewer; each finding checked again by
+  a further independent reviewer. Read-only; unit tests run (82, OK).
+- All 15 findings of the fourth review are resolved and agree with the tool
+  source. Verdict at `7196174`: Changes required, 2 Important, 3 Minor, all
+  in text changed by the fourth round.
+
+| ID | Severity | Finding | Change applied |
+|---|---|---|---|
+| R5-01 | Important | The order of pronunciation attempts did not say that an entry takes effect through one field only; a language mark added beside a phonetic entry changes nothing and no tool reports it | P1 says to remove the earlier field and names the evidence (`new`) |
+| R5-02 | Important | `split_takes.py` wrote the manifest once after all scenes, so a later rejected scene left earlier scenes cut on disk and absent from the manifest | The tool writes the manifest after every scene |
+| R5-03 | Minor | The correction bullet named the cut before the new take | Reordered; prompt and transcription named |
+| R5-04 | Minor | Three rejection messages do not name the take, so "the rejected take" could not be identified | R3 moves every earlier take of the scene; numbering counts `takes/superseded/` |
+| R5-05 | Minor | `out/measure.json` is not written when the file cannot be read | Preserve list says so |
+
+Open observation, not verified: on Linux `pgrep -fl` may list the shell that
+runs it when that shell's command line holds the pattern.
+
+## Confirmation at `9405899`
+
+An independent assistant reviewer confirmed R5-01 to R5-05 against the tool
+source, ran the manifest change in a scratch copy with stubbed cutting, and
+gave the content verdict **Ready**: no open Critical or Important finding.
+Five Minor findings: R6-01 (preserve every take), R6-02 (take numbers count
+`takes/superseded/`), R6-03 (R3 names the next step), R6-05 (`measure.json`
+from P3) are applied; R6-04, a unit test of `split_takes.main` for the
+manifest, is open.
+
+## State after five reviews and the confirmation
+
+- Content review: Ready at `9405899`; four Minor wording edits were applied
+  afterwards.
+- Rehearsal at 0.4.1 (`rehearsal.md`): one end-to-end run through delivery, an
+  interrupted local render, the correction path, the pace probe, and the
+  listening check by the owner (passed). Stale for the steps changed since:
+  R3, R4, R5, P10b, the P1 failure path and the interruption text.
+- Never executed: P6a and R4 after P6a, P2b, R2, R3 and the take rule
+  (ElevenLabs), R1 with a real limit, a checksum mismatch or failed rename in
+  P10 to P11, the R5 branches, a story video. A Ready review does not certify
+  these.

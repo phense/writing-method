@@ -389,6 +389,18 @@ class Voicing(unittest.TestCase):
         self.assertEqual(1, result["new"]); self.assertEqual(4, len(self.calls))
         self.assertEqual(3, len(list(self.dir.glob("*.mp3"))))
 
+    def test_a_removed_sound_file_takes_its_read_back_transcription_along(self):
+        self.run_voice()
+        for sound in self.dir.glob("*.mp3"):
+            sound.with_suffix(".words.json").write_text("[]")
+        changed = copy.deepcopy(self.narration); changed["a"][1]["text"] = "Two, corrected."
+        self.run_voice(changed)
+        sounds = {p.stem for p in self.dir.glob("*.mp3")}
+        transcriptions = {p.name[:-len(".words.json")] for p in self.dir.glob("*.words.json")}
+        # the two unchanged lines keep theirs; the replaced line's is gone and the new sound has none yet
+        self.assertEqual(2, len(transcriptions))
+        self.assertTrue(transcriptions < sounds)
+
     def test_foreign_files_in_the_audio_folder_are_left_alone(self):
         (self.dir / "jingle.mp3").write_bytes(b"x")
         self.run_voice()
@@ -640,6 +652,26 @@ class TakeSplitting(unittest.TestCase):
         lines = [{"text": "Die IT hilft."}, {"text": "Danke!"}]
         text = split_takes.prompt(lines, [{"term": "IT", "speak": "I T"}], "[warm]")
         self.assertEqual("[warm] Die I T hilft.\nDanke!", text)
+
+
+class TakeReplacement(unittest.TestCase):
+    def test_a_recut_scene_loses_its_old_sound_and_read_back_transcriptions(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "audio"; staging = Path(tmp) / "staging"
+            out.mkdir(); staging.mkdir()
+            kept = speech.audio_name("a", 0, "1111111111"); changed = speech.audio_name("a", 1, "2222222222")
+            other = speech.audio_name("b", 0, "3333333333")
+            for name in (kept, changed, other):
+                (out / name).write_bytes(b"old")
+                (out / name).with_suffix(".words.json").write_text("[]")
+            new = speech.audio_name("a", 1, "4444444444")
+            for name in (kept, new):
+                (staging / name).write_bytes(b"new")
+            split_takes.replace_scene_sound(out, "a", staging)
+            self.assertEqual({kept, new, other}, {p.name for p in out.glob("*.mp3")})
+            self.assertEqual(b"new", (out / kept).read_bytes())
+            # only the other scene keeps a transcription: the unchanged name carries new sound
+            self.assertEqual([Path(other).with_suffix(".words.json").name], [p.name for p in out.glob("*.words.json")])
 
 
 @unittest.skipUnless(FFMPEG, "ffmpeg and ffprobe are required")

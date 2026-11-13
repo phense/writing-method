@@ -8,6 +8,8 @@ description: "Use when a documentation set needs an initial plan or an explicit 
 Apply the shared [proportionality rule](../../shared/policies/proportionality.md)
 before adding work, delegating, or repeating verification.
 
+[Writing rule #1](../../shared/policies/natural-prose.md) applies to the plan and to every text planned with it: no pattern that reads as machine-written.
+
 Decide how large the writing project is before writing, record that decision,
 and give the authors one plan they can follow chunk by chunk across many
 sessions without losing consistency.

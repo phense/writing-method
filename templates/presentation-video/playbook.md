@@ -112,12 +112,12 @@ step that changes a delivered file.
 
 | Step | Actor and target | Condition / action | Expected evidence | Failure / next step |
 |---|---|---|---|---|
-| P1 | Author, project | `python3 tools/verify_speech.py --samples`. No line `voice them first:` printed: go to P2. Azure: `python3 tools/voice_azure.py --only <list it printed>`; a person listens to each of these lines (an assistant hands the file names under `public/audio/` to the author and waits); then `python3 tools/verify_speech.py --only <same list>`. ElevenLabs: no sample voicing exists; go to P2; P4 is the first key-term check | Each key term heard correctly; `0 with an unrecognized key term` | Wrong term: correct `pronunciation.json`, repeat P1. Lines `below similarity`: a person listens to each; wrong: correct `pronunciation.json`, repeat P1; right: note the line in `review.md` |
+| P1 | Author, project | `python3 tools/verify_speech.py --samples`. No line `voice them first:` printed: go to P2. Azure: `python3 tools/voice_azure.py --only <list it printed>`; a person listens to each of these lines (an assistant hands the file names under `public/audio/` to the author and waits); then `python3 tools/verify_speech.py --only <same list>`. ElevenLabs: no sample voicing exists; go to P2; P4 is the first key-term check | Each key term heard correctly; `0 with an unrecognized key term` | Wrong term: correct its entry in `pronunciation.json`, one attempt each in this order, and repeat P1 after each: a phonetic entry (`ipa`) or a respelling (`speak`), then a language mark (`lang`); an entry takes effect through one field only, in the order `ipa`, `speak`, `lang`, so remove the earlier field when trying the next one (Azure: `voice_azure.py --only` then prints the line as `new`). Still wrong: another voice is an owner decision (`speech.voice` in the profile; every line is voiced and charged again; repeat Before starting). Still wrong with that voice: stop and escalate. Lines `below similarity`: a person listens to each; wrong: the same order of attempts; right: note the line in `review.md` |
 | P2 | Author, project | Decision: `python3 tools/profile.py --get speech.provider` and `python3 tools/profile.py --get speech.mode` | `azure` and `line`: P2a. `elevenlabs` and `scene`: P2b | Any other pair: stop; correct the profile; repeat Before starting |
 | P2a | Author, Azure | `python3 tools/voice_azure.py` | `N lines, … new` | Stops with `stopped at <scene>:<line>`: go to R1 |
-| P2b | Author, connector | `python3 tools/split_takes.py prompts`; for each scene without a stored take, generate the printed passage once through the connector with the profile's voice, wait until it is done, and store it at once as `takes/<scene>-take1.mp3`; transcribe each take to `takes/<scene>-take1.words.json` (a list of `{"word", "start", "end"}`) with <transcription command>; `python3 tools/split_takes.py` | `<scene>: <take> (match 0.90 or higher), N lines` per scene | Generation error or timeout: go to R2. Take rejected: go to R3 |
+| P2b | Author, connector | `python3 tools/split_takes.py prompts`; for each scene without a stored take, generate the printed passage once through the connector with the profile's voice, wait until it is done, and store it at once as `takes/<scene>-take1.mp3` (a take under `takes/superseded/` counts: use the next free number); transcribe each take to `takes/<scene>-take1.words.json` (a list of `{"word", "start", "end"}`) with <transcription command>; `python3 tools/split_takes.py` | `<scene>: <take> (match 0.90 or higher), N lines` per scene | Generation error or timeout: go to R2. `.words.json is missing; transcribe the take first`: transcribe that take and run the command again; no new generation. Take rejected: go to R3 |
 | P3 | Author, project | `python3 tools/timeline.py && python3 tools/measure.py pace` | `PASSED` | `text changed after voicing` or missing sound: repeat P2. `OUT OF RANGE`: go to R6 |
-| P4 | Author, project | `python3 tools/verify_speech.py` | `0 with an unrecognized key term` | Unrecognized key term: correct `pronunciation.json`, repeat from P2. Lines `below similarity`: a person listens to each; wrong: correct `pronunciation.json`, repeat from P2; right: note the line in `review.md`. ElevenLabs (P2b), instead of repeating from P2: the stored take keeps the wrong sound, and only a respelling (`speak` in `pronunciation.json` or in the line) changes the passage. After the correction and after the author agrees (it is charged), generate one new take of the affected scene from `python3 tools/split_takes.py prompts <scene>`, store it as `takes/<scene>-take<N+1>.mp3`, transcribe it to `takes/<scene>-take<N+1>.words.json`, run `python3 tools/split_takes.py <scene>` (see the take rule under Correction of a delivered video), delete that scene's read-back word files `public/audio/<scene>-*.words.json`, then P3 and P4. Still wrong after that: stop and escalate |
+| P4 | Author, project | `python3 tools/verify_speech.py` | `0 with an unrecognized key term` | Unrecognized key term: correct `pronunciation.json` in the order of attempts given in P1, repeat from P2 after each. Lines `below similarity`: a person listens to each; wrong: the same order, repeat from P2; right: note the line in `review.md`. ElevenLabs (P2b), instead of repeating from P2: the stored take keeps the wrong sound, and only a respelling (`speak` in `pronunciation.json` or in the line) changes the passage. After the correction and after the author agrees (it is charged), generate one new take of the affected scene from `python3 tools/split_takes.py prompts <scene>`, store it as `takes/<scene>-take<N+1>.mp3`, transcribe it to `takes/<scene>-take<N+1>.words.json`, run `python3 tools/split_takes.py <scene>` (see the take rule under Correction of a delivered video), then P3 and P4 (`split_takes.py` removes that scene's read-back word files, so P4 transcribes the new sound; before P4, `ls public/audio/<scene>-*.words.json` lists no file). Still wrong after that: stop and escalate |
 | P5 | Author, project | `node tools/stills.mjs stills`; look at every still; set `"inspected": true` for it in `stills/stills.json`, or write the defect into its `"finding"`; `python3 tools/check_review.py` | `N of N stills inspected without finding` | Defect: correct the scene, `node tools/stills.mjs stills <scene>`, repeat P5 for it |
 | P6 | Author | Decision: `python3 tools/profile.py --get render.host` | Prints a host and the render-machine check of Before starting succeeded: P6a. Empty, or the check fails: P6b | |
 | P6a | Author, render machine | `tools/render-remote.sh` | `done in … s: out/<id>.mp4` | Interrupted or unreachable: go to R4 |
@@ -128,11 +128,10 @@ step that changes a delivered file.
 | P8b | Author, project | Update the project `README.md`: title, audience, length and date; chapters with time marks from `out/chapters.txt`; sources with the date read (story video: the edition and the manuscript revisions instead); what is evidenced, approximated and invented; voice, provider and mode; <delivery location>; what makes the video stale | All seven items present | Item missing: complete it before P9 |
 | P9 | Reviewer | Gate 2 of `presentation-video-review` | `review.md`: `Gate 2: passed on <date>` | Picture, sound or file finding: return to the step P1 to P8 that owns it. Wording finding, tutorial: stop; `tutorial-video-scripting`; start again at Before starting. Wording finding, story: stop; the story scripting skill and the author, never `tutorial-video-scripting`; the changed line arrives from there; start again at Before starting |
 | P10 | Author, <delivery location> | Copy the file measured in P8 to `<delivery location>/<file name>.new` with <copy command>; compute <checksum command> on the local file and on the copy | Both checksums equal | Not equal: delete the `.new` copy and copy once more. Not equal again: stop and escalate; the delivered file is untouched |
-| P10b | Author, <delivery location> | Rename an existing `<file name>` to `<file name>.previous`, then `<file name>.new` to `<file name>` | `<file name>` has the checksum from P10 | Rename fails: rename `.previous` back; stop |
+| P10b | Author, <delivery location> | Only while `<file name>.new` exists (it is gone: P10b is done, go to P11). Rename an existing `<file name>` to `<file name>.previous`, then `<file name>.new` to `<file name>` | `<file name>` has the checksum from P10 | Rename fails: rename `.previous` back if the first rename was done (first delivery: nothing to restore, `<file name>.new` stays); stop and escalate |
 | P11 | Author, <delivery location> | Compute <checksum command> on `<delivery location>/<file name>` | Equals the local checksum | Not equal: restore `.previous` (first delivery, none exists: rename `<file name>` to `<file name>.failed`); stop and escalate |
 
-No step deletes working files other than the read-back word files named in
-the take rule. `public/audio/`, `src/audio-manifest.json`,
+No step deletes a working file that a later correction reuses. The voicing tools remove sound that is no longer used, together with its read-back word file: `voice_azure.py`, run without `--only`, the files of changed lines; `split_takes.py` every file of each scene it cuts. R4 deletes render outputs under `out/`. `public/audio/`, `src/audio-manifest.json`,
 `src/timeline.json`, `takes/`, `out/captions.vtt`, `out/chapters.txt` and
 `review.md` are kept: a later correction reuses them.
 
@@ -143,38 +142,44 @@ story: the story scripting skill and the author), and `review.md` records gate 1
 for it. Run Before starting, then P2 to P11.
 
 - P2a requests only the changed line.
-- P2b: after the author agrees, one new take of that scene, stored under the
-  next free number `takes/<scene>-take<N+1>.mp3` with its own word file. Never
+- P2b: after the author agrees, generate one new take of the changed scene
+  from `python3 tools/split_takes.py prompts <scene>`, store it under the
+  next free number `takes/<scene>-take<N+1>.mp3` and transcribe it to its own
+  word file. Then run `python3 tools/split_takes.py <scene>` for that scene
+  only: a run without a scene cuts every scene again and removes every
+  read-back word file, so P4 transcribes the whole video again. Never
   overwrite an existing take: its word file would no longer match the sound.
   The line `split_takes.py` prints for the scene must name the new take. If
   it names an older take, move that scene's older takes with their word files
   to `takes/superseded/` (the tool reads only `takes/<scene>-take*.mp3`) and
-  run `python3 tools/split_takes.py <scene>` again. Before P4, delete that
-  scene's read-back word files `public/audio/<scene>-*.words.json`: an
-  unchanged line keeps its file name, and `verify_speech.py` does not
-  transcribe a sound file again while a word file with its name exists.
+  run `python3 tools/split_takes.py <scene>` again. An unchanged line keeps its file name; the tool removes that scene's read-back word files with the old sound, so P4 transcribes the new sound (before P4, `ls public/audio/<scene>-*.words.json` lists no file).
 - P5: `node tools/stills.mjs stills <scene>` and inspect that scene's stills.
   A run without a scene resets every inspection mark.
 
 ## Interruption, recovery and rollback
 
 Completed work is recognized by its files. P2a and P3 to P8 may be run again;
-P2a requests only lines without a file. P2b is charged per generation: a
+P2a requests only lines without a file. P5 is resumed with
+`python3 tools/check_review.py` and `node tools/stills.mjs stills <scene>` for
+the scenes it names: a run without a scene resets every inspection mark and
+finding. P2b is charged per generation: a
 scene with a file `takes/<scene>-take<N>.mp3` is never generated again in a
-rerun; repeat only the transcription and `python3 tools/split_takes.py`.
+rerun; transcribe only takes that have no word file and run
+`python3 tools/split_takes.py <scene>` for each scene whose line
+`<scene>: <take> (match …)` was not printed.
 
 | ID | Situation | Recognize | Action |
 |---|---|---|---|
 | R1 | Voicing stopped | Message names the scene and line reached; finished files are in `public/audio/` | `still rate limited`: wait, run P2a again; finished lines are not requested again. `provider not reachable`: check the network, run P2a again. `the provider rejected the key` or `provider answered HTTP <code>`: run `python3 tools/voice_azure.py --check`; still rejected: escalate. `credentials accepted`: run P2a once more; it stops again at the same line with the same message: stop and escalate with the output |
 | R2 | Connector generation failed or timed out | No file stored for the scene | Use <connector status check> to find the existing generation and fetch its result. Start a new generation only after the author agrees: each one is charged |
-| R3 | Take rejected | `match` below the profile's threshold, or `line N was not heard` | The scene's existing sound is untouched. Listen to the take. After the author agrees (it is charged), request one new take, store it under the next free number as `takes/<scene>-take<N+1>.mp3` (never overwrite a take) and transcribe it to `takes/<scene>-take<N+1>.words.json` with <transcription command>; `python3 tools/split_takes.py <scene>` chooses the better one. Second take rejected too: stop and escalate. Do not lower the threshold to pass |
-| R4 | Render interrupted | The command ended without its last line (`rendered: …` or `done in …`). An `out/<id>.mp4` from an earlier render is not the result | Delete `out/raw.mp4` and any earlier `out/<id>.mp4` and `out/<id>-with-opening.mp4`, then run P6 again; after P6a, first repeat the render-machine check of Before starting (it fails: P6b). No partial file is a result |
-| R5 | Delivery measurement failed | Last line `FAILED`; the failing row shows `FAIL` (file), `OUT OF RANGE` (pace) or `N outside ±` (pauses) | Pace: R6. Resolution or frame rate: correct `picture` in the profile, `python3 tools/timeline.py`, then P5 and P6. Duration or pauses: `python3 tools/timeline.py`, then P6 and P7. Loudness or peak: P6 once. Sound track: R4. With an opening: `python3 tools/measure.py all out/<id>.mp4`. If `out/<id>.mp4` passes and only the file with the opening fails, the opening sequence is the cause: correct that file, then P7. The same row fails a second time: stop and escalate; do not change a profile limit to pass |
+| R3 | Take rejected | `split_takes:` followed by `matches the script only`, `was not heard in the take`, `no word recognized` or `no pause found` | The scene's existing sound is untouched. Listen to the take. After the author agrees (it is charged), request one new take, store it under the next free number as `takes/<scene>-take<N+1>.mp3` (never overwrite a take) and transcribe it to `takes/<scene>-take<N+1>.words.json` with <transcription command>; Unless the message was `matches the script only`, first move every earlier take of that scene with its word file to `takes/superseded/` (these messages do not name the take; count the takes there too when choosing the next free number): the tool uses the take with the highest word match, and a take that drops a short line can score above a complete one. Then `python3 tools/split_takes.py <scene>`; the printed line must name the new take. Then run the same command for each scene whose line was not printed, and continue with P3. Second take rejected too: stop and escalate. Do not lower the threshold to pass |
+| R4 | Render interrupted | The command ended without its last line (`rendered: …` or `done in …`). An `out/<id>.mp4` from an earlier render is not the result | First make sure no render is still running. After P6b: `pgrep -fl "remotion render"` on the authoring machine prints nothing. After P6a: `ssh <host> 'pgrep -fl "remotion render"'` prints nothing (the host cannot be reached: P6b). A process is listed: wait one minute and repeat; still listed after five minutes: stop and escalate; ending a process on the render machine is the owner's decision. Then delete `out/raw.mp4` and any earlier `out/<id>.mp4` and `out/<id>-with-opening.mp4` in the project, and run P6 again; after P6a, first repeat the render-machine check of Before starting (it fails: P6b). The render ends without its last line a second time: after P6a take P6b once; after P6b stop and escalate with the output. No partial file is a result. Not rehearsed: R4 after P6a |
+| R5 | Delivery measurement failed | Last line `FAILED`; the failing row shows `FAIL` (file), `OUT OF RANGE` (pace) or `N outside ±` (pauses), or the line before it is `has no sound track or cannot be read` | Pace: R6. Resolution or frame rate: correct `picture` in the profile, `python3 tools/timeline.py`, then P5 and P6. Duration or pauses: `python3 tools/timeline.py`, then P6 and P7. Loudness or peak: P6 once. Sound track, or `has no sound track or cannot be read`: the file is not a result; with an opening P7 once more, still the same: R4. After any of these actions continue through P7 to P8; with an opening the joined file is made again in P7a before it is measured. With an opening: `python3 tools/measure.py all out/<id>.mp4`. If `out/<id>.mp4` passes and only the file with the opening fails, the opening sequence is the cause: correct that file, then P7. The same row fails a second time: stop and escalate; do not change a profile limit to pass |
 | R6 | Pace out of range | `pace <scene> … OUT OF RANGE [low, high]` in the output of `tools/measure.py` | Story video: never change wording, tone or order of a line. Azure: `python3 tools/probe_settings.py rate=<value>` (short paid requests); keep the setting under `speech.settings` in the profile only if its last line is exactly `EFFECTIVE` (a line starting `NOT EFFECTIVE` means: do not keep it); then repeat P2 and P3 (a changed setting voices every line again). ElevenLabs: no pace setting is defined; stop and escalate. Tutorial only: a changed wording is produced by `tutorial-video-scripting`, then start again at Before starting (script check and gate 1 for the changed script). Story line that needs other words, or no effective setting: stop and return to the story scripting skill and the author. The pause value does not change the pace measurement. Changing `pace_wpm` in the profile or under `overrides` in `video.json` is an owner decision recorded in the project `README.md`, not a fix the operator chooses |
 
 Rollback: no delivered file at <delivery location> is changed before P10b
-(P10 only adds `<file name>.new`). Locally P2
-replaces the sound of changed lines, the Scenes check, P3 and P7a rewrite `src/timeline.json`,
+(P10 only adds `<file name>.new`). Locally P2a
+replaces the sound of changed lines and P2b the sound of every scene it cuts, each with its read-back word files, the Scenes check, P3 and P7a rewrite `src/timeline.json`,
 `out/captions.vtt` and `out/chapters.txt`, and P6 and P7a overwrite
 `out/<id>.mp4` and `out/<id>-with-opening.mp4`. After P10b the previous
 delivered file is `<file name>.previous`; keep it until P11 has passed. After P11 it stays until the next delivery
@@ -185,20 +190,21 @@ replaces it; removing it earlier is the owner's decision.
 Escalate to <owner role> through <channel> when `--check` still reports a
 rejected key, when P2a stops twice at the same line although `--check`
 accepts the credentials, when P2a stops with `still rate limited` on three separate
-runs, when a second take is rejected, when a copy mismatches twice, when the delivered file mismatches in P11,
+runs, when a second take is rejected, when a render fails twice or a render process does not end in R4, when a copy mismatches twice, when a rename fails in P10b, when the delivered file mismatches in P11,
 when a pace range cannot be met in R6 without an owner decision, when the
 same measurement row fails twice, when a line is still wrong in P4 after one
 new take (ElevenLabs), or when a key term stays wrong after a
-phonetic entry, a language mark and a second voice. Preserve: the command
-output of the failed step, `out/measure.json`, the rejected take and its word
-file. Never include the env file or a key.
+phonetic entry or respelling, a language mark and a second voice (the order of attempts in P1). Preserve: the command
+output of the failed step, `out/measure.json` (not written when the file could not be read; a file of that name is then from P3 and no evidence for the failed file), every take of the scene with its word file, in `takes/` and
+`takes/superseded/`. Never include the env file or a key.
 
 ## Completion
 
 Success: the file at <delivery location> has the checksum of the local file,
 `review.md` records gate 2 as passed, and the project record is complete.
 Stop state: a step that fails before P10b leaves the delivered file
-untouched; a failure in P10b or P11 is undone by restoring `.previous`.
+untouched; a failure in P10b or P11 is undone by restoring `.previous`; on a first
+delivery there is none, and a mismatching file is renamed to `<file name>.failed`.
 
 ## Maintenance and sources
 

@@ -1,6 +1,7 @@
 # Writing Depth
 
-Prose deliverables follow the same rule as code: match the workflow to the
+[Writing rule #1](natural-prose.md), natural prose, applies at every scale.
+Beyond it, prose deliverables follow the same rule as code: match the workflow to the
 observable size, audience risk and lifetime of the text. Decide the scale first,
 record it, and select the writing lifecycle from that decision. Do not adopt
 documentation-set machinery for a paragraph, and do not write a manual one
@@ -21,6 +22,7 @@ The scale table does not apply to story manuscripts; the
 | Observable conditions (any one moves the work to that scale) | Scale | Writing lifecycle |
 |---|---|---|
 | One sentence, paragraph, or section inside an existing text; wording, correctness or a single explanation; no new document structure; no new terms that other pages must share | Small | Native focused edit; the reader-oriented rules apply inline |
+| A short standalone text that is no document: an email, an announcement, a post, a notice, a commit or pull-request description | Small | `human-prose-drafting` alone; nothing is recorded |
 | One self-contained document: a README section set, guide, tutorial, article, report, release note or reference page; one primary audience; expected length up to roughly 3,000 words or 40 procedure steps; no shared glossary or asset plan needed beyond the document | Medium | `documentation-authoring` in standalone mode, with the didactic and structural supporting skills its content type requires |
 | Several chapters or documents that must agree on terms, structure and images; more than one audience or reading path; a manual, handbook, course, knowledge base or product documentation set; expected length above roughly 3,000 words, more than five chapters, or contributors and reviews spread over multiple sessions | Large | `documentation-planning` → `documentation-authoring` (per chunk) → `documentation-review` → `verification-before-completion` |
 
@@ -34,7 +36,7 @@ that recorded scale and phase instead of deciding again.
 
 | Scale | Required depth |
 |---|---|
-| Small | Reader-oriented wording, terminology consistent with the surrounding text, focused check of the changed passage and its links; preserve the surrounding voice without loading an additional supporting skill |
+| Small | Writing rule #1 (natural prose) applied inline, for a short standalone text such as an email or an announcement through `human-prose-drafting` alone with nothing recorded; reader-oriented wording, terminology consistent with the surrounding text, focused check of the changed passage and its links; preserve the surrounding voice without loading an additional supporting skill |
 | Medium | Content type chosen from the information architecture, one template-based document with frontmatter, explicit reader, prerequisites and validation for procedures, local glossary check, drafting under the `human-prose-drafting` constraints, self-review against the didactic rules, fresh link and rendering check |
 | Large | Documentation plan with audience, architecture map, chunk manifest and conventions; shared glossary; asset manifest with placeholders; per-chunk authoring under the `human-prose-drafting` constraints with checkpoints; set-wide consistency review including prose tells; convergence of findings; fresh verification |
 

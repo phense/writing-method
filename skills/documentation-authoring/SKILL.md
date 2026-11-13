@@ -8,6 +8,8 @@ description: "Use when reader-facing documentation must be written or revised: o
 Apply the shared [proportionality rule](../../shared/policies/proportionality.md)
 before adding work, delegating, or repeating verification.
 
+[Writing rule #1](../../shared/policies/natural-prose.md) applies to every sentence written under this skill: no pattern that reads as machine-written.
+
 Write the text readers will use. In a documentation set, author chunks
 according to the plan; for a standalone document, apply the same content-type
 discipline without the set-level machinery.
@@ -118,8 +120,8 @@ ordinary continuation follows the existing plan directly.
    chunks, with blocks of three to five steps and a validation section;
    `empathic-troubleshooting` for troubleshooting chunks; consistent tables
    for reference chunks. Before writing the first sentence, read
-   [human-prose-drafting](../human-prose-drafting/SKILL.md) and apply its
-   guidance while drafting: direct statements, concrete facts, natural
+   [human-prose-drafting](../human-prose-drafting/SKILL.md), which applies
+   writing rule #1 to documentation, and follow it while drafting: direct statements, concrete facts, natural
    rhythm and useful formatting. Preserve its exceptions for source fidelity,
    required structure and technical terms. These constraints apply while writing; a
    separate humanizing pass afterwards is not part of this lifecycle.

@@ -1,0 +1,7 @@
+{
+  "id": "team-announcement",
+  "prompt": "Schreib mir eine kurze Ankündigung für unseren Team-Newsletter: Ab Montag läuft die Zeiterfassung über das neue Portal, das alte wird am Freitag abgeschaltet.",
+  "files": {
+    "README.md": "# Notes\n\nScratch repository.\n"
+  }
+}

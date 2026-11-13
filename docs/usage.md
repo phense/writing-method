@@ -1,7 +1,7 @@
 ---
 type: reference
 audience: Authors using Writing Method
-version: 0.4.1
+version: 0.5.0
 ---
 # Writing examples
 
@@ -16,8 +16,9 @@ The writing-depth policy places this at the medium scale. `documentation-authori
 runs in standalone mode: it defines the reader and version, uses the task
 skeleton from the chunk template, and applies `writing-procedures` (goal,
 prerequisites, blocks of three to five imperative steps, a check that it
-worked). The draft is written under `human-prose-drafting` from the first
-sentence, so no humanizing pass follows. A recorded self-review and fresh link
+worked). The draft is written under writing rule #1 (natural prose), which
+`human-prose-drafting` applies to documentation from the first sentence, so
+no humanizing pass follows. A recorded self-review and fresh link
 check close the work. No plan directory is created.
 
 ## Build a documentation set
@@ -124,7 +125,10 @@ reads the chapter card in `05-plot/chapters/` and writes prose only, into
 `06-manuscript/chapters/`. The voice sheet decides how the prose sounds.
 `explaining-concepts`, `writing-procedures`, `empathic-troubleshooting` and
 `human-prose-drafting` do not apply to it: a chapter gets no analogy, no
-numbered steps and no smoothing of deliberate fragments. If one of the three
+numbered steps and no smoothing of deliberate fragments. Writing rule #1 still
+applies where the voice sheet is silent: among other things no staged insight,
+no inflated wording and nothing left over from a chat. Fragments and
+repetition stay the author's devices. If one of the three
 voice fields is still `unset`, no chapter is drafted and you are led to a
 voice trial first. The chapter is complete when `story-canon-review` has
 reviewed it at a named revision and you have accepted it; your acceptance is a

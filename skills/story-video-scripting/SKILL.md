@@ -11,6 +11,8 @@ For manuscript text the story's voice sheet overrides explaining-concepts, writi
 
 No run state: this skill has no recovery preamble and hands off to no backlog or run-tracking skill. A story or study vault keeps no backlog and no run directory; its state lives in 00-project/development.md and 00-project/decisions.md.
 
+The [#1 prose rule](../../shared/story/rules.md#1-prose-rule-natural-prose) applies to a listening edition as to any manuscript, and to every note this skill writes: nothing in it reads as machine-written.
+
 This skill is experimental. It turns accepted story text into the script of a narrated story video: scenes, narration lines and plain picture descriptions. The story family owns the text; the form skills voice, time, render and check the accepted script and never restyle it. Nothing is voiced or rendered here.
 
 ## When to use
