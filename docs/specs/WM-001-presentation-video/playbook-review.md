@@ -254,15 +254,25 @@ unit tests, and `measure.py file` on a one-second file without sound
 Open observation, not verified: on Linux `pgrep -fl` may list the shell that
 runs it when that shell's command line holds the pattern.
 
-## State after five reviews
+## Confirmation at `9405899`
 
-- Content review: 63 findings in five rounds, all applied. The five edits of
-  the fifth round are small and were checked against the tool source by their
-  author only, so no `Ready` verdict by an independent reviewer exists.
+An independent assistant reviewer confirmed R5-01 to R5-05 against the tool
+source, ran the manifest change in a scratch copy with stubbed cutting, and
+gave the content verdict **Ready**: no open Critical or Important finding.
+Five Minor findings: R6-01 (preserve every take), R6-02 (take numbers count
+`takes/superseded/`), R6-03 (R3 names the next step), R6-05 (`measure.json`
+from P3) are applied; R6-04, a unit test of `split_takes.main` for the
+manifest, is open.
+
+## State after five reviews and the confirmation
+
+- Content review: Ready at `9405899`; four Minor wording edits were applied
+  afterwards.
 - Rehearsal at 0.4.1 (`rehearsal.md`): one end-to-end run through delivery, an
   interrupted local render, the correction path, the pace probe, and the
   listening check by the owner (passed). Stale for the steps changed since:
   R3, R4, R5, P10b, the P1 failure path and the interruption text.
 - Never executed: P6a and R4 after P6a, P2b, R2, R3 and the take rule
   (ElevenLabs), R1 with a real limit, a checksum mismatch or failed rename in
-  P10 to P11, the R5 branches, a story video.
+  P10 to P11, the R5 branches, a story video. A Ready review does not certify
+  these.

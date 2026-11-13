@@ -30,13 +30,13 @@ This file is neutral: every skill family may link it, and it links into none.
 | A language model continues with the most probable words. The result moves toward the average of everything it has read. | A specific fact gives way to a general statement that would fit any subject. Wikipedia calls this regression to the mean. |
 | Training rewards answers that most people find agreeable. | Praise, inflated importance, caution in every sentence, and an opening that includes every possible reader. |
 | A sentence form that promises insight is cheaper than an insight. | Contrasts with a position nobody held, lists of three, ranges "from X to Y", and a participle phrase that adds a meaning the fact does not have. |
-| The same forms appear in every text and at an even rhythm. | A reader who has met them a few times recognizes them at once. Outside group A one form alone proves little, and several in one paragraph prove much. |
+| The same forms appear in every text and at an even rhythm. | A reader who has met them a few times recognizes them at once. A pattern marked weak alone proves little, and several in one paragraph prove much. |
 | The text was written as an answer in a chat. | Greetings, offers of further help, and remarks about the request or about missing information stay in the text. |
 
 ## The patterns
 
-The staged forms in group A are a defect on one occurrence. A pattern marked
-*weak alone* counts only together with others. The word lists hold examples and
+A pattern is a defect on one occurrence. A pattern marked *weak alone*
+counts only together with others. The word lists hold examples and
 change with every model generation.
 
 ### A. Staged insight
@@ -61,8 +61,7 @@ change with every model generation.
 
 ### B. Even rhythm
 
-- **Lists of three** where the meaning does not have three parts: three
-  adjectives, three short phrases, three examples and a lesson.
+- **Lists of three** where the meaning does not have three parts: three adjectives, or three examples and a lesson.
 - **One sentence form repeated**: statement after statement of the same
   length, or the same opening several times in a row.
 - **A participle phrase at the end of the sentence**: "…, highlighting its
@@ -146,8 +145,8 @@ uncertainty. Delete a sentence that is empty without its pattern.
 
 ## Check before delivery
 
-The catalogue is the measure. As a last pass, read the finished text once
-for the seven that survive drafting most often: a contrast with nothing, a
+Every pattern of the catalogue applies. As a last pass, read the finished
+text once for seven of them: a contrast with nothing, a
 one-line closer, a list of three, a participle phrase at a sentence end, a
 stock word, a bold label, a line addressed to the person who asked. Correct
 each one that the exceptions below do not cover. For a reply of a few lines
@@ -173,15 +172,14 @@ the check is one reading, with no record.
 |---|---|
 | Reader-oriented text, including every reply | In full |
 | Working notes | In full; notes are short, so groups C and E matter most |
-| Manuscript: story prose and in-world text | The story's voice sheet decides the voice. A device the voice sheet names, such as fragments, a repeated opening or a list of three used for rhythm, is the author's choice. Where the sheet is silent, groups A, C and E are findings in narration, and group B is a finding where several of its patterns stand in one passage; a character may speak in any way that the character's voice card supports. Group D does not apply to prose. |
+| Manuscript: story prose and in-world text | The story's voice sheet decides the voice. A device the voice sheet names, such as fragments, a repeated opening or a list of three used for rhythm, is the author's choice. Fragments, repetition, figurative language and humor are devices of prose: the fragment row of group A and the repeated opening of group B are no finding in manuscript unless the sheet excludes them. Where the sheet is silent, the other patterns of groups A, C and E are findings in narration, and group B is a finding where several of its patterns stand in one passage; a character may speak in any way that the character's voice card supports. Group D does not apply to prose. |
 | Narration of a video | The mode of its script: tutorial narration in full, story narration as manuscript |
 | Machine-read output, code, commands, data | Not covered |
 
 ## Limits
 
 - The catalogue describes how text is recognized. A text without these
-  patterns can still be empty or wrong. The cure is content that only this
-  subject has.
+  patterns can still be empty or wrong.
 - People recognize machine text unreliably, and detection tools err in both
   directions. The catalogue is a writing aid and no proof of who wrote a text.
 - The patterns drift. Words and forms that marked one model generation fade,
@@ -189,9 +187,12 @@ the check is one reading, with no record.
   that shows.
 - An invented reference, a dead link or a wrong number is a matter of
   verification and is not covered here.
-- The two playbook skills come from the shared core and do not refer to this
-  file. `documentation-pdf` and `presentation-video-production` write no
-  text.
+- The skills that come from the shared core do not refer to this file: the
+  two playbook skills, the two code-review skills, `project-backlog`,
+  `verification-before-completion` and the two skills for worktrees and
+  parallel agents. `documentation-pdf` and `presentation-video-production`
+  write no narration or document text and do not refer to it either; the
+  project record that production updates is not reached.
 - Whether a host follows the rule is not measured. No host loads a policy file
   before it selects a skill, so a reply for which no skill of this method
   loads is not reached by it.

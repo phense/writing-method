@@ -1,4 +1,4 @@
-"""Writing rule #1 (natural prose) is present and every skill that writes or judges text carries it."""
+"""Writing rule #1 (natural prose) is present and every skill of the family map that writes or judges text carries it."""
 import json
 from pathlib import Path
 import re
@@ -17,7 +17,8 @@ SHARED_CARRIERS = [
     "shared/story/rules.md",
     "README.md",
 ]
-SEVEN = ["a contrast with nothing", "a one-line closer", "a list of three", "a stock word", "a bold label"]
+SEVEN = ["a contrast with nothing", "a one-line closer", "a list of three", "a participle phrase at a sentence end",
+         "a stock word", "a bold label", "a line addressed to the person who asked"]
 LINK = re.compile(r"\]\(([^)#\s]+)")
 
 
@@ -72,13 +73,20 @@ class NaturalProse(unittest.TestCase):
                 text = " ".join((ROOT / path).read_text().split())
                 self.assertRegex(text, r"groups A, C and E")
                 self.assertRegex(text, r"(?i)group B.{0,40}where several of its patterns stand in one passage")
+        # fragments and repetition stay devices of prose in every one of them
+        self.assertIn("unless the sheet excludes", (ROOT / RULE).read_text())
+        self.assertIn("unless the sheet excludes it", (ROOT / "shared/story/rules.md").read_text())
+        self.assertIn("the prose rule does not make it one", (ROOT / "skills/story-voice-review/SKILL.md").read_text())
 
     def test_the_delivery_check_is_the_same_in_the_rule_and_the_prose_skill(self) -> None:
-        for path in (RULE, "skills/human-prose-drafting/SKILL.md"):
-            text = " ".join((ROOT / path).read_text().split())
-            for item in SEVEN + ["a participle phrase at a sentence end", "a line addressed to the person who asked"]:
-                with self.subTest(path=path, item=item):
-                    self.assertIn(item, text)
+        def items(path: str, heading: str) -> list[str]:
+            text = (ROOT / path).read_text()
+            section = " ".join(text[text.index(heading):].split())
+            listed = section[section.index(":") + 1:section.index(".", section.index(":"))]
+            return [item.strip() for item in listed.split(",")]
+        rule = items(RULE, "## Check before delivery")
+        self.assertEqual(SEVEN, rule)
+        self.assertEqual(rule, items("skills/human-prose-drafting/SKILL.md", "## Chunk check"))
 
     def test_the_prose_skill_description_names_short_texts_and_its_limits(self) -> None:
         text = (ROOT / "skills/human-prose-drafting/SKILL.md").read_text()

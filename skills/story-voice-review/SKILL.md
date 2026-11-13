@@ -31,7 +31,7 @@ Every finding cites the passage, with file and location, and one basis:
 - a named default from [story drafting](../story-drafting/SKILL.md), labelled "method default, not sheet", or
 - a pattern of the [#1 prose rule](../../shared/story/rules.md#1-prose-rule-natural-prose) in narration that neither the sheet nor a card supports, labelled "prose rule #1": groups A, C and E, and group B where several of its patterns stand in one passage. Class it as a sheet gap.
 
-Drop an observation that has none of these. Beyond that rule there is no banned-word list and no universal style standard; a fragment, a repetition or a joke is a finding only where the sheet or a card says so.
+Drop an observation that has none of these. Beyond that rule there is no banned-word list and no universal style standard. A fragment, a repetition or a joke is a finding only where the sheet or a card says so; the prose rule does not make it one.
 
 Class each finding as one of:
 

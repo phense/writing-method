@@ -22,6 +22,7 @@ The scale table does not apply to story manuscripts; the
 | Observable conditions (any one moves the work to that scale) | Scale | Writing lifecycle |
 |---|---|---|
 | One sentence, paragraph, or section inside an existing text; wording, correctness or a single explanation; no new document structure; no new terms that other pages must share | Small | Native focused edit; the reader-oriented rules apply inline |
+| A short standalone text that is no document: an email, an announcement, a post, a notice, a commit or pull-request description | Small | `human-prose-drafting` alone; nothing is recorded |
 | One self-contained document: a README section set, guide, tutorial, article, report, release note or reference page; one primary audience; expected length up to roughly 3,000 words or 40 procedure steps; no shared glossary or asset plan needed beyond the document | Medium | `documentation-authoring` in standalone mode, with the didactic and structural supporting skills its content type requires |
 | Several chapters or documents that must agree on terms, structure and images; more than one audience or reading path; a manual, handbook, course, knowledge base or product documentation set; expected length above roughly 3,000 words, more than five chapters, or contributors and reviews spread over multiple sessions | Large | `documentation-planning` → `documentation-authoring` (per chunk) → `documentation-review` → `verification-before-completion` |
 

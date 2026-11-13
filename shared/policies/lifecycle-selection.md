@@ -11,7 +11,7 @@ Decide scale using [writing depth](writing-depth.md). Use documentation-authorin
 for one standalone document and documentation-planning for a coherent set.
 Continue existing docs/writing work from its recorded phase. PDF delivery follows
 reviewed content through documentation-pdf. Small wording edits use focused editing.
-A short standalone text below that scale, such as an email, an announcement or
+A short standalone text below the medium scale, such as an email, an announcement or
 a commit description, uses human-prose-drafting alone; nothing is recorded.
 [Writing rule #1](natural-prose.md) applies to every text.
 

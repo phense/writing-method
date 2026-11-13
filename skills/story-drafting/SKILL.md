@@ -68,7 +68,7 @@ These names let a draft note or a voice review point at one default. They apply 
 | Distinct speakers | Speakers differ by experience and register, not by a swapped vocabulary or a catchphrase. |
 | No redundant explanation | No line merely repeats what the scene already conveyed; direct telling stays where it is clearer or part of the voice. |
 | Rhythm for the moment | Sentence and paragraph length serve this moment; no fixed ratio, no uniform scaffold. |
-| Preserved devices | Deliberate fragments, repeated motifs, figurative language, humor, dialect and silence stay. |
+| Preserved devices | Deliberate fragments, repeated motifs, figurative language, humor, dialect and silence stay; the #1 prose rule does not remove them. |
 | World-true detail | New detail belongs to this world and this viewpoint; nothing is added as fact merely to make prose vivid. |
 
 There is no banned-word list and no universal style standard behind these names; the word lists of the #1 prose rule hold examples and are read in context.

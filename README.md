@@ -11,7 +11,7 @@ The three repositories remain under `phense`, share the `agent-methods` topic an
 
 ## Writing rule #1: natural prose
 
-No text written with this method may read as machine-written. The rule comes before every other writing rule and covers replies, documentation, messages, video narration and story manuscript. [Writing rule #1](shared/policies/natural-prose.md) explains why readers recognize such text, lists the patterns in five groups (staged insight, even rhythm, inflation in place of fact, formatting as decoration, leftovers from a chat) and states what to write instead. Every skill of this plugin that writes or judges text refers to it, the story skills through the story rules; the two playbook skills from the shared core do not. For a story, the voice sheet decides first and the rule applies where the sheet is silent.
+No text written with this method may read as machine-written. The rule comes before every other writing rule and covers replies, documentation, messages, video narration and story manuscript. [Writing rule #1](shared/policies/natural-prose.md) explains why readers recognize such text, lists the patterns in five groups (staged insight, even rhythm, inflation in place of fact, formatting as decoration, leftovers from a chat) and states what to write instead. Every documentation, didactic, video-script and story skill refers to it, the story skills through the story rules. The skills from the shared core (playbooks, code review, backlog, verification, worktrees, parallel agents) do not. For a story, the voice sheet decides first and the rule applies where the sheet is silent.
 
 The rule is carried by the skills. A reply for which no skill of this method loads is not reached by it, and whether a host follows it is not measured.
 
