@@ -331,7 +331,7 @@ render and check an accepted script and never restyle its text.
   `presentation-video-production` prohibited) and `story-video-production`
   (primary `presentation-video-production`; scripting, drafting, voice review
   and the didactic skills prohibited). The four negative cases that prohibit every story
-  skill now also prohibit `story-video-scripting`. None of these has been run on a host.
+  skill now also prohibit `story-video-scripting`. A third case, `story-listening-edition`, covers a change for the audio version only. The host results are in `rehearsal.md`.
 - No story video has been produced: no provider call and no render belong to
   this extension.
 - Still deferred: delivery as an e-book (`story-manuscript-export`),

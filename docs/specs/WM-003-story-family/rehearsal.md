@@ -47,9 +47,8 @@ in any of the eighteen runs.
 
 In the failing case both hosts chose `presentation-video-production` as primary
 and additionally applied `documentation-authoring`, which the case prohibits.
-The production skill itself sends the reader to the recovery preamble of
-`documentation-authoring`. Neither that skill nor the case is changed by this
-work.
+At `c68dbc1` the production skill itself sent the reader to the recovery
+preamble of `documentation-authoring`.
 
 Baseline comparison of that one case against release 0.3.0 (`29752ab`, without
 the story family):
@@ -62,8 +61,72 @@ the story family):
 On Codex the failure exists without the story family. On Claude the case is
 unstable without it, and failed every time with it. Three runs per side do not
 show whether this branch makes the case worse. The cause, a production skill
-that requires a skill its routing case prohibits, belongs to WM-001 and is not
-fixed here.
+that requires a skill its routing case prohibits, belongs to WM-001. It was removed
+afterwards; see the full run below.
+
+## Full run at `d583c74`: all 24 cases per host
+
+Between the regression above and this run, `1d389c3` removed the delegation to
+`documentation-authoring` from the three video skills, `2a450b2` added narrated
+story videos with the cases `story-video-script` and `story-video-production`,
+and `c9d0b21` added the case `story-listening-edition`. Every case ran once per
+host.
+
+| Host | Passed | Failed |
+|---|---|---|
+| Claude | 24 of 24 | none |
+| Codex | 22 of 24 | `marketing-clip-out-of-scope`, `study-vault-draft-request` (both `unexpected_selection`) |
+
+- `presentation-video-production` passed on both hosts. On Claude it had passed
+  3 of 3 at `1d389c3`.
+- `story-video-script` first failed on Claude with `missing_artifact`: the host
+  chose `story-video-scripting` and wrote `decision.md` into the video project
+  directory that the prompt named. The prompt now says where the record goes
+  (`d583c74`); the case then passed on both hosts. Changed after seeing the
+  result.
+- The Codex run was interrupted after five cases because that prompt was edited
+  while it ran; the harness stops when the plugin changes. The remaining
+  nineteen cases ran one by one at `d583c74`.
+
+The two Codex failures were repeated twice each at `6fda20d`:
+
+| Case | Codex | What the host did |
+|---|---|---|
+| `marketing-clip-out-of-scope` | 1 of 3 passed | Routed to focused editing as expected. In the failing runs it opened `presentation-video-production` to read its exclusions and reported it as supporting, which the case prohibits. |
+| `study-vault-draft-request` | 0 of 3 passed | Named `story-drafting` as primary, not `story-craft-research`. The run read in full recorded that the vault is `kind: study` and that drafting is not permitted. The harness scores the selection and cannot see the refusal. |
+
+Neither expectation was changed. The first is an earlier case of the video
+method; at `c68dbc1` it passed once on Codex. The second passed once on Codex
+at `788fb4e`. Both are counted as failures.
+
+## Unscripted requests (2026-11-13)
+
+The harness tells a host to select a workflow. To see what happens without
+that instruction, eleven plain German requests were sent once each to a host
+with Writing Method and Engineering Method both loaded: no skill name, no
+routing instruction, read-only tools. The probe is a script outside this
+repository, not a harness, and one run per case is an observation, not a rate.
+
+| Request | Expected skill | Claude | Codex |
+|---|---|---|---|
+| A failing test | `systematic-debugging` | loaded | loaded |
+| A new feature across three modules | a specification skill | not loaded | loaded |
+| An administrator guide | `documentation-authoring` | loaded | loaded |
+| The difference between two Git commands | `explaining-concepts` | not loaded | loaded |
+| Start a new story | `story-bootstrap` | loaded | loaded |
+| "Write chapter 12" in a story vault | `story-drafting` | loaded | loaded |
+| Does chapter 12 still fit what happened before | `story-canon-review` | loaded | loaded |
+| Chapters no longer sound like the beginning | `story-voice-review` | loaded | loaded |
+| An audiobook video of chapter 11, read as written | `story-video-scripting` | loaded | loaded |
+| Two sentences changed for the audio version only | `story-video-scripting` | loaded | loaded |
+| A tutorial video for new employees | `tutorial-video-scripting` | loaded | loaded |
+
+Claude loaded the expected skill in 9 of 11 requests and Codex in 11 of 11. An
+earlier Claude run ended each request with "tell me first how you will
+proceed": the expected skill was then loaded in 4 of 11 requests and only
+named in the plan in 4 more. A request for a plan lowers loading, not the
+choice. Claude ran from the working tree, Codex from the installed plugin copy
+of the same revision.
 
 ## Not covered
 
@@ -73,4 +136,6 @@ fixed here.
   failed cases. No five-run rate exists for the other cases.
 - Leakage of one family's rules into produced text, a reply inside a vault and
   multi-turn sessions are not measurable with this harness.
+- The unscripted requests ran once per host; they show no rate and read no
+  produced text.
 - OpenCode was not exercised.
