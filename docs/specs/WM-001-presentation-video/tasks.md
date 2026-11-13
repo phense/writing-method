@@ -97,7 +97,7 @@ Each slice writes its failing tests first and ends green.
 
 ### Slice S8: Convergence and final verification handoff
 
-- [ ] T033 Run convergence, resolve every actionable finding, capture fresh verification, update `FEATURES.md` and the issue.
+- [x] T033 Run convergence, resolve every actionable finding, capture fresh verification, update `FEATURES.md` and the issue.
 
 ## Playbook obligations
 

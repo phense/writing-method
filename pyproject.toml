@@ -1,6 +1,6 @@
 [project]
 name = "writing-method"
-version = "0.4.1"
+version = "0.5.0"
 description = "Shared method support."
 requires-python = ">=3.11"
 license = { text = "MIT" }

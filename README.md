@@ -1,7 +1,7 @@
 ---
 type: reference
 audience: Authors and maintainers familiar with their coding assistant and Git
-version: 0.4.1
+version: 0.5.0
 ---
 # Writing Method
 
@@ -130,7 +130,7 @@ claude plugin install writing-method@writing-method
 
 For a session-scoped Claude test use `claude --plugin-dir /absolute/path/to/writing-method`. For OpenCode, run `python3 scripts/install-opencode --check` from this checkout, inspect the proposed path, then repeat without `--check`. It installs an owned `writing-method.js` loader pointing to this retained directory. Gemini support is deferred until its adapter is verified.
 
-Restart the assistant session after installation and inspect its plugin inventory for `writing-method` 0.4.1. An installed listing proves discovery; a live authoring request is separate behavior evidence. With both methods installed, use the invoking method's namespace for shared support, such as `writing-method:playbook-authoring`, and run one copy.
+Restart the assistant session after installation and inspect its plugin inventory for `writing-method` 0.5.0. An installed listing proves discovery; a live authoring request is separate behavior evidence. With both methods installed, use the invoking method's namespace for shared support, such as `writing-method:playbook-authoring`, and run one copy.
 
 ## Project state and updates
 
