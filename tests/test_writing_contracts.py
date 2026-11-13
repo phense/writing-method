@@ -53,6 +53,13 @@ class WritingContracts(unittest.TestCase):
             result=run('backlog','init','--project-key','WM');self.assertEqual(0,result.returncode,result.stderr)
             result=run('backlog','add','--id','WM-001','--title','Write handbook','--priority','P1');self.assertEqual(0,result.returncode,result.stderr)
             self.assertIn('WM-001',(project/'BACKLOG.md').read_text())
+            # The book layout ships complete: a copy without its filter or checker cannot be rendered or verified.
+            book=installed/'templates/documentation/book'
+            for name in ['_quarto.yml','_brand.yml','index.md','DESIGN.md','tools/check-pdf.py','_extensions/em-book/_extension.yml','_extensions/em-book/typst-template.typ','_extensions/em-book/typst-show.typ','_extensions/em-book/book-structure.lua','_extensions/em-book/chunk-title.lua']:
+                self.assertTrue((book/name).is_file(),name)
+            listed=re.findall(r'^\s+- (chapters/.+\.md)$',(book/'_quarto.yml').read_text(),re.M)
+            self.assertEqual(sorted(p.name for p in (book/'chapters').glob('*.md')),sorted(Path(n).name for n in listed))
+            self.assertIn('em-book-typst',(installed/'skills/documentation-pdf/SKILL.md').read_text())
             template=installed/'templates/documentation/pdf/DESIGN.md';template.unlink()
             self.assertTrue(any('DESIGN.md' in e for e in validate_repository(installed)))
     def test_attribution_covers_current_adaptations_and_original_writing(self):

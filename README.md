@@ -1,7 +1,7 @@
 ---
 type: reference
 audience: Authors and maintainers familiar with their coding assistant and Git
-version: 0.2.0
+version: 0.3.0
 ---
 # Writing Method
 
@@ -20,7 +20,7 @@ The three repositories remain under `phense`, share the `agent-methods` topic an
 | Script, produce and review narrated tutorial videos | tutorial-video-scripting, presentation-video-production, presentation-video-review |
 | Shared support from Core | project-backlog, verification-before-completion, requesting-code-review, receiving-code-review, using-git-worktrees, dispatching-parallel-agents, playbook-authoring, playbook-review |
 
-Describe the outcome to your assistant. A small wording edit needs focused editing; a standalone document uses authoring and self-review; a coherent document set uses planning, authoring and review. PDF generation follows content review. A tutorial video is scripted, produced and reviewed in that order; see [Narrated tutorial videos](#narrated-tutorial-videos). Playbooks support concrete publication/export operations when their decisions or recovery needs warrant one; ordinary writing does not automatically create one.
+Describe the outcome to your assistant. A small wording edit needs focused editing; a standalone document uses authoring and self-review; a coherent document set uses planning, authoring and review. PDF generation follows content review and offers two layouts: a single-sided one for short documents and a book layout with parts, mirrored pages and a running head for long manuals. A tutorial video is scripted, produced and reviewed in that order; see [Narrated tutorial videos](#narrated-tutorial-videos). Playbooks support concrete publication/export operations when their decisions or recovery needs warrant one; ordinary writing does not automatically create one.
 
 ## Terms
 
@@ -66,7 +66,7 @@ claude plugin install writing-method@writing-method
 
 For a session-scoped Claude test use `claude --plugin-dir /absolute/path/to/writing-method`. For OpenCode, run `python3 scripts/install-opencode --check` from this checkout, inspect the proposed path, then repeat without `--check`. It installs an owned `writing-method.js` loader pointing to this retained directory. Gemini support is deferred until its adapter is verified.
 
-Restart the assistant session after installation and inspect its plugin inventory for `writing-method` 0.2.0. An installed listing proves discovery; a live authoring request is separate behavior evidence. With both methods installed, use the invoking method's namespace for shared support, such as `writing-method:playbook-authoring`, and run one copy.
+Restart the assistant session after installation and inspect its plugin inventory for `writing-method` 0.3.0. An installed listing proves discovery; a live authoring request is separate behavior evidence. With both methods installed, use the invoking method's namespace for shared support, such as `writing-method:playbook-authoring`, and run one copy.
 
 ## Project state and updates
 

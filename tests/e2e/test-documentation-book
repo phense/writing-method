@@ -1,0 +1,115 @@
+#!/usr/bin/env python3
+"""Native check of the book template; requires Quarto, PyMuPDF and the template fonts, no model calls."""
+from pathlib import Path
+import argparse
+import hashlib
+import importlib.util
+import json
+import re
+import shutil
+import subprocess
+import tempfile
+
+import pymupdf as fitz
+
+ROOT = Path(__file__).resolve().parents[2]
+TEMPLATE = ROOT / 'templates/documentation/book'
+MM = 72 / 25.4
+
+
+def load_checker(root):
+    spec = importlib.util.spec_from_file_location('book_check_pdf', root / 'tools/check-pdf.py')
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def source_hashes(root):
+    return {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest()
+            for p in root.rglob('*.md')
+            if not {'_book', '.quarto'}.intersection(p.relative_to(root).parts)}
+
+
+def check(quarto, fonts, root, language, stress=False):
+    shutil.copytree(TEMPLATE, root, ignore=shutil.ignore_patterns('_book', '.quarto', 'index.typ'))
+    for font in fonts.glob('*.[ot]tf'):
+        shutil.copy(font, root / 'fonts')
+    config = root / '_quarto.yml'
+    config.write_text(config.read_text().replace('lang: en', f'lang: {language}'))
+    if stress:
+        # A tall picture, a table spanning pages and German quotation marks.
+        pixmap = fitz.Pixmap(fitz.csRGB, fitz.IRect(0, 0, 400, 1600))
+        pixmap.clear_with(205)
+        pixmap.save(root / 'chapters/tall.png')
+        with (root / 'chapters/03-settings.md').open('a') as f:
+            f.write('\nThe picture below is taller than the limit:\n\n![Tall picture](tall.png)\n')
+            f.write('\nKlicke auf „Speichern" und dann auf „Schließen“.\n')
+            f.write('\n## Long table\n\n| Row | Description |\n|---|---|\n')
+            for row in range(1, 121):
+                f.write(f'| ROW-{row:03} | This row verifies a table spanning PDF pages. |\n')
+    before = source_hashes(root)
+    result = subprocess.run([quarto, 'render', '--to', 'em-book-typst'], cwd=root, text=True,
+                            capture_output=True, timeout=180)
+    output = result.stdout + result.stderr
+    assert result.returncode == 0, output
+    assert not re.search(r'\b(?:warning|error):', output, re.I), output
+    pdf = root / '_book/manual.pdf'
+    assert pdf.is_file(), 'Missing PDF'
+    assert source_hashes(root) == before, 'Rendering changed Markdown source bytes'
+    report = load_checker(root).check(pdf)
+    assert report['errors'] == [], report['errors']
+    assert report['possible_overflows'] == [], report['possible_overflows']
+    assert report['chapters'] == 4, report['outline']
+    assert len(report['part_pages']) == 2, report['part_pages']
+    assert report['toc_links'] == 4, report['toc_links']
+    doc = fitz.open(pdf)
+    german = language == 'de'
+    cover = doc[0].get_text()
+    assert 'A clear guide' in cover and 'USER MANUAL' in cover, cover
+    assert ('Stand:' if german else 'As of:') in doc[1].get_text(), 'Missing imprint on the back of the title page'
+    assert ('Inhaltsverzeichnis' if german else 'Table of contents') in doc[2].get_text()
+    for number, page in enumerate(report['part_pages'], 1):
+        assert page % 2 == 1, ('Part title page on a left-hand page', page)
+        assert (f'TEIL {number}' if german else f'PART {number}') in doc[page - 1].get_text()
+    starts = [start for level, _, start in report['outline'] if level == 1]
+    assert starts == sorted(starts) and all(start % 2 for start in starts), starts
+    if stress:
+        text = '\n'.join(page.get_text() for page in doc)
+        for row in range(1, 121):
+            assert text.count(f'ROW-{row:03}') == 1, ('Missing or duplicate table row', row)
+        assert '„Speichern“' in text and '„Schließen“' in text, 'German closing quotation marks are wrong'
+        # A page inside the long chapter carries part, chapter and page number in its running head.
+        inner = next(n for n, page in enumerate(doc, 1) if 'ROW-060' in page.get_text())
+        head = ' '.join(w[4] for w in doc[inner - 1].get_text('words') if w[3] < 85)
+        assert 'REFERENCE' in head and 'Settings' in head and str(inner) in head.split(), head
+        heights = [rect.height for page in doc for item in page.get_images() for rect in page.get_image_rects(item)]
+        assert heights and max(heights) <= 118 * MM + 2, ('Tall picture was not narrowed', heights)
+    return {'language': language, 'stress': stress, 'pages': len(doc), 'chapter_pages': starts,
+            'part_pages': report['part_pages'], 'short_last_pages': report['short_last_pages'],
+            'source_unchanged': True, 'pdf': str(pdf)}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--quarto', default=shutil.which('quarto'))
+    parser.add_argument('--fonts', type=Path, required=True,
+                        help='directory with the font files named in _brand.yml')
+    parser.add_argument('--output-dir', type=Path)
+    args = parser.parse_args()
+    if not args.quarto:
+        parser.error('Provide --quarto or install Quarto on PATH')
+    root = args.output_dir.resolve() if args.output_dir else Path(tempfile.mkdtemp(prefix='wm-book-check-'))
+    root.mkdir(parents=True, exist_ok=True)
+    # Each destination must be absent; never overwrite a prior verification run.
+    results = [check(args.quarto, args.fonts, root / 'en', 'en'),
+               check(args.quarto, args.fonts, root / 'de', 'de'),
+               check(args.quarto, args.fonts, root / 'stress', 'de', stress=True)]
+    version = lambda *a: subprocess.run([args.quarto, *a], capture_output=True, text=True).stdout.strip()
+    report = {'quarto': version('--version'), 'typst': version('typst', '--version'),
+              'pymupdf': fitz.VersionBind, 'results': results}
+    (root / 'verification.json').write_text(json.dumps(report, indent=2) + '\n')
+    print(json.dumps(report, indent=2))
+
+
+if __name__ == '__main__':
+    main()

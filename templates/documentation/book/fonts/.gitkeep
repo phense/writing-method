@@ -1,0 +1,2 @@
+# Place the font files named in _brand.yml here (for example the Source Sans 3 OTF files).
+# Quarto passes this directory to Typst through font-paths in _quarto.yml.

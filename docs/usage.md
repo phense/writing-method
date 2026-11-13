@@ -1,7 +1,7 @@
 ---
 type: reference
 audience: Authors using Writing Method
-version: 0.2.0
+version: 0.3.0
 ---
 # Writing examples
 
@@ -62,6 +62,18 @@ From that directory, run `quarto render --to em-manual-typst`. The default
 result is `_book/manual.pdf`. Inspect the actual contents links, page totals
 and page layout before delivery. This export preserves Markdown sources and
 does not publish remotely or re-run Humanizer over the finished text.
+
+For a long manual grouped into parts, or one that is printed on both sides,
+ask for the book layout:
+
+> Build this handbook as a book PDF with parts, for duplex printing.
+
+`documentation-pdf` then copies the [book template](../templates/documentation/book/DESIGN.md),
+lists the parts and chapters in `book.chapters`, and renders with
+`quarto render --to em-book-typst`. Chapters open on right-hand pages and the
+running head names the part and the chapter. Run `python3 tools/check-pdf.py`
+in the copy to check page numbers, contents entries, margins and chapter
+openings.
 
 ## Make a narrated tutorial video
 
