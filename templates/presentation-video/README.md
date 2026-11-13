@@ -7,6 +7,16 @@ plugin has changed.
 Replace this page with the record of your video when it is delivered; the
 section **Project record** at the end shows what belongs in it.
 
+## Contents
+
+- Terms
+- What you need
+- Files you write
+- From script to file
+- When something fails
+- Fonts
+- Project record
+
 ## Terms
 
 | Term | Meaning |

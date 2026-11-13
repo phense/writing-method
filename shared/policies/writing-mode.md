@@ -19,6 +19,20 @@ families refer to it; it links into none. The operative sentences that skills an
 vault files carry are stored in the policy block at the end and are tested
 against it.
 
+## Contents
+
+- Terms
+- Mode decision
+- Signals
+- Storage decision
+- Where the rule is read
+- Layers and what each proves
+- Limits
+- Mixed situations
+- Completion in the story family
+- Orchestration
+- Policy block
+
 ## Terms
 
 | Term | Meaning |

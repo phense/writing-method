@@ -1,6 +1,6 @@
 ---
 name: empathic-troubleshooting
-description: "Use when writing help for something that has gone wrong or may go wrong, in documentation or an ordinary reply: start from what the reader sees, name likely causes in order, give the first check, then the fix and its confirmation. Not for diagnosing a defect in code you own (engineering diagnosis is outside this plugin), for normal procedures, or for reference lists of error codes. Not for story manuscripts or in-world text."
+description: "Use when writing help for something that has gone wrong or may go wrong, in documentation or an ordinary reply: start from what the reader sees, name likely causes in order, give the first check, then the fix and its confirmation. Not for diagnosing a defect in the project's own code (engineering diagnosis is outside this plugin), for normal procedures, or for reference lists of error codes. Not for story manuscripts or in-world text."
 ---
 
 # Empathic Troubleshooting

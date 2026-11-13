@@ -9,6 +9,16 @@ has one focal point, the contents begin on their own page, chapter numbers are
 typography rather than badges, and colour supports the hierarchy instead of
 carrying it alone.
 
+## Contents
+
+- Build
+- Source and order
+- Design settings
+- Typographic rationale
+- Typst and LaTeX
+- Language and numbering
+- Verification
+
 ## Build
 
 Copy this directory's source files into a new documentation directory. Exclude
