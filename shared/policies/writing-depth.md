@@ -35,7 +35,7 @@ that recorded scale and phase instead of deciding again.
 
 | Scale | Required depth |
 |---|---|
-| Small | Writing rule #1 (natural prose) applied inline; reader-oriented wording, terminology consistent with the surrounding text, focused check of the changed passage and its links; preserve the surrounding voice without loading an additional supporting skill |
+| Small | Writing rule #1 (natural prose) applied inline, for a short standalone text such as an email or an announcement through `human-prose-drafting` alone with nothing recorded; reader-oriented wording, terminology consistent with the surrounding text, focused check of the changed passage and its links; preserve the surrounding voice without loading an additional supporting skill |
 | Medium | Content type chosen from the information architecture, one template-based document with frontmatter, explicit reader, prerequisites and validation for procedures, local glossary check, drafting under the `human-prose-drafting` constraints, self-review against the didactic rules, fresh link and rendering check |
 | Large | Documentation plan with audience, architecture map, chunk manifest and conventions; shared glossary; asset manifest with placeholders; per-chunk authoring under the `human-prose-drafting` constraints with checkpoints; set-wide consistency review including prose tells; convergence of findings; fresh verification |
 

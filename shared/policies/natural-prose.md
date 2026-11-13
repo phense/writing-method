@@ -27,17 +27,17 @@ This file is neutral: every skill family may link it, and it links into none.
 
 | Cause | Effect in the text |
 |---|---|
-| A language model continues with the most probable words. The result moves toward the average of everything it has read. | The specific fact, name or number gives way to a general statement that would fit any subject. The sources call this regression to the mean. |
+| A language model continues with the most probable words. The result moves toward the average of everything it has read. | A specific fact gives way to a general statement that would fit any subject. Wikipedia calls this regression to the mean. |
 | Training rewards answers that most people find agreeable. | Praise, inflated importance, caution in every sentence, and an opening that includes every possible reader. |
 | A sentence form that promises insight is cheaper than an insight. | Contrasts with a position nobody held, lists of three, ranges "from X to Y", and a participle phrase that adds a meaning the fact does not have. |
-| The same forms appear in every text and at an even rhythm. | A reader who has met them a few times recognizes them at once. One form alone proves little; several in one paragraph do. |
+| The same forms appear in every text and at an even rhythm. | A reader who has met them a few times recognizes them at once. Outside group A one form alone proves little, and several in one paragraph prove much. |
 | The text was written as an answer in a chat. | Greetings, offers of further help, and remarks about the request or about missing information stay in the text. |
 
 ## The patterns
 
 The staged forms in group A are a defect on one occurrence. A pattern marked
-*weak alone* counts only together with others. Word lists are examples, not a
-complete list, and they change with every model generation.
+*weak alone* counts only together with others. The word lists hold examples and
+change with every model generation.
 
 ### A. Staged insight
 
@@ -51,6 +51,7 @@ complete list, and they change with every model generation.
   any reader and tells none of them anything.
 - **One-line closer.** A short last sentence that restates the paragraph or
   gives it weight: "That is the real win."
+- **Fragment row.** "No setup. No waiting. Just results."
 - **Run-up.** "Here's the thing", "Let's dive in", "Here is what you need to
   know", "It's important to note that".
 - **Sayings as depth.** "At its core", "the real question is", "X is the
@@ -97,7 +98,8 @@ complete list, and they change with every model generation.
 - **Borrowed authority**: "experts say", "observers note", "industry reports",
   a list of outlets in place of what one of them said.
 - **Sales language**: breathtaking, nestled, renowned, rich (figurative),
-  powerful, "in the heart of".
+  powerful, "in the heart of". Newer models produce it less; it stays a
+  defect.
 - **Many words, no content**: a paragraph that can be deleted without the
   reader losing a fact, a step or a decision.
 
@@ -108,6 +110,8 @@ complete list, and they change with every model generation.
 - Title Case In Headings, emoji before headings or list items, decorative
   rules and arrows.
 - A summary at the end of a section: "In summary", "Overall", "In conclusion".
+- Markup that the destination does not render, such as Markdown asterisks in
+  a plain-text field.
 - A list or headings where three sentences of prose would do.
 
 ### E. Left over from the chat
@@ -115,7 +119,14 @@ complete list, and they change with every model generation.
 - "Great question", "Certainly!", "I hope this helps", "Let me know if",
   "Would you like me to"; in a message, "I hope this email finds you well".
 - Statements about missing information followed by a guess: "specific details
-  are limited", "based on available information", "likely".
+  are limited", "based on available information", "likely"; a caution that
+  a source "does not by itself establish" something nobody claimed.
+- In a commit message, pull-request description or review comment: an
+  assurance of compliance ("adheres to the guidelines", "carefully reviewed"),
+  a list of what was "preserved" or "retained", and a customer-service tone.
+  Say what changed and why.
+- Traces of the tool: `utm_source=` parameters in links and citation markers
+  such as `oaicite`.
 - An unfilled placeholder: `[Name]`, `2025-XX-XX`, `INSERT_URL_HERE`.
 - Text about the previous version or about the request, outside release
   notes, changelogs and migration guides.
@@ -131,12 +142,12 @@ complete list, and they change with every model generation.
 5. Begin with the point and end on the last fact.
 
 Removing a pattern never removes a fact, a step, a warning or a stated
-uncertainty. When a sentence is empty without its pattern, the sentence was
-the defect.
+uncertainty. Delete a sentence that is empty without its pattern.
 
 ## Check before delivery
 
-Read the finished text once for these seven: a contrast with nothing, a
+The catalogue is the measure. As a last pass, read the finished text once
+for the seven that survive drafting most often: a contrast with nothing, a
 one-line closer, a list of three, a participle phrase at a sentence end, a
 stock word, a bold label, a line addressed to the person who asked. Correct
 each one that the exceptions below do not cover. For a reply of a few lines
@@ -150,6 +161,8 @@ the check is one reading, with no record.
   the reader holds, and a recap that a learner needs.
 - Correct grammar, a formal register, or a transition word by itself.
 - Three items when there are three.
+- Bold for the statement of a rule, for an interface label, and for the first
+  words of a list item that the reader scans by.
 - A structure that a template, a glossary, a source or the person's own
   instruction requires. These take precedence over this rule's style
   preferences.
@@ -160,7 +173,7 @@ the check is one reading, with no record.
 |---|---|
 | Reader-oriented text, including every reply | In full |
 | Working notes | In full; notes are short, so groups C and E matter most |
-| Manuscript: story prose and in-world text | The story's voice sheet decides the voice. A device the voice sheet names, such as fragments, a repeated opening or a list of three used for rhythm, is the author's choice. Where the sheet is silent, groups A, C and E are findings in narration; a character may speak in any way that the character's voice card supports. Group D does not apply to prose. |
+| Manuscript: story prose and in-world text | The story's voice sheet decides the voice. A device the voice sheet names, such as fragments, a repeated opening or a list of three used for rhythm, is the author's choice. Where the sheet is silent, groups A, C and E are findings in narration, and group B is a finding where several of its patterns stand in one passage; a character may speak in any way that the character's voice card supports. Group D does not apply to prose. |
 | Narration of a video | The mode of its script: tutorial narration in full, story narration as manuscript |
 | Machine-read output, code, commands, data | Not covered |
 
@@ -174,6 +187,11 @@ the check is one reading, with no record.
 - The patterns drift. Words and forms that marked one model generation fade,
   and their replacements become the next markers. Reassess this file when
   that shows.
+- An invented reference, a dead link or a wrong number is a matter of
+  verification and is not covered here.
+- The two playbook skills come from the shared core and do not refer to this
+  file. `documentation-pdf` and `presentation-video-production` write no
+  text.
 - Whether a host follows the rule is not measured. No host loads a policy file
   before it selects a skill, so a reply for which no skill of this method
   loads is not reached by it.

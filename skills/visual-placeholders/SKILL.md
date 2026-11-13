@@ -8,6 +8,8 @@ description: "Use as a supporting skill when documentation needs screenshots, di
 Apply the shared [proportionality rule](../../shared/policies/proportionality.md)
 before adding work, delegating, or repeating verification.
 
+[Writing rule #1](../../shared/policies/natural-prose.md) applies to every caption, alt text and instruction written under this skill: no pattern that reads as machine-written.
+
 Text and image must say the same thing. A placeholder is a contract: it states
 what the reader must see, where in the text it belongs, and how to produce the
 image later so that it proves exactly that.

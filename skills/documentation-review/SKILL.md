@@ -113,7 +113,7 @@ on the text rather than recollection:
 9. Read [writing rule #1](../../shared/policies/natural-prose.md) and
    [human-prose-drafting](../human-prose-drafting/SKILL.md) and assess
    passages for staged contrasts, empty closers, lists of three, participle
-   riders, inflated wording and chatbot residue. Apply its context and preservation exceptions; a
+   riders, stock words, bold labels and chatbot residue. Apply the rule's exceptions; a
    word match alone is not a finding. Return specific prose findings to the
    author within the existing review cycle; add no separate rewrite phase.
 

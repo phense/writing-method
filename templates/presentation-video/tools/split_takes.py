@@ -160,10 +160,12 @@ def main(argv=None) -> int:
                                         "words": project.words(lines[i]["text"]), **voice_azure.measure_file(target)})
                 replace_scene_sound(out_dir, scene, Path(staging))
             manifest[scene] = entries_out
+            # written after every scene: a later scene that is rejected must not leave
+            # this scene's new sound on disk without its manifest entry
+            order = {key: i for i, key in enumerate(narration)}
+            manifest = dict(sorted(((k, v) for k, v in manifest.items() if k in order), key=lambda kv: order[kv[0]]))
+            project.write_json(root / "src" / "audio-manifest.json", manifest)
             print(f"{scene}: {take.name} (match {ratio:.2f}), {len(lines)} lines")
-        order = {key: i for i, key in enumerate(narration)}
-        manifest = dict(sorted(((k, v) for k, v in manifest.items() if k in order), key=lambda kv: order[kv[0]]))
-        project.write_json(root / "src" / "audio-manifest.json", manifest)
     except (TakeRejected, FileNotFoundError, audio.ToolMissing, profile_mod.ProfileError,
             speech.PronunciationError, subprocess.CalledProcessError, KeyError) as error:
         print(f"split_takes: {error}", file=sys.stderr)

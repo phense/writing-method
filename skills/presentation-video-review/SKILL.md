@@ -8,6 +8,8 @@ description: "Use when a finished script of a tutorial or a story video needs it
 Apply the shared [proportionality rule](../../shared/policies/proportionality.md)
 before adding work, delegating, or repeating verification.
 
+[Writing rule #1](../../shared/policies/natural-prose.md) is a criterion at gate 1 for a tutorial script, and applies to the findings this skill writes.
+
 Check a video as its least experienced viewer would meet it, and as the
 person who must stand behind every statement in it. Record findings; do not
 fix them. Corrections return to scripting or production.

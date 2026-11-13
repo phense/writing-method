@@ -60,7 +60,7 @@ order and stop at the first that holds.
 |---|---|---|---|
 | 1 | The file is a reader-facing vault file (`README.md`, `START.md`, `AGENTS.md` or `CLAUDE.md`) or a reader-facing deliverable about the story or the vault, wherever it is stored: documentation or a tutorial-video script with its production files | `reader-oriented` | The reader family's rules |
 | 2 | The text is story prose, in-world text or paratext: it goes into a manuscript location of a `kind: story` vault, or the author explicitly asks for story prose; or it is the narration `text` in `src/narration.json` of a video project whose `video.json` has `purpose: story`, wherever the project is stored: a segmented copy of manuscript text | `manuscript` | The voice sheet, then `shared/story/rules.md`, which carries writing rule #1 for prose. Nothing from the reader family. |
-| 3 | The text is another file of a story or study vault, a research note, or another file of a story video project (`video.json`, a scene `message`, `script/script.md`, `pronunciation.json`), wherever it is stored | `working-note` | The story skills. Plain notes: neither the voice sheet nor didactic structure. |
+| 3 | The text is another file of a story or study vault, a research note, or another file of a story video project (`video.json`, a scene `message`, `script/script.md`, `pronunciation.json`), wherever it is stored | `working-note` | The story skills. Plain notes: neither the voice sheet nor didactic structure. Writing rule #1 applies. |
 | 4 | Everything else, including every reply to the author | `reader-oriented` | The reader family's rules, unchanged |
 
 The subject never sets the mode. A reply that talks about a story is still a

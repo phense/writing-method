@@ -1,6 +1,6 @@
 ---
 name: human-prose-drafting
-description: "Use whenever prose for people is written or revised and no other writing skill covers it: an email, announcement, post, message, summary, release note, commit or pull-request description; and within documentation-authoring for medium and large texts. Applies writing rule #1, natural prose without machine patterns, from the first sentence, with a brief check before delivery. Not a separate rewrite phase or a reason to change facts, code, quotations or required document structure. Not for story manuscripts or in-world text."
+description: "Use whenever prose for people is written or revised and no other writing skill covers it: an email, announcement, post, notice, commit or pull-request description; and as a supporting skill within documentation-authoring for medium and large texts. Applies writing rule #1, natural prose without machine patterns, from the first sentence, with a brief check before delivery. Not a separate rewrite phase or a reason to change facts, code, quotations or required document structure. Not for story manuscripts or in-world text."
 ---
 
 # Human Prose Drafting
@@ -10,8 +10,8 @@ Not for story manuscripts or in-world text: when the target is manuscript, stop 
 Apply the shared [proportionality rule](../../shared/policies/proportionality.md)
 before adding work, delegating, or repeating verification.
 
-Write for the defined reader and subject from the first sentence. Apply the
-patterns below while choosing words and organizing each paragraph. The writing
+Write for the defined reader and subject from the first sentence. Apply
+[writing rule #1](../../shared/policies/natural-prose.md) while choosing words and organizing each paragraph. The writing
 lifecycle includes a short check of each chunk, with no separate humanizing phase.
 
 Adapted from blader/humanizer (MIT); patterns trace to Wikipedia's "Signs of AI
@@ -22,10 +22,12 @@ other skill covers.
 
 ## Trigger
 
-Use for any text a person will read that no other writing skill covers: an
-email, an announcement, a post, a message, a summary, a release note, a commit
-or pull-request description. For such a text read the rule, write, and run its
-delivery check once; nothing is recorded.
+Use for a short standalone text a person will read that no other writing
+skill covers: an email, an announcement, a post, a notice, a commit or
+pull-request description. For such a text read the rule, write, and run its
+delivery check once; nothing is recorded. A document, also a release note,
+belongs to `documentation-authoring`, and this skill supports it there. An
+ordinary reply belongs to the didactic skills.
 
 Use inside `documentation-authoring` for every chunk or standalone document at
 the medium or large scale, and inside `documentation-review` as one check.
@@ -56,7 +58,7 @@ how the sentences may not be built.
 Read [writing rule #1](../../shared/policies/natural-prose.md) before the first
 sentence. It holds the patterns in five groups, the reasons readers recognize
 them, the exceptions and the scope. Use it as contextual guidance, not as a
-string blacklist: the staged forms of its group A warrant attention on one
+string blacklist: the staged forms of its group A are a defect on one
 occurrence, and a pattern it marks as weak needs context before you change
 anything. User instructions, required templates, glossary terms, source
 fidelity and project style take precedence over its style preferences.
@@ -81,7 +83,7 @@ Documentation adds these to the rule:
 
 Concept, task, reference and troubleshooting text stays neutral and plain,
 addresses the reader as "you", and keeps the project's glossary terms. The
-plan or project contract decides the language of the text; the tells above have
+plan or project contract decides the language of the text; the patterns of the rule have
 equivalents in every language and are treated the same. Do not add opinions,
 humor or asides to documentation; those belong to personal writing.
 

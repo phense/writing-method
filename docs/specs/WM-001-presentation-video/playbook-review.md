@@ -235,14 +235,34 @@ These edits are again unreviewed. Checked by execution after the edits: the
 unit tests, and `measure.py file` on a one-second file without sound
 (`has no sound track or cannot be read`, `FAILED`, exit 1).
 
-## State after four reviews
+## Fifth review at `7196174`
 
-- Content review: 58 findings in four rounds, all applied. The edits of the
-  fourth round are unreviewed, so no `Ready` verdict exists.
+- Reviewer: one independent assistant reviewer; each finding checked again by
+  a further independent reviewer. Read-only; unit tests run (82, OK).
+- All 15 findings of the fourth review are resolved and agree with the tool
+  source. Verdict at `7196174`: Changes required, 2 Important, 3 Minor, all
+  in text changed by the fourth round.
+
+| ID | Severity | Finding | Change applied |
+|---|---|---|---|
+| R5-01 | Important | The order of pronunciation attempts did not say that an entry takes effect through one field only; a language mark added beside a phonetic entry changes nothing and no tool reports it | P1 says to remove the earlier field and names the evidence (`new`) |
+| R5-02 | Important | `split_takes.py` wrote the manifest once after all scenes, so a later rejected scene left earlier scenes cut on disk and absent from the manifest | The tool writes the manifest after every scene |
+| R5-03 | Minor | The correction bullet named the cut before the new take | Reordered; prompt and transcription named |
+| R5-04 | Minor | Three rejection messages do not name the take, so "the rejected take" could not be identified | R3 moves every earlier take of the scene; numbering counts `takes/superseded/` |
+| R5-05 | Minor | `out/measure.json` is not written when the file cannot be read | Preserve list says so |
+
+Open observation, not verified: on Linux `pgrep -fl` may list the shell that
+runs it when that shell's command line holds the pattern.
+
+## State after five reviews
+
+- Content review: 63 findings in five rounds, all applied. The five edits of
+  the fifth round are small and were checked against the tool source by their
+  author only, so no `Ready` verdict by an independent reviewer exists.
 - Rehearsal at 0.4.1 (`rehearsal.md`): one end-to-end run through delivery, an
   interrupted local render, the correction path, the pace probe, and the
-  listening check by the owner (passed).
+  listening check by the owner (passed). Stale for the steps changed since:
+  R3, R4, R5, P10b, the P1 failure path and the interruption text.
 - Never executed: P6a and R4 after P6a, P2b, R2, R3 and the take rule
   (ElevenLabs), R1 with a real limit, a checksum mismatch or failed rename in
-  P10 to P11, the R5 branches, a story video. R4 as now written was not run
-  inside the procedure.
+  P10 to P11, the R5 branches, a story video.

@@ -8,6 +8,8 @@ description: "Use as a supporting skill when a document or documentation set mus
 Apply the shared [proportionality rule](../../shared/policies/proportionality.md)
 before adding work, delegating, or repeating verification.
 
+[Writing rule #1](../../shared/policies/natural-prose.md) applies to every definition and note written under this skill: no pattern that reads as machine-written.
+
 Over hundreds of pages, readers lose trust when the same thing has three names.
 The glossary is the single authority for terms; text follows it, and checks
 are run against it rather than against memory.

@@ -125,7 +125,9 @@ reads the chapter card in `05-plot/chapters/` and writes prose only, into
 `06-manuscript/chapters/`. The voice sheet decides how the prose sounds.
 `explaining-concepts`, `writing-procedures`, `empathic-troubleshooting` and
 `human-prose-drafting` do not apply to it: a chapter gets no analogy, no
-numbered steps and no smoothing of deliberate fragments. If one of the three
+numbered steps and no smoothing of deliberate fragments. Writing rule #1 still
+applies where the voice sheet is silent: no staged insight, no inflated
+wording, nothing left over from a chat. If one of the three
 voice fields is still `unset`, no chapter is drafted and you are led to a
 voice trial first. The chapter is complete when `story-canon-review` has
 reviewed it at a named revision and you have accepted it; your acceptance is a

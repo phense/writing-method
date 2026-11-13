@@ -18,7 +18,7 @@ Attribution: Trey Parker and Matt Stone's NYU craft advice, as presented in the 
 
 **No manuscript sentence may read as machine-written.** [Writing rule #1](../policies/natural-prose.md) lists the patterns and why readers recognize them; its position is a maintainer requirement of 2026-11-13. The storytelling rule above governs how beats connect, this rule how sentences are built; neither replaces the other.
 
-The voice sheet stays the first authority. A device the sheet names, such as fragments, a repeated opening or a list of three used for rhythm, is the author's choice and no finding. Where the sheet is silent, staged insight, inflation in place of a concrete perception, and anything left over from a chat are defects in narration. A character may speak in such a pattern when the character's voice card supports it.
+The voice sheet stays the first authority. A device the sheet names, such as fragments, a repeated opening or a list of three used for rhythm, is the author's choice and no finding. Where the sheet is silent, the rule's groups A, C and E are defects in narration: staged insight, inflation in place of a concrete perception, and anything left over from a chat. Group B, even rhythm, is a defect where several of its patterns stand in one passage. The word lists of the rule hold examples and are read in context. Working notes follow the rule in full. The rule is a writing requirement and makes no claim about detection. A character may speak in such a pattern when the character's voice card supports it.
 
 ## Further craft heuristics
 
