@@ -54,7 +54,7 @@ re-rendered, so the figures were not confirmed in a rendered file.
 | R5 failed measurement | Occurred twice (pace, peak), see above | Rehearsed |
 | P10 delivery copy with checksum | No delivery location in the sample profile | Procedure only |
 | Listening check by a person | Not possible for the assistant | Open: the maintainer listens to the sample and confirms the pause default of 0.65 s and the tone |
-| Host trigger evaluation | Not run | Trigger matrix and expected results added; live host runs are open |
+| Host trigger evaluation | Run later, on 2026-11-13 | The four video cases passed on Claude and Codex; record in `docs/specs/WM-003-story-family/rehearsal.md` |
 
 ## After the independent review
 
@@ -73,3 +73,13 @@ render scripts changed only by a draft guard and an extra exclusion.
 - Pace range defaults by language (German 120 to 155, English 140 to 180).
 - Peak tolerance of 0.1 dB.
 - Chapter labels raised to the minimum font size.
+
+## After the playbook reviews (2026-11-13)
+
+The playbook was rewritten after three independent content reviews
+(`playbook-review.md`). This record describes the earlier text: its evidence
+cannot be reused for the changed steps, and nothing has been executed with
+the corrected playbook. Still open, and not possible without a machine with
+`ffmpeg`, a configured speech provider and a person who listens: one
+end-to-end run through gate 2 and delivery, one provoked interrupted render,
+the correction path, and the listening check of the sample.
