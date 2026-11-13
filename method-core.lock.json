@@ -118,7 +118,7 @@
     {
       "mode": "100644",
       "path": "scripts/run_natural_evals.py",
-      "sha256": "ace027082e971f661b3c7fa752037f8677e4a6abdab75ba22fb1f887d02e9fb5"
+      "sha256": "85eac53c236601a6aa22a0c039d1e8a1e8eb9a9c245289676d6db3fef7afc174"
     },
     {
       "mode": "100755",
@@ -333,7 +333,7 @@
     {
       "mode": "100644",
       "path": "tests/test_natural_evals.py",
-      "sha256": "68e3d9c0b25622116e452c551e67a6d8f312e7b4f6f14c04a09a948a7ecb8959"
+      "sha256": "231e8d4698e1adfae7b2a4a35ded6965dced6563b47df2506254cd1e2995fd69"
     },
     {
       "mode": "100644",
@@ -362,7 +362,7 @@
     }
   ],
   "repository": "https://github.com/phense/method-core.git",
-  "revision": "91e35dab40156f619123bd75d22de81534f4121c",
+  "revision": "64d9a02272590630288c04eba3a76c7bdb05919f",
   "schema_version": 1,
   "version": "0.1.0"
 }

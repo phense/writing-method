@@ -1,7 +1,7 @@
 ---
 type: reference
 audience: Authors using Writing Method
-version: 0.4.0
+version: 0.4.1
 ---
 # Writing examples
 
