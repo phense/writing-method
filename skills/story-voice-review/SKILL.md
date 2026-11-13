@@ -28,9 +28,10 @@ Read for the narration contract of each viewpoint, the tone palette with its exc
 Every finding cites the passage, with file and location, and one basis:
 
 - a clause of the voice sheet or of a character voice card, or
-- a named default from [story drafting](../story-drafting/SKILL.md), labelled "method default, not sheet".
+- a named default from [story drafting](../story-drafting/SKILL.md), labelled "method default, not sheet", or
+- a pattern of the [#1 prose rule](../../shared/story/rules.md#1-prose-rule-natural-prose) in narration that neither the sheet nor a card supports, labelled "prose rule #1".
 
-Drop an observation that has neither. There is no banned-word list and no universal style standard; a fragment, a repetition or a joke is a finding only where the sheet or a card says so.
+Drop an observation that has none of these. Beyond that rule there is no banned-word list and no universal style standard; a fragment, a repetition or a joke is a finding only where the sheet or a card says so.
 
 Class each finding as one of:
 

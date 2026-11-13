@@ -40,6 +40,8 @@ For premise-to-pilot feedback or broad prose revision, use [story and prose qual
 
 Draft the requested unit, normally a scene or chapter. Let viewpoint determine attention, vocabulary, judgment and available knowledge. Maintain the agreed tense, distance and rules for viewpoint changes. A narrator may know more than a character only when the chosen narration permits it. Stay inside the sheet's tone palette: leave the baseline only for a permitted excursion, and return as the sheet describes.
 
+Apply the [#1 prose rule](../../shared/story/rules.md#1-prose-rule-natural-prose) to every sentence: where the voice sheet is silent, nothing in the narration reads as machine-written.
+
 Apply [storytelling rule #1](../../shared/story/rules.md#1-storytelling-rule-therefore--but) while drafting and as the first structural revision check: each consequential beat follows through cause and consequence or a complication that changes the response. If the passage is only an "and then" sequence, repair the story connection before polishing sentences. The causal relationship must be present in the events; the manuscript need not use the literal words "therefore" or "but". Preserve purposeful quiet consequences and intentional delayed revelation.
 
 Ground action in concrete perceptions and decisions. Make dialogue purposeful through competing wants, omissions and subtext; distinguish speakers by experience and register, using their voice cards. Use action and reaction to show emotional change, with direct telling when it is clearer or deliberately part of the voice. Avoid explanatory lines that merely repeat what the scene already conveyed.

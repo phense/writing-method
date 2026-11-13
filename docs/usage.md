@@ -16,8 +16,9 @@ The writing-depth policy places this at the medium scale. `documentation-authori
 runs in standalone mode: it defines the reader and version, uses the task
 skeleton from the chunk template, and applies `writing-procedures` (goal,
 prerequisites, blocks of three to five imperative steps, a check that it
-worked). The draft is written under `human-prose-drafting` from the first
-sentence, so no humanizing pass follows. A recorded self-review and fresh link
+worked). The draft is written under writing rule #1 (natural prose), which
+`human-prose-drafting` applies to documentation from the first sentence, so
+no humanizing pass follows. A recorded self-review and fresh link
 check close the work. No plan directory is created.
 
 ## Build a documentation set

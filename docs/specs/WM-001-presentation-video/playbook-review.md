@@ -212,8 +212,8 @@ PT-01 to PT-07 were applied as the exact edits above in the following revision. 
   since the third review). Each finding was checked again by a further
   independent reviewer who tried to refute it. Read-only; no provider call, no
   render.
-- Verdict at `1a80caa`: Changes required. 15 findings, all confirmed: 3
-  Important (two describe the same gap), 12 Minor.
+- Verdict at `1a80caa`: Changes required. 15 findings, all confirmed: 4
+  Important (two describe the same gap), 11 Minor.
 
 | ID | Severity | Finding | Change applied |
 |---|---|---|---|

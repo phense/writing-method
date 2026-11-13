@@ -8,6 +8,8 @@ description: "Use when drafted chunks of a documentation set under docs/writing 
 Apply the shared [proportionality rule](../../shared/policies/proportionality.md)
 before adding work, delegating, or repeating verification.
 
+[Writing rule #1](../../shared/policies/natural-prose.md) is a review criterion for every chunk: a pattern that reads as machine-written is a finding.
+
 Read the set as its least experienced reader and as its glossary owner. Record
 findings with evidence, and return actionable findings to the author with the
 text they must change, not with a verdict alone.
@@ -108,9 +110,10 @@ on the text rather than recollection:
 7. Cross-references: every relative link and chunk ID resolves; no "see above".
 8. Troubleshooting chunks: symptom first, causes ordered, first check, fix,
    confirmation, escalation.
-9. Read [human-prose-drafting](../human-prose-drafting/SKILL.md) and assess
-   passages for staged contrasts, empty closers, dash chains, inflated wording
-   and chatbot residue. Apply its context and preservation exceptions; a
+9. Read [writing rule #1](../../shared/policies/natural-prose.md) and
+   [human-prose-drafting](../human-prose-drafting/SKILL.md) and assess
+   passages for staged contrasts, empty closers, lists of three, participle
+   riders, inflated wording and chatbot residue. Apply its context and preservation exceptions; a
    word match alone is not a finding. Return specific prose findings to the
    author within the existing review cycle; add no separate rewrite phase.
 

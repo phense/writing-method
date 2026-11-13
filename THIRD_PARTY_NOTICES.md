@@ -30,9 +30,10 @@ Revision: `9862685f575c65a8247f90369951df1b3416e3d6`
 
 Copyright (c) 2025 Siqi Chen
 
-Reframed the after-the-fact rewrite procedure as drafting-time constraints for medium and large documentation, condensed the 25 patterns into constraint groups, removed pasted-text and voice-matching modes, and added the chunk check and documentation voice rules.
+Reframed the after-the-fact rewrite procedure as drafting-time constraints, condensed the 25 patterns into five groups and moved them into a rule file that applies to every text, extended them from further sources named in that file, removed pasted-text and voice-matching modes, and added the delivery check, the scope by writing mode and the documentation voice rules.
 
 - `SKILL.md` -> `skills/human-prose-drafting/SKILL.md`: adapted
+- `SKILL.md` -> `shared/policies/natural-prose.md`: adapted
 
 MIT License
 

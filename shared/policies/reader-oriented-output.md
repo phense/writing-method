@@ -7,6 +7,14 @@ and pull-request descriptions, review comments, handoff notes and error
 reports. Apply them by default; skip them only when the reader has explicitly
 asked for terse expert output or the text is machine-consumed.
 
+## Rule #1 for every text
+
+[Writing rule #1](natural-prose.md) comes first: no text may read as
+machine-written. It applies to every row of the table below and to text that
+fits none of them, such as a status note, a commit message or an
+announcement. The didactic skills decide what to say and in what order; rule
+#1 decides how the sentences may not be built.
+
 ## Which rules apply to which reply
 
 | The reply is mainly | Apply | Not |

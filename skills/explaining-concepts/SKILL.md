@@ -10,6 +10,8 @@ Not for story manuscripts or in-world text: when the target is manuscript, stop 
 Apply the shared [proportionality rule](../../shared/policies/proportionality.md)
 before adding work, delegating, or repeating verification.
 
+[Writing rule #1](../../shared/policies/natural-prose.md) applies to every sentence written under this skill: no pattern that reads as machine-written.
+
 Explain so that the defined reader could restate the idea in their own words.
 This is the Feynman technique applied to writing: if the explanation needs
 jargon to stand up, the writer has not understood it well enough yet.

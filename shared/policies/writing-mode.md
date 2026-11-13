@@ -14,6 +14,10 @@ quality claim for either family and rests on no pilot evidence.
   and `presentation-video-review` voice, time, render and check an accepted
   video script of either family and never restyle its narration.
 
+Writing rule #1, natural prose, stands above the families: it is stored in
+`shared/policies/natural-prose.md`, applies in every mode with the scope that
+file states, and may be linked by all three families.
+
 This file is the neutral hub and the authority for the mode rule. All three
 families refer to it; it links into none. The operative sentences that skills and
 vault files carry are stored in the policy block at the end and are tested
@@ -55,7 +59,7 @@ order and stop at the first that holds.
 | Order | Condition | Mode | Governed by |
 |---|---|---|---|
 | 1 | The file is a reader-facing vault file (`README.md`, `START.md`, `AGENTS.md` or `CLAUDE.md`) or a reader-facing deliverable about the story or the vault, wherever it is stored: documentation or a tutorial-video script with its production files | `reader-oriented` | The reader family's rules |
-| 2 | The text is story prose, in-world text or paratext: it goes into a manuscript location of a `kind: story` vault, or the author explicitly asks for story prose; or it is the narration `text` in `src/narration.json` of a video project whose `video.json` has `purpose: story`, wherever the project is stored: a segmented copy of manuscript text | `manuscript` | The voice sheet, then `shared/story/rules.md`. Nothing from the reader family. |
+| 2 | The text is story prose, in-world text or paratext: it goes into a manuscript location of a `kind: story` vault, or the author explicitly asks for story prose; or it is the narration `text` in `src/narration.json` of a video project whose `video.json` has `purpose: story`, wherever the project is stored: a segmented copy of manuscript text | `manuscript` | The voice sheet, then `shared/story/rules.md`, which carries writing rule #1 for prose. Nothing from the reader family. |
 | 3 | The text is another file of a story or study vault, a research note, or another file of a story video project (`video.json`, a scene `message`, `script/script.md`, `pronunciation.json`), wherever it is stored | `working-note` | The story skills. Plain notes: neither the voice sheet nor didactic structure. |
 | 4 | Everything else, including every reply to the author | `reader-oriented` | The reader family's rules, unchanged |
 
@@ -125,7 +129,7 @@ read, and this file is what they are compared with.
 |---|---|---|
 | 1. Names | Every story skill starts with `story-`; no name equals a shared, reader or engineering skill name or contains `continuity` | The names are as stated |
 | 2. Descriptions and opening lines | Reciprocal exclusions and the precedence sentence | The sentences are present and equal the policy block. Whether a model follows them is statistical. |
-| 3. Link firewall | Story files link only into `shared/story/`, `templates/story-vault/`, other story skills, this file, `shared/policies/proportionality.md` and `skills/verification-before-completion/SKILL.md`. For a story video they also link the video project template, the two form skills and `shared/media/speech-synthesis.md`. Reader files and form skills never link into the story directories. Links are not followed further: a form skill carries tutorial-only links that its Story scripts section sets aside for `purpose: story`. Backticked skill names are checked against the family map as well; form skills may be named by both families and may name skills of both. | A skill cannot pull the other family's rule files in through links |
+| 3. Link firewall | Story files link only into `shared/story/`, `templates/story-vault/`, other story skills, this file, `shared/policies/natural-prose.md`, `shared/policies/proportionality.md` and `skills/verification-before-completion/SKILL.md`. For a story video they also link the video project template, the two form skills and `shared/media/speech-synthesis.md`. Reader files and form skills never link into the story directories. Links are not followed further: a form skill carries tutorial-only links that its Story scripts section sets aside for `purpose: story`. Backticked skill names are checked against the family map as well; form skills may be named by both families and may name skills of both. | A skill cannot pull the other family's rule files in through links |
 | 4. No lifecycle graph | No story skill appears in `shared/policies/lifecycle-handoffs.md` | The graph contains no story node |
 | 5. Vault kind | Only `kind: story` permits drafting, and only with the three voice fields filled | The starter and the skills state the rule |
 
@@ -200,7 +204,7 @@ The entries under `sentences` are the exact text the carriers hold.
   "hub": "shared/policies/writing-mode.md",
   "story_link_allow": {
     "prefixes": ["shared/story/", "templates/story-vault/", "skills/story-", "templates/presentation-video/"],
-    "files": ["shared/policies/writing-mode.md", "shared/policies/proportionality.md", "skills/verification-before-completion/SKILL.md", "skills/presentation-video-production/SKILL.md", "skills/presentation-video-review/SKILL.md", "shared/media/speech-synthesis.md"]
+    "files": ["shared/policies/writing-mode.md", "shared/policies/natural-prose.md", "shared/policies/proportionality.md", "skills/verification-before-completion/SKILL.md", "skills/presentation-video-production/SKILL.md", "skills/presentation-video-review/SKILL.md", "shared/media/speech-synthesis.md"]
   },
   "reader_link_deny_prefixes": ["shared/story/", "templates/story-vault/", "skills/story-"],
   "form_link_deny_prefixes": ["shared/story/", "templates/story-vault/", "skills/story-"],

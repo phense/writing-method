@@ -1,6 +1,7 @@
 # Writing Depth
 
-Prose deliverables follow the same rule as code: match the workflow to the
+[Writing rule #1](natural-prose.md), natural prose, applies at every scale.
+Beyond it, prose deliverables follow the same rule as code: match the workflow to the
 observable size, audience risk and lifetime of the text. Decide the scale first,
 record it, and select the writing lifecycle from that decision. Do not adopt
 documentation-set machinery for a paragraph, and do not write a manual one
@@ -34,7 +35,7 @@ that recorded scale and phase instead of deciding again.
 
 | Scale | Required depth |
 |---|---|
-| Small | Reader-oriented wording, terminology consistent with the surrounding text, focused check of the changed passage and its links; preserve the surrounding voice without loading an additional supporting skill |
+| Small | Writing rule #1 (natural prose) applied inline; reader-oriented wording, terminology consistent with the surrounding text, focused check of the changed passage and its links; preserve the surrounding voice without loading an additional supporting skill |
 | Medium | Content type chosen from the information architecture, one template-based document with frontmatter, explicit reader, prerequisites and validation for procedures, local glossary check, drafting under the `human-prose-drafting` constraints, self-review against the didactic rules, fresh link and rendering check |
 | Large | Documentation plan with audience, architecture map, chunk manifest and conventions; shared glossary; asset manifest with placeholders; per-chunk authoring under the `human-prose-drafting` constraints with checkpoints; set-wide consistency review including prose tells; convergence of findings; fresh verification |
 

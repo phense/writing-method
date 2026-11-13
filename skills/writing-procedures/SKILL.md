@@ -10,6 +10,8 @@ Not for story manuscripts or in-world text: when the target is manuscript, stop 
 Apply the shared [proportionality rule](../../shared/policies/proportionality.md)
 before adding work, delegating, or repeating verification.
 
+[Writing rule #1](../../shared/policies/natural-prose.md) applies to every sentence written under this skill: no pattern that reads as machine-written.
+
 Write for the reader's hands. A procedure tells one defined reader exactly what
 to do, where, in what order, and how to see that it worked. Passive descriptions
 of where something happens are not instructions.

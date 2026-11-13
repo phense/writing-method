@@ -8,6 +8,8 @@ description: "Use when a narrated tutorial video must be scripted from source ma
 Apply the shared [proportionality rule](../../shared/policies/proportionality.md)
 before adding work, delegating, or repeating verification.
 
+[Writing rule #1](../../shared/policies/natural-prose.md) applies to every sentence written under this skill: no pattern that reads as machine-written.
+
 Write the script of a tutorial video: what is said, in which order, and what
 the viewer sees while it is said. The script is finished when a person has
 reviewed it and the script check passes. Nothing is voiced in this phase.

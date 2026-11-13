@@ -3,6 +3,7 @@
 Narration is heard once, at the speaker's pace, while the viewer also looks at
 a picture. Text that reads well on a page can fail here. These rules apply
 from the first draft, together with
+[writing rule #1](../policies/natural-prose.md) and
 [human-prose-drafting](../../skills/human-prose-drafting/SKILL.md).
 
 ## One line, one thought
