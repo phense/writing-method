@@ -1,0 +1,20 @@
+{
+  "name": "writing-method",
+  "interface": {
+    "displayName": "Writing Method"
+  },
+  "plugins": [
+    {
+      "name": "writing-method",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

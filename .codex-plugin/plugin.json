@@ -1,0 +1,37 @@
+{
+  "name": "writing-method",
+  "version": "0.1.0",
+  "description": "Reader-oriented writing, documentation workflows and local PDF delivery.",
+  "author": {
+    "name": "Peter Hense"
+  },
+  "license": "MIT",
+  "keywords": [
+    "writing",
+    "documentation",
+    "review",
+    "pdf"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Peter's Writing Method",
+    "shortDescription": "Writing, documentation and local PDF workflows",
+    "longDescription": "Reader-oriented planning, authoring, review and PDF delivery with shared method support.",
+    "developerName": "Peter Hense",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Write a standalone guide.",
+      "Plan a documentation set.",
+      "Export reviewed documentation as PDF."
+    ],
+    "brandColor": "#0B7285",
+    "screenshots": []
+  },
+  "homepage": "https://github.com/phense/writing-method",
+  "repository": "https://github.com/phense/writing-method"
+}
