@@ -14,8 +14,9 @@ fix them. Corrections return to scripting or production.
 
 ## Recovery preamble
 
-Follow the recovery preamble and the operational state handoffs of
-[documentation-authoring](../documentation-authoring/SKILL.md#recovery-preamble).
+Follow the [recovery gate](../project-backlog/SKILL.md#recovery-gate) and the
+[operational handoffs](../project-backlog/SKILL.md#operational-handoffs) of the
+backlog skill directly. No documentation skill is part of the video lifecycle.
 For an untracked single video the review record on disk is the state.
 
 ## Trigger
