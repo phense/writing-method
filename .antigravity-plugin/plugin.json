@@ -1,0 +1,28 @@
+{
+  "$schema": "https://antigravity.google/schemas/v1/plugin.json",
+  "name": "writing-method",
+  "displayName": "Peter's Writing Method",
+  "version": "0.5.0",
+  "description": "Reader-oriented writing, documentation workflows, local PDF delivery and narrated tutorial videos, plus an experimental story-writing family kept separate from them.",
+  "author": {
+    "name": "Peter Hense"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/phense/writing-method",
+  "repository": "https://github.com/phense/writing-method",
+  "keywords": [
+    "writing",
+    "documentation",
+    "review",
+    "pdf",
+    "video",
+    "tutorial",
+    "story",
+    "fiction"
+  ],
+  "suggestedPrompts": [
+    "Write a standalone guide.",
+    "Plan a documentation set.",
+    "Export reviewed documentation as PDF."
+  ]
+}

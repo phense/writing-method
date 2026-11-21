@@ -5,7 +5,7 @@ version: 0.5.0
 ---
 # Writing Method
 
-Writing Method provides reader-oriented writing, documentation planning, review, local PDF delivery and narrated tutorial videos for Claude, Codex and OpenCode. A separate, experimental family of skills supports story writing; see [Story writing (experimental)](#story-writing-experimental). Install it on its own or alongside [Engineering Method](https://github.com/phense/engineering-method). Both bundle shared support from [Method Core](https://github.com/phense/method-core); no sibling checkout is needed at runtime.
+Writing Method provides reader-oriented writing, documentation planning, review, local PDF delivery and narrated tutorial videos for Claude, Codex, OpenCode and Antigravity. A separate, experimental family of skills supports story writing; see [Story writing (experimental)](#story-writing-experimental). Install it on its own or alongside [Engineering Method](https://github.com/phense/engineering-method). Both bundle shared support from [Method Core](https://github.com/phense/method-core); no sibling checkout is needed at runtime.
 
 The three repositories remain under `phense`, share the `agent-methods` topic and have independent Issues and pull requests. Report a writing behavior here, an engineering behavior in Engineering Method, and shared adapter/state/playbook behavior in Method Core.
 
@@ -128,7 +128,11 @@ claude plugin marketplace add /absolute/path/to/writing-method
 claude plugin install writing-method@writing-method
 ```
 
-For a session-scoped Claude test use `claude --plugin-dir /absolute/path/to/writing-method`. For OpenCode, run `python3 scripts/install-opencode --check` from this checkout, inspect the proposed path, then repeat without `--check`. It installs an owned `writing-method.js` loader pointing to this retained directory. Gemini support is deferred until its adapter is verified.
+```sh
+agy plugin install /absolute/path/to/writing-method
+```
+
+For a session-scoped Claude test use `claude --plugin-dir /absolute/path/to/writing-method`. For OpenCode, run `python3 scripts/install-opencode --check` from this checkout, inspect the proposed path, then repeat without `--check`. It installs an owned `writing-method.js` loader pointing to this retained directory. For Antigravity custom config directories or ACP hosts (such as T3 Code), run `python3 scripts/install-antigravity --check --config-dir /absolute/antigravity/config` and repeat without `--check`; see [Antigravity integration](docs/antigravity.md). Standalone Gemini CLI extensions remain separate and unverified.
 
 Restart the assistant session after installation and inspect its plugin inventory for `writing-method` 0.5.0. An installed listing proves discovery; a live authoring request is separate behavior evidence. With both methods installed, use the invoking method's namespace for shared support, such as `writing-method:playbook-authoring`, and run one copy.
 

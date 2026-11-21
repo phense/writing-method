@@ -178,6 +178,7 @@ OWNER_NAME_ALLOWED = {
     ".claude-plugin/marketplace.json",          # owner field
     ".claude-plugin/plugin.json",               # author and display name
     ".codex-plugin/plugin.json",                # author, developer and display name
+    ".antigravity-plugin/plugin.json",          # author and display name
     "templates/documentation/book/_extensions/em-book/_extension.yml",   # author field
     "templates/documentation/pdf/_extensions/em-manual/_extension.yml",  # author field
     "FEATURES.md",                              # product name in the generated statement
